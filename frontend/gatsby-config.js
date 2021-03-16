@@ -1,6 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: "demo-shop",
+    title: "Ecdev Shop",
+    description: "Full stack web development based on MERN stack",
+    author: `LordApos`,
+    siteUrl: 'https://shop.ecdevstudio.com',
   },
   plugins: [
     "gatsby-plugin-sass",
@@ -24,4 +27,4 @@ module.exports = {
       __key: "images",
     },
   ],
-};
+}

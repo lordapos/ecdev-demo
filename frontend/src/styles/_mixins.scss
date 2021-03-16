@@ -1,0 +1,118 @@
+@mixin media($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+@mixin media_min($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+
+@mixin media_range($breakpoint, $breakpoint2) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: #{map-get($breakpoints, $breakpoint2)}) and (min-width: #{map-get($breakpoints, $breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Please make sure it is defined in `$breakpoints` map.";
+  }
+}
+
+
+@mixin clear {
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+}
+
+@mixin container {
+  width: 100%;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  margin-right: auto;
+  margin-left: auto;
+
+  @include media_min(xs) {
+    max-width: 540px;
+  }
+  @include media_min(sm) {
+    max-width: 720px;
+  }
+  @include media_min(md) {
+    max-width: 960px;
+  }
+  @include media_min(lg) {
+    max-width: 1200px;
+  }
+  @include media_min(xl) {
+    max-width: 1300px;
+  }
+}
+
+@mixin title {
+  position: relative;
+  padding-bottom: 15px;
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100px;
+    height: 4px;
+    background: $blue;
+  }
+}
+
+@mixin button {
+  transition: all 0.3s ease-in-out;
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    border-color: #454545;
+    box-sizing: border-box;
+    border-style: solid;
+    width: 1em;
+    height: 1em;
+    transition: all 0.3s ease-in-out;
+  }
+
+  &:before {
+    top: -6px;
+    left: -6px;
+    border-width: 2px 0 0 2px;
+    z-index: 5;
+  }
+
+  &:after {
+    bottom: -6px;
+    right: -6px;
+    border-width: 0 2px 2px 0;
+  }
+
+  &:hover:before,
+  &:hover:after {
+    width: calc(100% + 12px);
+    height: calc(100% + 12px);
+    border-color: $blue;
+  }
+}
