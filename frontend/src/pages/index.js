@@ -4,7 +4,11 @@ import Layout from '../components/Layout/Layout'
 const IndexPage = () => {
   return (
     <Layout>
-      <h1>Home</h1>
+      <section className='welcome'>
+        <div className="welcome__inner">
+          <h1>Home</h1>
+        </div>
+      </section>
     </Layout>
   )
 }
