@@ -1,0 +1,9 @@
+.loader {
+  display: inline-block;
+
+  &__image {
+    width: 1.5rem;
+    height: 1.5rem;
+    margin-left: .5rem;
+  }
+}
