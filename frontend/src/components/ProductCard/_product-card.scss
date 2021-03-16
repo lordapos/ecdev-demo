@@ -1,0 +1,65 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+.products__item {
+  margin: .5rem;
+  border: 1px solid $border;
+  border-radius: 4px;
+  padding-top: 1rem;
+
+  &:hover {
+    .products__item__button {
+      opacity: 1;
+    }
+  }
+
+  &__image {
+    min-height: 261px;
+    background: transparent;
+
+    &-wrap {
+      width: 80%;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+  &__info {
+    padding: 1rem;
+    margin-top: 1rem;
+    border-top: 1px solid $border;
+  }
+
+  .rating {
+    margin-top: 0.5rem;
+  }
+
+  &__description {
+    display: none;
+  }
+
+  &__price {
+    font-weight: 600;
+  }
+
+  &__bottom {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    padding: .5rem 2rem;
+    background-color: $green;
+    border-radius: 4px;
+    color: $white;
+    transition: .3s ease-in, .3s ease-in-out;
+    opacity: 0;
+
+    &:hover {
+      background-color: $greenHover;
+      opacity: 1;
+    }
+  }
+}
