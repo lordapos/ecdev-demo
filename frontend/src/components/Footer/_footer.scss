@@ -1,0 +1,29 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+.footer {
+  background: $footer;
+  margin-top: 2rem;
+
+  &__inner {
+    @include container;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__copy-rights {
+    color: $white;
+
+    a {
+      color: $green;
+      transition: .3s ease-in, .3s ease-in-out;
+
+      &:hover {
+        color: $greenHover;
+      }
+    }
+  }
+}
