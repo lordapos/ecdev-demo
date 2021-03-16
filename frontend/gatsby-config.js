@@ -2,7 +2,7 @@ module.exports = {
   siteMetadata: {
     title: "Ecdev Shop",
     description: "Full stack web development based on MERN stack",
-    author: `LordApos`,
+    author: `Bohdan Oleksiuk`,
     siteUrl: 'https://shop.ecdevstudio.com',
   },
   plugins: [

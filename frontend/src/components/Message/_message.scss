@@ -1,0 +1,28 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+.message {
+  color: $black;
+  font-size: 1rem;
+  margin-top: 1rem;
+
+  &--error {
+    color: $red;
+    padding: .5rem 1rem;
+    background-color: rgba(180, 32, 37, .3);
+    border-radius: 4px;
+    display: block;
+  }
+
+  &--info {
+    color: $black;
+  }
+
+  &--success {
+    background-color: $green;
+    color: $white;
+    padding: .5rem 1rem;
+    text-align: center;
+    border-radius: 4px;
+  }
+}
