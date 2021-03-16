@@ -1,0 +1,45 @@
+{
+  "name": "ecdev-shop",
+  "version": "1.0.0",
+  "description": "ecdev-shop",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon backend/server",
+    "backend": "node backend/server",
+    "client": "npm start --prefix frontend",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "npm run-script build --prefix frontend",
+    "start": "npm install --prefix frontend && npm run build && npm run backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lordapos/ecdev-demo.git"
+  },
+  "keywords": [],
+  "author": "Bohdan Oleksiuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lordapos/ecdev-demo/issues"
+  },
+  "homepage": "https://github.com/lordapos/ecdev-demo#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-async-handler": "^1.1.4",
+    "express-graphql": "^0.12.0",
+    "graphql": "^15.5.0",
+    "graphql-tools": "^7.0.4",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.2",
+    "mysql2": "^2.2.5",
+    "sequelize": "^6.5.0"
+  },
+  "devDependencies": {
+    "concurrently": "^6.0.0",
+    "nodemon": "^2.0.7"
+  }
+}
