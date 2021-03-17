@@ -1,0 +1,159 @@
+.profile {
+  &__inner {
+    @include container;
+    margin-top: 1rem;
+  }
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
+  &__tabs {
+    position: relative;
+    width: 20%;
+    padding-top: 5rem;
+    background: linear-gradient(180deg, #FBFBFB 0%, rgba(251, 251, 251, 0) 100%);
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      position: sticky;
+      top: 100px;
+    }
+
+    &__item {
+      margin-top: 1rem;
+    }
+
+    &__button {
+      padding-right: 1rem;
+      transition: .3s ease-in, .3s ease-in-out;
+      border-right: 2px solid transparent;
+
+      &:hover {
+        border-right: 2px solid $green;
+      }
+    }
+
+    &__content {
+      width: 70%;
+    }
+  }
+
+  &__account,
+  &__orders {
+    display: none;
+    width: 100%;
+  }
+
+  &__personal {
+    &__title {
+      text-align: center;
+    }
+
+    &__form {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    &__item {
+      width: calc(50% - .5rem);
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
+
+    &__input {
+      background: $white;
+      border: 1px solid $border;
+      box-sizing: border-box;
+      box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.02);
+      border-radius: 4px;
+      padding: .5rem 1rem;
+    }
+
+    &__submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 3rem;
+    }
+
+    &__button {
+      background-color: $green;
+      color: $white;
+      border-radius: 4px;
+      padding: .5rem 8rem;
+      transition: .3s ease-in, .3s ease-in-out;
+
+      &:hover {
+        background-color: $greenHover;
+      }
+    }
+  }
+
+  &.account {
+    .profile__tabs__button--account {
+      color: $greenHover;
+
+      &:hover {
+        border-right: 2px solid transparent;
+      }
+    }
+
+    .profile__account {
+      display: block;
+    }
+  }
+
+  &.orders {
+    .profile__tabs__button--orders {
+      color: $greenHover;
+
+      &:hover {
+        border-right: 2px solid transparent;
+      }
+    }
+
+    .profile__orders {
+      display: block;
+    }
+  }
+
+  &__orders {
+    &__list {
+      margin-top: 1rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      border: 1px solid $border;
+      background-color: rgba(204, 204, 204, .2);
+
+      &--head {
+        background-color: $white;
+      }
+
+      &__tab {
+        border-right: 1px solid $border;
+        padding: .5rem 1rem;
+        width: 20%;
+      }
+
+      &__link {
+        color: $black;
+      }
+    }
+  }
+}
