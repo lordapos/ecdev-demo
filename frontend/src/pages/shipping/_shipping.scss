@@ -1,0 +1,53 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+.shipping {
+  &__inner {
+    @include container;
+    margin-top: 3rem;
+  }
+
+  &__form {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    &__item {
+      width: calc(50% - .5rem);
+      display: flex;
+      flex-direction: column;
+      margin-top: 1.5rem;
+    }
+
+    &__input {
+      background: $white;
+      border: 1px solid $border;
+      box-sizing: border-box;
+      box-shadow: inset 2px 2px 3px rgba(0, 0, 0, 0.02);
+      border-radius: 4px;
+      padding: .5rem 1rem;
+    }
+
+    &__submit {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-top: 3rem;
+    }
+
+    &__button {
+      background-color: $green;
+      color: $white;
+      border-radius: 4px;
+      padding: .5rem 8rem;
+      transition: .3s ease-in, .3s ease-in-out;
+
+      &:hover {
+        background-color: $greenHover;
+      }
+    }
+  }
+}
