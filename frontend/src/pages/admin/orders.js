@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminLayout from '../../components/Layout/AdminLayout'
 import SEO from '../../components/Seo'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -66,7 +65,7 @@ const OrdersPage = () => {
       <h1>Orders</h1>
       <SEO title='Orders' />
       {loading ? (
-        <Loader />
+        ''
       ) : error ? (
         <Message variant='error'>{error}</Message>
       ) : (

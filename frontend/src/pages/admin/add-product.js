@@ -19,7 +19,6 @@ const AddProductPage = () => {
 
   const productCreate = useSelector((state) => state.productCreate)
   const {
-    loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
     product: createdProduct,
@@ -66,7 +65,7 @@ const AddProductPage = () => {
   return (
     <AdminLayout>
       <SEO title='Add product'/>
-      <h1>Add product {loadingCreate && <Loader/>}</h1>
+      <h1>Add product</h1>
       {errorCreate && <Message variant='error'>{errorCreate}</Message>}
       <form className='admin__product__form' action="#" onSubmit={submitHandler}>
         <label className="admin__product__form__item">

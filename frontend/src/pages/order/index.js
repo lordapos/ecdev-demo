@@ -4,7 +4,6 @@ import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
 import { Link, navigate } from 'gatsby'
 import { getOrderDetails, payOrder } from '../../redux/actions/orderAction'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import {
   ORDER_DELIVER_RESET,
@@ -22,7 +21,7 @@ const OrderPage = ({ location }) => {
   const { order, loading, error } = orderDetails
 
   const orderPay = useSelector((state) => state.orderPay)
-  const { loading: loadingPay, success: successPay } = orderPay
+  const { success: successPay } = orderPay
 
   const orderDeliver = useSelector((state) => state.orderDeliver)
   const { success: successDeliver } = orderDeliver
@@ -80,7 +79,7 @@ const OrderPage = ({ location }) => {
     <Layout>
       <SEO title={'Order'}/>
       {loading ?
-        <h6>Loading... <Loader/></h6> :
+        '' :
         error ? (<Message variant='error'>{error}</Message>) : (
           <section className='order'>
             <div className="order__inner">
@@ -141,14 +140,13 @@ const OrderPage = ({ location }) => {
                   {!order.isPaid && (
                     <div className='order__payment-btns'>
                       {!sdkReady ? (
-                        <Loader/>
+                        ''
                       ) : (
                         <PayPalButton
                           amount={order.totalPrice}
                           onSuccess={successPaymentHandler}
                         />
                       )}
-                      {loadingPay && <Loader/>}
                     </div>
                   )}
                 </div>

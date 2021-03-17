@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { deleteProduct, listProducts } from '../../redux/actions/productAction'
 import AdminLayout from '../../components/Layout/AdminLayout'
 import SEO from '../../components/Seo'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import { Link } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -16,7 +15,6 @@ const ProductsPage = () => {
 
   const productDelete = useSelector((state) => state.productDelete)
   const {
-    loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
   } = productDelete
@@ -65,10 +63,9 @@ const ProductsPage = () => {
         <h1>Products</h1>
         <Link to='/admin/add-product' className='admin__add-btn'>Create Product</Link>
       </div>
-      {loadingDelete && <Loader/>}
       {errorDelete && <Message variant='error'>{errorDelete}</Message>}
       {loading ? (
-        <Loader/>
+        ''
       ) : error ? (
         <Message variant='error'>{error}</Message>
       ) : (

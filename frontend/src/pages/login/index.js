@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../images/logo.svg'
 import Layout from '../../components/Layout/Layout'
 import Message from '../../components/Message/Message'
-import Loader from '../../components/Loader/Loader'
 import { Link } from 'gatsby'
 import SEO from '../../components/Seo'
 import { login } from '../../redux/actions/userAction'
@@ -15,7 +14,7 @@ const LoginPage = ({ location }) => {
   const [password, setPassword] = useState('')
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
-  const { loading, error, userInfo } = userLogin
+  const { error, userInfo } = userLogin
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
@@ -37,7 +36,6 @@ const LoginPage = ({ location }) => {
           <div className="login__content">
             <h1 className='login__title'>Log in</h1>
             {error && <Message variant='error'>{error}</Message>}
-            {loading && <Loader/>}
             <form onSubmit={submitHandler} className="login__form">
               <label htmlFor="email">Email address</label>
               <input onChange={(e) => setEmail(e.target.value)}

@@ -4,7 +4,6 @@ import SEO from '../../components/Seo'
 import { getUserAdmin, updateUserAdmin } from '../../redux/actions/userAction'
 import { USER_DETAILS_RESET } from '../../redux/actions/actionTypes'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 
 const UserPage = ({ location }) => {
@@ -50,7 +49,7 @@ const UserPage = ({ location }) => {
   return (
     <AdminLayout>
       <SEO title={'User ' + name} />
-      <h1>User {name} {loading ? (<Loader/>) : null}</h1>
+      <h1>User {name} {loading ? '' : null}</h1>
       {message && <Message variant='error'>{message}</Message>}
       {error ? (<Message variant='error'>{error}</Message>) : null}
       {success &&

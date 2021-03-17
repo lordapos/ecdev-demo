@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
 import { listProducts, viewProducts } from '../../redux/actions/productAction'
-import Loader from '../../components/Loader/Loader'
 import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -54,7 +53,7 @@ const ProductsPage = () => {
       <section className='products'>
         <div className="products__inner">
           <div className="products__head">
-            <h3 className='products__title'>Products {loading ? (<Loader/>) : null}</h3>
+            <h3 className='products__title'>Products</h3>
             <div className="products__sort">
               <Select placeholder='Sorting...' options={options} className='products__select' onChange={sort}/>
             </div>

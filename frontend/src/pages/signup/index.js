@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import logo from '../../images/logo.svg'
 import Layout from '../../components/Layout/Layout'
 import Message from '../../components/Message/Message'
-import Loader from '../../components/Loader/Loader'
 import { Link } from 'gatsby'
 import SEO from '../../components/Seo'
 import { register } from '../../redux/actions/userAction'
@@ -19,7 +18,7 @@ const SignupPage = ({ location, history }) => {
   const [message, setMessage] = useState(null)
 
   const userRegister = useSelector((state) => state.userRegister)
-  const { loading, error, userInfo } = userRegister
+  const { error, userInfo } = userRegister
   const redirect = location.search ? location.search.split('=')[1] : '/'
 
   useEffect(() => {
@@ -46,7 +45,6 @@ const SignupPage = ({ location, history }) => {
             <h1 className='register__title'>Sign Up</h1>
             {message && <Message variant='error'>{message}</Message>}
             {error && <Message variant='error'>{error}</Message>}
-            {loading && <Loader/>}
             <form onSubmit={submitHandler} className="register__form">
               <label htmlFor="email">Email address</label>
               <input onChange={(e) => setEmail(e.target.value)}

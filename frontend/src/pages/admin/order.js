@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminLayout from '../../components/Layout/AdminLayout'
 import SEO from '../../components/Seo'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import { Link } from 'gatsby'
 import {
@@ -21,7 +20,7 @@ const OrderPage = ({ location }) => {
   const { order, loading, error } = orderDetails
 
   const orderDeliver = useSelector((state) => state.orderDeliver)
-  const { loading: loadingDeliver, success: successDeliver } = orderDeliver
+  const { success: successDeliver } = orderDeliver
 
   const userDetails = useSelector((state) => state.userDetails)
   const { loading: UserLoading, error: UserError, user } = userDetails
@@ -53,7 +52,7 @@ const OrderPage = ({ location }) => {
       <SEO title='Order'/>
       <h1>Order</h1>
       {loading ?
-        <h6>Loading... <Loader/></h6> :
+        '' :
         error ? (<Message variant='error'>{error}</Message>) : (
           <section className='order'>
             <div className="order__inner order__inner--admin">
@@ -74,7 +73,7 @@ const OrderPage = ({ location }) => {
                 </div>
                 <div className="order__user">
                   <h3>Customer Details</h3>
-                  {UserLoading ? <h6>Loading... <Loader/></h6> :
+                  {UserLoading ? '' :
                     UserError ? (<Message variant='error'>{UserError}</Message>) : (
                       <div className='order__user__text'>
                         <strong>name: </strong> {user.name} <br/>
@@ -122,7 +121,6 @@ const OrderPage = ({ location }) => {
                     <p className="order__summary__item__name">Total</p>
                     <p className="order__summary__item__value">${order.totalPrice}</p>
                   </div>
-                  {loadingDeliver && <Loader />}
                   {order.isPaid &&
                   !order.isDelivered && (
                     <div className='order__payment-btns'>

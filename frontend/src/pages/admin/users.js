@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import AdminLayout from '../../components/Layout/AdminLayout'
 import { listUsers, deleteUser } from '../../redux/actions/userAction'
 import { Link } from 'gatsby'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
@@ -62,7 +61,7 @@ const UsersPage = () => {
       <SEO title='Users' />
       <h1>Users</h1>
       {loading ? (
-        <Loader />
+        ''
       ) : error ? (
         <Message variant='error'>{error}</Message>
       ) : (

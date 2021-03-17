@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
 import Message from '../../components/Message/Message'
-import Loader from '../../components/Loader/Loader'
 import { Link, navigate } from 'gatsby'
 import { useDispatch, useSelector } from 'react-redux'
 import {
@@ -160,7 +159,7 @@ const ProfilePage = () => {
             <div className="profile__tabs__content">
               <div className="profile__account active">
                 <h2 className='profile__personal__title'>Personal
-                  information {loading ? (<Loader/>) : null}</h2>
+                  information {loading ? '' : null}</h2>
                 {message && <Message variant='error'>{message}</Message>}
                 {error ? (<Message variant='error'>{error}</Message>) : null}
                 {success &&
@@ -209,7 +208,7 @@ const ProfilePage = () => {
               <div className="profile__orders">
                 <h2 className='profile__orders__title'>My Orders</h2>
                 {loadingOrders ? (
-                  <Loader/>
+                  ''
                 ) : errorOrders ? (
                   <Message variant='error'>{errorOrders}</Message>
                 ) : (

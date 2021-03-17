@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AdminLayout from '../../components/Layout/AdminLayout'
 import SEO from '../../components/Seo'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import {
   productDetails,
@@ -14,6 +13,7 @@ import {
 } from '../../redux/actions/actionTypes'
 import axios from '../../axios/axios'
 import { navigate } from 'gatsby'
+import Loader from '../../components/Loader/Loader'
 
 const EditProduct = ({ location }) => {
   const [name, setName] = useState('')
@@ -28,7 +28,6 @@ const EditProduct = ({ location }) => {
 
   const productUpdate = useSelector((state) => state.productUpdate)
   const {
-    loading: loadingUpdate,
     error: errorUpdate,
     success: successUpdate,
   } = productUpdate
@@ -96,10 +95,9 @@ const EditProduct = ({ location }) => {
     <AdminLayout>
       <SEO title='Edit product'/>
       <h1>Edit product</h1>
-      {loadingUpdate && <Loader />}
       {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
       {loading ? (
-        <Loader/>
+        ''
       ) : error ? (
         <Message variant='error'>{error}</Message>
       ) : (

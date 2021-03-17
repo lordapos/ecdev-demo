@@ -4,7 +4,6 @@ import { productDetails } from '../../redux/actions/productAction'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
 import { addToCart } from '../../redux/actions/cartAction'
-import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import { PRODUCT_DETAILS_CLEAN } from '../../redux/actions/actionTypes'
@@ -50,7 +49,7 @@ const ProductPage = ({ location }) => {
         <div className="product__inner">
           <Breadcrumbs breadcrumbs={breadcrumbs}/>
           {loading ?
-            <h6>Loading... <Loader/></h6> :
+            '' :
             error ? (<Message variant='error'>{error}</Message>) : (
               <div className="product__content">
                 <div className="product__content__left">
