@@ -34,7 +34,18 @@ const OrderPage = ({ location }) => {
     if (!userInfo) {
       navigate('/login')
     }
+    const orderId = location.pathname.split('/')[2]
+    dispatch(getOrderDetails(orderId))
 
+  }, [dispatch, userInfo, location])
+
+  useEffect(() => {
+    return () => {
+      dispatch({ type: ORDER_DETAILS_RESET })
+    }
+  }, [dispatch])
+
+  useEffect(() => {
     const addPayPalScript = async () => {
       const { data: clientId } = await axios.get('/api/config/paypal')
       const script = document.createElement('script')
@@ -46,13 +57,6 @@ const OrderPage = ({ location }) => {
       }
       document.body.appendChild(script)
     }
-    const orderId = location.pathname.split('/')[2]
-    if (!order || successPay || successDeliver || order.id !== orderId) {
-      dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
-      dispatch(getOrderDetails(orderId))
-    }
-
     if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript()
@@ -60,10 +64,14 @@ const OrderPage = ({ location }) => {
         setSdkReady(true)
       }
     }
-    return () => {
-      dispatch({ type: ORDER_DETAILS_RESET })
+  }, [order])
+
+  useEffect(() => {//
+    if (successPay || successDeliver) {
+      dispatch({ type: ORDER_PAY_RESET })
+      dispatch({ type: ORDER_DELIVER_RESET })
     }
-  }, [dispatch, userInfo])
+  }, [successPay, successDeliver, dispatch])
 
   const successPaymentHandler = (paymentResult) => {
     const orderId = location.pathname.split('/')[2]
