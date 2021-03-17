@@ -1,19 +1,38 @@
 import { combineReducers } from 'redux'
 import { AppReducer } from './appReducer'
-import { productDetailsReducer, productListReducer, productViewReducer } from './productReducer'
+import {
+  productCreateReducer,
+  productDeleteReducer,
+  productDetailsReducer,
+  productListReducer,
+  productUpdateReducer,
+  productViewReducer,
+} from './productReducer'
 import { cartReducer } from './cartReducer'
 import { userDeleteReducer, userDetailsReducer, userListReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './userReducer'
+import { orderCreateReducer, orderDeliverReducer, orderDetailsReducer, orderListMyReducer, orderListReducer, orderPayReducer } from './orderReducer'
+import { roleReducer } from './roleReducer'
 
 export default combineReducers({
   app: AppReducer,
   productView: productViewReducer,
   productList: productListReducer,
   productDetails: productDetailsReducer,
-  cart: cartReducer,
+  productDelete: productDeleteReducer,
+  productUpdate: productUpdateReducer,
+  productCreate: productCreateReducer,
   userRegister: userRegisterReducer,
   userLogin: userLoginReducer,
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   userList: userListReducer,
   userDelete: userDeleteReducer,
+  cart: cartReducer,
+  orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
+  orderPay: orderPayReducer,
+  orderDeliver: orderDeliverReducer,
+  orderListMy: orderListMyReducer,
+  orderList: orderListReducer,
+  roles: roleReducer,
 })
