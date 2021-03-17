@@ -9,8 +9,12 @@ const composeEnhancers =
 
 let cartItemsFromStorage = null
 let shippingAddressFromStorage = null
+let userInfoFromStorage = null
 
 if (typeof window !== 'undefined') {
+  userInfoFromStorage = localStorage.getItem('userInfo')
+    ? JSON.parse(localStorage.getItem('userInfo'))
+    : null
   cartItemsFromStorage = localStorage.getItem('cartItems')
     ? JSON.parse(localStorage.getItem('cartItems'))
     : []
@@ -25,6 +29,7 @@ const initialState = {
     shippingAddress: shippingAddressFromStorage,
     loaded: false,
   },
+  userLogin: { userInfo: userInfoFromStorage },
 }
 
 const store = createStore(
