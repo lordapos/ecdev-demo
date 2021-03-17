@@ -1,10 +1,10 @@
 import axios from '../../axios/axios'
 import {
-  ORDER_LIST_MY_RESET,
+  ORDER_LIST_MY_RESET, USER_DELETE_FAIL, USER_DELETE_REQUEST, USER_DELETE_SUCCESS,
   USER_DETAILS_FAIL,
   USER_DETAILS_REQUEST,
   USER_DETAILS_RESET,
-  USER_DETAILS_SUCCESS,
+  USER_DETAILS_SUCCESS, USER_LIST_FAIL, USER_LIST_REQUEST, USER_LIST_SUCCESS,
   USER_LOGIN_FAIL,
   USER_LOGIN_REQUEST,
   USER_LOGIN_SUCCESS,
@@ -178,6 +178,183 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
     })
     const storage = { token: data.data.updateUserProfile.token }
     localStorage.setItem('userInfo', JSON.stringify(storage))
+  } catch (error) {
+    const message =
+      error.response && error.response.data.errors
+        ? error.response.data.errors[0].message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: USER_UPDATE_PROFILE_FAIL,
+      payload: 'Not authorized, token failed',
+    })
+  }
+}
+
+export const listUsers = () => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_LIST_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const query = `
+      query {
+            getUsers {
+              id, name, email
+            }
+          }
+    `
+    const { data } = await axios.post('/admin-api', { query: query }, config)
+
+    dispatch({
+      type: USER_LIST_SUCCESS,
+      payload: data.data.getUsers,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.errors
+        ? error.response.data.errors[0].message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: USER_LIST_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const deleteUser = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_DELETE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const query = `
+        mutation {
+          deleteUser(id: "${id}")
+        }
+      `
+    await axios.post('/admin-api', { query: query }, config)
+
+    dispatch({ type: USER_DELETE_SUCCESS })
+    listUsers()
+  } catch (error) {
+    const message =
+      error.response && error.response.data.errors
+        ? error.response.data.errors[0].message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: USER_DELETE_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const getUserAdmin = (id) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_DETAILS_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const query = `
+          query {
+            getUserProfile(id: ${id}) {
+             email, name, id
+            }
+          }`
+    const { data } = await axios.post('/admin-api', { query: query }, config)
+
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data.data.getUserProfile,
+    })
+  } catch (error) {
+    const message =
+      error.response && error.response.data.errors
+        ? error.response.data.errors[0].message
+        : error.message
+    if (message === 'Not authorized, token failed') {
+      dispatch(logout())
+    }
+    dispatch({
+      type: USER_DETAILS_FAIL,
+      payload: message,
+    })
+  }
+}
+
+export const updateUserAdmin = (user) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_UPDATE_PROFILE_REQUEST,
+    })
+
+    const {
+      userLogin: { userInfo },
+    } = getState()
+
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    }
+
+    const query = `
+          mutation {
+            updateUser(data: {id: ${user.id}, name: "${user.name}", email: "${user.email}", password: "${user.password}"}) {
+             email, name, id
+            }
+          }`
+
+    const { data } = await axios.post('/admin-api', { query: query }, config)
+
+    dispatch({
+      type: USER_UPDATE_PROFILE_SUCCESS,
+      payload: data.data.updateUser,
+    })
+    dispatch({
+      type: USER_DETAILS_SUCCESS,
+      payload: data.data.updateUser,
+    })
   } catch (error) {
     const message =
       error.response && error.response.data.errors
