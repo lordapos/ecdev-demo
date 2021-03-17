@@ -7,16 +7,17 @@ import { addToCart } from '../../redux/actions/cartAction'
 import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
+import { PRODUCT_DETAILS_CLEAN } from '../../redux/actions/actionTypes'
 
 const ProductPage = ({ location }) => {
   const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
   useEffect(() => {
-    const ID = location.pathname.split("/")[2]
+    const ID = location.pathname.split('/')[2]
     dispatch(productDetails(ID))
     return () => {
-      dispatch(productDetails('CLEAN'))
+      dispatch({ type: PRODUCT_DETAILS_CLEAN })
     }
   }, [dispatch, location])
 
@@ -43,7 +44,7 @@ const ProductPage = ({ location }) => {
 
   return (
     <Layout>
-      <SEO title={product.name}/>
+      <SEO title={product.name ? product.name : 'Product'}/>
       <section className='product'>
         <div className="product__inner">
           <Breadcrumbs breadcrumbs={breadcrumbs}/>
