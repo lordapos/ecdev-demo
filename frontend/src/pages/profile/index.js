@@ -17,6 +17,7 @@ import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 import { USER_DETAILS_RESET } from '../../redux/actions/actionTypes'
+import './_profile.scss'
 
 const ProfilePage = () => {
   const dispatch = useDispatch()

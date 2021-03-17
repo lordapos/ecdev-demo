@@ -50,7 +50,7 @@ const ShippingPage = () => {
                      type="text"
                      name='address'
                      required
-                     value={address}
+                     defaultValue={address}
               />
             </div>
             <div className="shipping__form__item">
@@ -61,7 +61,7 @@ const ShippingPage = () => {
                      type="text"
                      name='city'
                      required
-                     value={city}
+                     defaultValue={city}
               />
             </div>
             <div className="shipping__form__item">
@@ -72,7 +72,7 @@ const ShippingPage = () => {
                      type="text"
                      name='postal-code'
                      required
-                     value={postalCode}
+                     defaultValue={postalCode}
               />
             </div>
             <div className="shipping__form__item">
@@ -83,7 +83,7 @@ const ShippingPage = () => {
                      type="text"
                      name='country'
                      required
-                     value={country}
+                     defaultValue={country}
               />
             </div>
             <div className="shipping__form__submit">

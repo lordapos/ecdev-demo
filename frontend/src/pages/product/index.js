@@ -8,6 +8,7 @@ import Loader from '../../components/Loader/Loader'
 import Message from '../../components/Message/Message'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import { PRODUCT_DETAILS_CLEAN } from '../../redux/actions/actionTypes'
+import './_product.scss'
 
 const ProductPage = ({ location }) => {
   const [qty, setQty] = useState(1)

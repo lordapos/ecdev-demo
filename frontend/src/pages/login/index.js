@@ -8,6 +8,7 @@ import { Link } from 'gatsby'
 import SEO from '../../components/Seo'
 import { login } from '../../redux/actions/userAction'
 import { navigate } from 'gatsby'
+import './_login.scss'
 
 const LoginPage = ({ location }) => {
   const [email, setEmail] = useState('')

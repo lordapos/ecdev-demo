@@ -8,6 +8,7 @@ import { Link } from 'gatsby'
 import SEO from '../../components/Seo'
 import { register } from '../../redux/actions/userAction'
 import { navigate } from 'gatsby'
+import './_signup.scss'
 
 const SignupPage = ({ location, history }) => {
   const dispatch = useDispatch()

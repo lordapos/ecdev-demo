@@ -1,0 +1,8 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+.welcome {
+  &__inner {
+    @include container;
+  }
+}

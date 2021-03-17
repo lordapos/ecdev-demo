@@ -12,6 +12,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Message from '../../components/Message/Message'
+import './_products.scss'
 
 const ProductsPage = () => {
   const dispatch = useDispatch()

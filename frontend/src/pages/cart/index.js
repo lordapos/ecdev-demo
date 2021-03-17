@@ -8,6 +8,7 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import Message from '../../components/Message/Message'
 import Link from 'gatsby-link'
 import { updateCart } from '../../redux/actions/cartAction'
+import './_cart.scss'
 
 const CartPage = () => {
   const dispatch = useDispatch()
