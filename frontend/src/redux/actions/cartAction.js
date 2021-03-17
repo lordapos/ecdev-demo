@@ -81,10 +81,9 @@ export const updateCart = () => async (dispatch, getState) => {
     } = getState()
 
     let products = ''
-    cartItems.map(item => {
+    cartItems.forEach(item => {
       products += queryfy(item)+','
     })
-
 
     products = products.slice(0, -1)
 
@@ -99,9 +98,7 @@ export const updateCart = () => async (dispatch, getState) => {
       type: CART_UPDATE_ITEM,
       payload: data.data.updateCart,
     })
-
     localStorage.setItem('cartItems', JSON.stringify(data.data.updateCart))
-
   } catch (e) {
     console.log(e)
   }

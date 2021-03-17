@@ -49,13 +49,7 @@ const Header = () => {
               >
                 <FontAwesomeIcon icon={faShoppingCart}/>
                 {
-                  items > 0 ?
-                    (
-                      <span className='count-cart'>
-                                <sup><small>{items}</small></sup>
-                              </span>
-                    )
-                    : null
+                  items > 0 ? (<span className='count-cart'><sup><small>{items}</small></sup></span>) : null
                 }
               </Link>
             </li>

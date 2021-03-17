@@ -1,5 +1,6 @@
 import axios from '../../axios/axios'
 import {
+  PRODUCT_DETAILS_CLEAN, PRODUCT_DETAILS_FAIL, PRODUCT_DETAILS_REQUEST, PRODUCT_DETAILS_SUCCESS,
   PRODUCT_LIST_FAIL,
   PRODUCT_LIST_REQUEST,
   PRODUCT_LIST_SUCCESS,
@@ -52,5 +53,34 @@ export const listProducts = (sort = null) => async (dispatch) => {
           ? error.response.data.errors[0].message
           : error.message,
     })
+  }
+}
+
+export const productDetails = (id) => async (dispatch) => {
+  if (id === 'CLEAN') {
+    dispatch({type: PRODUCT_DETAILS_CLEAN})
+  } else {
+    try {
+      dispatch({type: PRODUCT_DETAILS_REQUEST})
+      const query = `
+          query {
+            getProductById(id: "${id}") {
+             id, name, image, price description
+            }
+          }`
+      const {data} = await axios.post('/public-api', {query: query})
+      dispatch({
+        type: PRODUCT_DETAILS_SUCCESS,
+        payload: data.data.getProductById,
+      })
+    } catch (error) {
+      dispatch({
+        type: PRODUCT_DETAILS_FAIL,
+        payload:
+          error.response && error.response.data.errors[0].message
+            ? error.response.data.errors[0].message
+            : error.message
+      })
+    }
   }
 }

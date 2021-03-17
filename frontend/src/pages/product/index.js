@@ -1,0 +1,81 @@
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { productDetails } from '../../redux/actions/productAction'
+import Layout from '../../components/Layout/Layout'
+import SEO from '../../components/Seo'
+import { addToCart } from '../../redux/actions/cartAction'
+import Loader from '../../components/Loader/Loader'
+import Message from '../../components/Message/Message'
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
+
+const ProductPage = ({ location }) => {
+  const [qty, setQty] = useState(1)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const ID = location.pathname.split("/")[2]
+    dispatch(productDetails(ID))
+    return () => {
+      dispatch(productDetails('CLEAN'))
+    }
+  }, [dispatch, location])
+
+  const productInfo = useSelector(state => state.productDetails)
+  const { loading, error, product } = productInfo
+
+  const changeQty = (value) => {
+    if (value < 1) {
+      setQty(1)
+    } else {
+      setQty(value)
+    }
+  }
+
+  const breadcrumbs = [
+    { to: '/', label: 'Home' },
+    { to: '/products', label: 'Products' },
+    { to: `/product/${product.id}`, label: product.name },
+  ]
+
+  const addToCartHandler = () => {
+    dispatch(addToCart(product.id, qty))
+  }
+
+  return (
+    <Layout>
+      <SEO title={product.name}/>
+      <section className='product'>
+        <div className="product__inner">
+          <Breadcrumbs breadcrumbs={breadcrumbs}/>
+          {loading ?
+            <h6>Loading... <Loader/></h6> :
+            error ? (<Message variant='error'>{error}</Message>) : (
+              <div className="product__content">
+                <div className="product__content__left">
+                  <div className="product__image-wrap">
+                    <img className='product__image' src={product.image} alt="ecdev"/>
+                  </div>
+                </div>
+                <div className="product__content__right">
+                  <h1 className='product__title'>{product.name}</h1>
+                  <h3 className='product__price'>{product.price}</h3>
+                  <p className='product__description'>{product.description}</p>
+                  <div className="product__qty">
+                    <p className='product__qty__title'>Quantity:</p>
+                    <div className='product__qty__form'>
+                      <button onClick={() => changeQty(qty - 1)} className='product__qty__button'>-</button>
+                      <h6 className='product__qty__value'>{qty}</h6>
+                      <button onClick={() => changeQty(qty + 1)} className='product__qty__button'>+</button>
+                    </div>
+                  </div>
+                  <button onClick={addToCartHandler} className='h6 product__add-to-cart'>Add to cart</button>
+                </div>
+              </div>
+            )}
+        </div>
+      </section>
+    </Layout>
+  )
+}
+
+export default ProductPage
