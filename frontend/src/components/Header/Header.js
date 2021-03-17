@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import logo from '../../images/logo.svg'
 import './_header.scss'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
 
 const Header = () => {
@@ -26,11 +26,18 @@ const Header = () => {
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
+  const userLogin = useSelector((state) => state.userLogin)
+  const { userInfo } = userLogin
   const [items, setItems] = useState(0)
 
   useEffect(() => {
     setItems(cartItems.reduce((acc, item) => acc + item.qty, 0))
   }, [cartItems])
+
+  let userLink = '/login'
+  if (userInfo) {
+    userLink = '/profile'
+  }
 
   return (
     <header className='header'>
@@ -41,6 +48,15 @@ const Header = () => {
         <nav className='header__nav'>
           <ul className='header__nav__list'>
             {renderLinks(links)}
+            <li className='header__nav__item'>
+              <Link
+                to={userLink}
+                activeClassName='header__nav__link--active'
+                className='header__nav__link header__nav__link--icon'
+              >
+                <FontAwesomeIcon icon={faUser}/>
+              </Link>
+            </li>
             <li className='header__nav__item'>
               <Link
                 to='/cart'
