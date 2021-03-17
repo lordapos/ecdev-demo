@@ -7,8 +7,29 @@ const composeEnhancers =
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose
 
+let cartItemsFromStorage = null
+let shippingAddressFromStorage = null
+
+if (typeof window !== 'undefined') {
+  cartItemsFromStorage = localStorage.getItem('cartItems')
+    ? JSON.parse(localStorage.getItem('cartItems'))
+    : []
+  shippingAddressFromStorage = localStorage.getItem('shippingAddress')
+    ? JSON.parse(localStorage.getItem('shippingAddress'))
+    : {}
+}
+
+const initialState = {
+  cart: {
+    cartItems: cartItemsFromStorage,
+    shippingAddress: shippingAddressFromStorage,
+    loaded: false,
+  },
+}
+
 const store = createStore(
   rootReducer,
+  initialState,
   composeEnhancers(
     applyMiddleware(thunk),
   ),
