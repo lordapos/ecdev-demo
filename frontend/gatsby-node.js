@@ -7,5 +7,14 @@ exports.onCreatePage = ({ page, actions }) => {
   } else if (page.path === `/order/`) {
     page.matchPath = `/order/*`
     createPage(page)
+  }  else if (page.path === `/admin/user/`) {
+    page.matchPath = `/admin/user/*`
+    createPage(page)
+  } else if (page.path === `/admin/product/`) {
+    page.matchPath = `/admin/product/*`
+    createPage(page)
+  } else if (page.path === `/admin/order/`) {
+    page.matchPath = `/admin/order/*`
+    createPage(page)
   }
 }
