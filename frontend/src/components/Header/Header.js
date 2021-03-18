@@ -34,9 +34,9 @@ const Header = () => {
   useEffect(() => {
     let scroll = 0
     window.onscroll = () => {
-      if (window.pageYOffset > 100 && (scroll - window.pageYOffset) < 0) {
+      if (window.pageYOffset > 100) {
         setView('header--hide')
-        dispatch(toggleMenu(false))
+        // dispatch(toggleMenu(false))
       } else {
         setView('')
       }
