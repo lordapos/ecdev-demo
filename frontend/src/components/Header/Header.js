@@ -42,7 +42,7 @@ const Header = () => {
       }
       scroll = window.pageYOffset
     }
-  }, [])
+  }, [dispatch])
 
   const addVisibleAnimation = () => {
     dispatch(toggleMenu(!mobMenu))

@@ -5,6 +5,12 @@
   background: $footer;
   margin-top: 2rem;
 
+  &__logo {
+    @include media(xs) {
+      width: 10rem;
+    }
+  }
+
   &__inner {
     @include container;
     padding-top: 1rem;
@@ -12,10 +18,88 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  &__head {
+    background-color: $black;
+    padding: 2rem 0;
+  }
+
+  &__social {
+    display: flex;
+    flex-direction: column;
+
+    &__title {
+      color: $white;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &__item {
+      margin-right: .5rem;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $white;
+      border-radius: 50%;
+      color: $black;
+      margin-top: .8rem;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+
+    @include media(md) {
+      display: none;
+    }
+
+    &__title {
+      color: $white;
+    }
+
+    &__list {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+
+    &__item {
+      margin-right: .5rem;
+      width: 40px;
+      height: 30px;
+      margin-top: .8rem;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 
   &__copy-rights {
     color: $white;
+
+    @include media(sm) {
+      text-align: center;
+      width: 100%;
+    }
 
     a {
       color: $green;
@@ -23,6 +107,58 @@
 
       &:hover {
         color: $greenHover;
+      }
+    }
+  }
+
+  &__links {
+    &__list {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+
+      @include media(sm) {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    &__item {
+      margin-right: 1rem;
+      padding-right: 1rem;
+      position: relative;
+
+      @include media(xs) {
+        padding-right: 0;
+      }
+
+      &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 1px;
+        height: 100%;
+        background-color: $white;
+
+        @include media(xs) {
+          display: none;
+        }
+      }
+
+      &:last-child {
+        margin-right: 0;
+        padding-right: 0;
+
+        &:after {
+          display: none;
+        }
+      }
+
+      .footer__link {
+        color: $white;
       }
     }
   }
