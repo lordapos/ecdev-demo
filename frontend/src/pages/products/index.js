@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
 import { listProducts, viewProducts } from '../../redux/actions/productAction'
-import Select from 'react-select'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faThLarge,
@@ -37,16 +36,10 @@ const ProductsPage = () => {
     dispatch(listProducts())
   }, [dispatch])
 
-  const sort = selectedOption => {
-    const val = selectedOption.value
+  const sort = event => {
+    const val = event.target.value
     dispatch(listProducts(val))
   }
-
-  const options = [
-    { value: 'date-desc', label: 'Newest' },
-    { value: 'low_to_high', label: 'Price: Low to High' },
-    { value: 'high_to_low', label: 'Price: High to Low' },
-  ]
 
   const breadcrumbs = [
     { to: '/', label: 'EcDevShop' },
@@ -60,9 +53,14 @@ const ProductsPage = () => {
         <div className="products__inner">
           <Breadcrumbs breadcrumbs={breadcrumbs}/>
           <div className="products__head">
-            <h3 className='products__title'>Products</h3>
+            <h3 className='products__title'>DSLR and Mirrorless Cameras</h3>
             <div className="products__sort">
-              <Select placeholder='Sort by' options={options} className='products__select' onChange={sort}/>
+              <label htmlFor="sort">Sort by:</label>
+              <select name="sort" className='products__select' id="sort" onChange={sort}>
+                <option value="date-desc">Date</option>
+                <option value="low_to_high">Price: Low to High</option>
+                <option value="high_to_low">Price: High to Low</option>
+              </select>
             </div>
             <div className={products_views.join(' ')}>
               <button className='products__views__item' onClick={bigCards}>

@@ -61,6 +61,13 @@
 
   &__sort {
     margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    label {
+      font-weight: 500;
+      margin-right: 2px;
+    }
   }
 
   &__select {
