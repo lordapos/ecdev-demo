@@ -33,8 +33,8 @@ const ProductPage = ({ location }) => {
   }
 
   const breadcrumbs = [
-    { to: '/', label: 'Home' },
-    { to: '/products', label: 'Products' },
+    { to: '/', label: 'EcDevShop' },
+    { to: '/products', label: 'Cameras' },
     { to: `/product/${product.id}`, label: product.name },
   ]
 

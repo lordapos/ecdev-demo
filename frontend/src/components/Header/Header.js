@@ -28,7 +28,7 @@ const Header = () => {
   }
   const links = [
     { to: '/', label: 'Home' },
-    { to: '/products', label: 'Products' },
+    { to: '/products', label: 'Cameras' },
   ]
 
   useEffect(() => {

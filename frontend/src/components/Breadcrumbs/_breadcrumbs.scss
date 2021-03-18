@@ -7,12 +7,14 @@
   align-items: center;
 
   &__item {
-    font-size: 14px;
+    font-size: 13px;
     color: $black;
+    display: flex;
+    align-items: center;
     position: relative;
 
     &:after {
-      content: '/';
+      content: '›';
       margin: 0 5px;
     }
 
@@ -24,4 +26,19 @@
       }
     }
   }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin-right: 4px;
 }

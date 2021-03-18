@@ -12,6 +12,7 @@ import {
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Message from '../../components/Message/Message'
 import './_products.scss'
+import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 
 const ProductsPage = () => {
   const dispatch = useDispatch()
@@ -47,15 +48,21 @@ const ProductsPage = () => {
     { value: 'high_to_low', label: 'Price: High to Low' },
   ]
 
+  const breadcrumbs = [
+    { to: '/', label: 'EcDevShop' },
+    { to: '/products', label: 'Cameras' },
+  ]
+
   return (
     <Layout>
       <SEO title='Products'/>
       <section className='products'>
         <div className="products__inner">
+          <Breadcrumbs breadcrumbs={breadcrumbs}/>
           <div className="products__head">
             <h3 className='products__title'>Products</h3>
             <div className="products__sort">
-              <Select placeholder='Sorting...' options={options} className='products__select' onChange={sort}/>
+              <Select placeholder='Sort by' options={options} className='products__select' onChange={sort}/>
             </div>
             <div className={products_views.join(' ')}>
               <button className='products__views__item' onClick={bigCards}>
