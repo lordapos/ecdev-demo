@@ -47,6 +47,7 @@ const Footer = () => {
           <Link className='footer__logo' to='/'>
             <img src={logo} alt="ecdev"/>
           </Link>
+          <div className='footer__info'>
           <div className="footer__social">
             <h6 className='footer__social__title'>Social</h6>
             <div className="footer__social__list">
@@ -72,6 +73,7 @@ const Footer = () => {
               <li className='footer__cards__item' style={mastercardIcon}> </li>
               <li className='footer__cards__item' style={paypalIcon}> </li>
             </ul>
+          </div>
           </div>
         </div>
       </div>

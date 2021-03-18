@@ -12,7 +12,10 @@
   border-bottom: 1px solid #E4E4E4;
 
   &--hide {
-    transform: translate(0, -150px);
+    .header__head {
+      transform: translate(0, -150px);
+    }
+    transform: translate(0, -26px);
   }
 
   &__head {
@@ -23,6 +26,7 @@
     padding: .4rem 0;
     font-size: .9rem;
     line-height: 1;
+    transition: .5s ease-in, .5s ease-in-out;
   }
 
   &__inner {

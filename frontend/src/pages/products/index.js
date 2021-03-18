@@ -1,13 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
-import { listProducts, viewProducts } from '../../redux/actions/productAction'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faThLarge,
-  faTh,
-} from '@fortawesome/free-solid-svg-icons'
+import { listProducts } from '../../redux/actions/productAction'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Message from '../../components/Message/Message'
 import './_products.scss'
@@ -17,20 +12,7 @@ const ProductsPage = () => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
   const { loading, error, products } = productList
-  const view = useSelector((state) => state.productView)
-  const { productsView } = view
-  const products_views = ['products__views']
-  products_views.push(productsView)
   const cls = ['products__list']
-  cls.push(productsView)
-
-  const bigCards = () => {
-    dispatch(viewProducts('big-cards'))
-  }
-
-  const smallCards = () => {
-    dispatch(viewProducts('small-cards'))
-  }
 
   useEffect(() => {
     dispatch(listProducts())
@@ -61,14 +43,6 @@ const ProductsPage = () => {
                 <option value="low_to_high">Price: Low to High</option>
                 <option value="high_to_low">Price: High to Low</option>
               </select>
-            </div>
-            <div className={products_views.join(' ')}>
-              <button className='products__views__item' onClick={bigCards}>
-                <FontAwesomeIcon icon={faThLarge}/>
-              </button>
-              <button className='products__views__item' onClick={smallCards}>
-                <FontAwesomeIcon icon={faTh}/>
-              </button>
             </div>
           </div>
           {
