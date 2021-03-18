@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'gatsby'
 import logo from '../../images/logo.svg'
 import './_header.scss'
-import { useSelector } from 'react-redux'
 import userIcon from '../../images/ic_user.svg'
 import cartIcon from '../../images/ic_cart.svg'
+import { toggleMenu } from '../../redux/actions/appAction'
 
 const Header = () => {
+  const dispatch = useDispatch()
+  const mobMenu = useSelector((state) => state.app.visibleMobileMenu)
+  const burgerClass = mobMenu ? 'mobile-btn mobile-btn--active' : 'mobile-btn'
   const [view, setView] = useState('')
   const cls = ['header']
   cls.push(view)
@@ -32,12 +36,17 @@ const Header = () => {
     window.onscroll = () => {
       if (window.pageYOffset > 100 && (scroll - window.pageYOffset) < 0) {
         setView('header--hide')
+        dispatch(toggleMenu(false))
       } else {
         setView('')
       }
       scroll = window.pageYOffset
     }
   }, [])
+
+  const addVisibleAnimation = () => {
+    dispatch(toggleMenu(!mobMenu))
+  }
 
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
@@ -55,11 +64,11 @@ const Header = () => {
   }
 
   const user = {
-    backgroundImage: `url(${userIcon})`
+    backgroundImage: `url(${userIcon})`,
   }
 
   const cartBG = {
-    backgroundImage: `url(${cartIcon})`
+    backgroundImage: `url(${cartIcon})`,
   }
 
   return (
@@ -72,31 +81,35 @@ const Header = () => {
         <nav className='header__nav'>
           <ul className='header__nav__list'>{renderLinks(links)}</ul>
         </nav>
-        <nav className='header__nav'>
-          <ul className='header__nav__list'>
-            <li className='header__nav__item'>
-              <Link
-                to={userLink}
-                activeClassName='header__nav__link--active'
-                className='header__nav__link header__nav__link--icon'
-              >
-                <div className='user-icon' style={user}> </div>
-              </Link>
-            </li>
-            <li className='header__nav__item'>
-              <Link
-                to='/cart'
-                activeClassName='header__nav__link--active'
-                className='header__nav__link header__nav__link--icon'
-              >
-                <div className='cart-icon' style={cartBG}> </div>
-                {
-                  items > 0 ? (<span className='count-cart'>{items}</span>) : null
-                }
-              </Link>
-            </li>
-          </ul>
-        </nav>
+        <ul className='header__nav__list'>
+          <li className='header__nav__item'>
+            <Link
+              to={userLink}
+              activeClassName='header__nav__link--active'
+              className='header__nav__link header__nav__link--icon'
+            >
+              <div className='user-icon' style={user}></div>
+            </Link>
+          </li>
+          <li className='header__nav__item'>
+            <Link
+              to='/cart'
+              activeClassName='header__nav__link--active'
+              className='header__nav__link header__nav__link--icon'
+            >
+              <div className='cart-icon' style={cartBG}></div>
+              {
+                items > 0 ? (<span className='count-cart'>{items}</span>) : null
+              }
+            </Link>
+          </li>
+          <div className={burgerClass} onClick={addVisibleAnimation}
+               onKeyDown={addVisibleAnimation} role='button' tabIndex={0}>
+            <span> </span>
+            <span> </span>
+            <span> </span>
+          </div>
+        </ul>
       </div>
     </header>
   )

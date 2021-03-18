@@ -1,17 +1,10 @@
-import {HIDE_MOBILE_NAVIGATION_MENU, SHOW_MOBILE_NAVIGATION_MENU} from "../actions/actionTypes"
+import { MOBILE_NAVIGATION_MENU } from '../actions/actionTypes'
 
-const initialState = {
-  visibleMobileMenu: false
-}
-
-
-export const AppReducer = (state = initialState, action) => {
-  switch(action.type) {
-    case SHOW_MOBILE_NAVIGATION_MENU:
-      return { ...state, visibleMobileMenu: true }
-    case HIDE_MOBILE_NAVIGATION_MENU:
-      return { ...state, visibleMobileMenu: false }
+export const AppReducer = (state = { visibleMobileMenu: false }, action) => {
+  switch (action.type) {
+    case MOBILE_NAVIGATION_MENU:
+      return { ...state, visibleMobileMenu: action.payload }
     default:
-      return state;
+      return state
   }
 }

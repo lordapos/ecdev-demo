@@ -1,0 +1,45 @@
+@import './src/styles/mixins';
+@import './src/styles/config';
+
+.mobile-menu {
+  position: fixed;
+  top: 62px;
+  right: 0;
+  transition: 1s;
+  z-index: 99;
+  background: $white;
+  width: 100%;
+  max-width: 400px;
+  padding: 100px 0 0;
+  height: 100vh;
+  transform: translate(400px, 0);
+  border-left: 1px solid #e4e4e4;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  &__item {
+    margin-bottom: 40px;
+    font-size: 18px;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 500;
+  }
+
+  &__link {
+    color: $black;
+
+  }
+
+  &__link--active {
+    color: $green;
+  }
+
+  &--show {
+    transition: 1s;
+    transform: translate(0, 0);
+  }
+}
