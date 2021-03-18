@@ -2,11 +2,14 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'gatsby'
 import logo from '../../images/logo.svg'
 import './_header.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { useSelector } from 'react-redux'
+import userIcon from '../../images/ic_user.svg'
+import cartIcon from '../../images/ic_cart.svg'
 
 const Header = () => {
+  const [view, setView] = useState('')
+  const cls = ['header']
+  cls.push(view)
   const renderLinks = (links) => {
     return links.map((link, index) => {
       return (
@@ -24,6 +27,18 @@ const Header = () => {
     { to: '/products', label: 'Products' },
   ]
 
+  useEffect(() => {
+    let scroll = 0
+    window.onscroll = () => {
+      if (window.pageYOffset > 100 && (scroll - window.pageYOffset) < 0) {
+        setView('header--hide')
+      } else {
+        setView('')
+      }
+      scroll = window.pageYOffset
+    }
+  }, [])
+
   const cart = useSelector((state) => state.cart)
   const { cartItems } = cart
   const userLogin = useSelector((state) => state.userLogin)
@@ -39,22 +54,33 @@ const Header = () => {
     userLink = '/profile'
   }
 
+  const user = {
+    backgroundImage: `url(${userIcon})`
+  }
+
+  const cartBG = {
+    backgroundImage: `url(${cartIcon})`
+  }
+
   return (
-    <header className='header'>
+    <header className={cls.join(' ')}>
+      <div className="header__head">FREE SHIPPING & RETURNS</div>
       <div className="header__inner">
         <Link className='header__logo' to='/'>
           <img src={logo} alt="prim"/>
         </Link>
         <nav className='header__nav'>
+          <ul className='header__nav__list'>{renderLinks(links)}</ul>
+        </nav>
+        <nav className='header__nav'>
           <ul className='header__nav__list'>
-            {renderLinks(links)}
             <li className='header__nav__item'>
               <Link
                 to={userLink}
                 activeClassName='header__nav__link--active'
                 className='header__nav__link header__nav__link--icon'
               >
-                <FontAwesomeIcon icon={faUser}/>
+                <div className='user-icon' style={user}> </div>
               </Link>
             </li>
             <li className='header__nav__item'>
@@ -63,9 +89,9 @@ const Header = () => {
                 activeClassName='header__nav__link--active'
                 className='header__nav__link header__nav__link--icon'
               >
-                <FontAwesomeIcon icon={faShoppingCart}/>
+                <div className='cart-icon' style={cartBG}> </div>
                 {
-                  items > 0 ? (<span className='count-cart'><sup><small>{items}</small></sup></span>) : null
+                  items > 0 ? (<span className='count-cart'>{items}</span>) : null
                 }
               </Link>
             </li>
