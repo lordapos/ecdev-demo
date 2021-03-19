@@ -1,21 +1,25 @@
-const path = require('path')
 const express = require('express')
-const multer = require('multer')
 const router = express.Router()
+const AWS = require('aws-sdk')
+const multer = require('multer')
+const storage = multer.memoryStorage()
+multer({storage: storage})
+const path = require('path')
+const dotenv = require('dotenv')
+dotenv.config()
 
-const _dirname = path.resolve()
-
-const storage = multer.diskStorage({
-  destination (req, file, cb) {
-    cb(null, path.join(_dirname, '/frontend/public/uploads'))
-  },
-  filename (req, file, cb) {
-    cb(
-      null,
-      `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`,
-    )
-  },
+const s3Client = new AWS.S3({
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  region: process.env.AWS_REGION
 })
+
+const uploadParams = {
+  Bucket: 'demoshop',
+  Key: null,
+  Body: null,
+  ACL: 'public-read',
+}
 
 function checkFileType (file, cb) {
   const filetypes = /jpg|jpeg|png/
@@ -37,8 +41,15 @@ const upload = multer({
 })
 
 router.post('/', upload.single('image'), (req, res) => {
-  res.send(`${req.file.filename}`)
-  console.log(req.file)
+  const params = uploadParams;
+  uploadParams.Key = `${req.file.fieldname}-${Date.now()}${path.extname(req.file.originalname)}`
+  uploadParams.Body = req.file.buffer
+  s3Client.upload(params, (err, data) => {
+    if (err) {
+      res.status(500).json({error:"Error -> " + err});
+    }
+    res.send(`${data.Location}`)
+  })
 })
 
 module.exports = router

@@ -37,7 +37,7 @@ const AddProductPage = () => {
         },
       }
       const { data } = await axios.post('/api/upload', formData, config)
-      setImage('/uploads/' + data)
+      setImage(data)
       setUploading(false)
     } catch (error) {
       console.error(error)
