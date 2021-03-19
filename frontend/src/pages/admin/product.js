@@ -108,7 +108,7 @@ const EditProduct = ({ location }) => {
           </label>
           <label className="admin__product__form__item">
             <h6>Price</h6>
-            <input type="number" value={price} min="1" className='admin__product__form__input' required onChange={(e) => setPrice(e.target.value)}/>
+            <input type="number" step="any" value={price} min="1" className='admin__product__form__input' required onChange={(e) => setPrice(e.target.value)}/>
           </label>
           <label className="admin__product__form__item">
             <h6>Description</h6>
