@@ -10,13 +10,24 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
+    flex-wrap: wrap;
     margin-top: 1rem;
+
+    @include media(md) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
   }
 
   &__sort {
     margin-left: auto;
     display: flex;
     align-items: center;
+
+    @include media(md) {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
 
     label {
       font-weight: 500;
@@ -40,8 +51,20 @@
   align-items: stretch;
   flex-wrap: wrap;
   margin: 0 -.5rem 0.5rem;
+
+  @include media(sm) {
+    margin: 0 0 0.5rem;
+  }
 }
 
 .products__item {
   width: calc(33.3333% - 1rem);
+
+  @include media(lg) {
+    width: calc(50% - 1rem);
+  }
+
+  @include media(sm) {
+    width: 100%;
+  }
 }
