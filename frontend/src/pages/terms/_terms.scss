@@ -1,0 +1,25 @@
+@import './src/styles/mixins';
+@import './src/styles/config';
+
+.terms{
+  @include media(xs){
+    padding-top: 25px;
+  }
+  &__inner{
+    @include container;
+    max-width: 1065px;
+  }
+  &__information{
+    margin-bottom: 50px;
+    h1{
+      margin-bottom: 30px;
+    }
+    h5{
+      margin-bottom: 30px;
+    }
+    p{
+      line-height: 1.85;
+      margin-bottom: 5px;
+    }
+  }
+}
