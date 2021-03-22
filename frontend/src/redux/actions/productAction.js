@@ -27,13 +27,6 @@ const queryfy = obj => {
   return `{${props}}`;
 }
 
-export const viewProducts = (view) => async (dispatch) => {
-  dispatch({
-    type: PRODUCT_LIST_VIEW,
-    payload: view,
-  })
-}
-
 export const listProducts = (sort = null) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })

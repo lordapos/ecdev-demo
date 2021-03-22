@@ -13,15 +13,6 @@ import {
   PRODUCT_LIST_VIEW, PRODUCT_UPDATE_FAIL, PRODUCT_UPDATE_REQUEST, PRODUCT_UPDATE_RESET, PRODUCT_UPDATE_SUCCESS,
 } from '../actions/actionTypes'
 
-export const productViewReducer = (state = { productsView: 'big-cards' }, action) => {
-  switch (action.type) {
-    case PRODUCT_LIST_VIEW:
-      return { ...state, productsView: action.payload }
-    default:
-      return state
-  }
-}
-
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
     case PRODUCT_LIST_REQUEST:

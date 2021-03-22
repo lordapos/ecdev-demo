@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
@@ -12,7 +12,6 @@ const ProductsPage = () => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
   const { loading, error, products } = productList
-  const cls = ['products__list']
 
   useEffect(() => {
     dispatch(listProducts())
@@ -48,7 +47,7 @@ const ProductsPage = () => {
           {
             loading ? ('')
               : error ? (<Message variant='error'>{error}</Message>)
-              : (<div className={cls.join(' ')}>
+              : (<div className='products__list'>
                 {products.map((product, index) => (
                   <ProductCard key={index} product={product}/>
                 ))}

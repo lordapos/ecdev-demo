@@ -6,7 +6,6 @@ import {
   productDetailsReducer,
   productListReducer,
   productUpdateReducer,
-  productViewReducer,
 } from './productReducer'
 import { cartReducer } from './cartReducer'
 import { userDeleteReducer, userDetailsReducer, userListReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './userReducer'
@@ -15,7 +14,6 @@ import { roleReducer } from './roleReducer'
 
 export default combineReducers({
   app: AppReducer,
-  productView: productViewReducer,
   productList: productListReducer,
   productDetails: productDetailsReducer,
   productDelete: productDeleteReducer,
