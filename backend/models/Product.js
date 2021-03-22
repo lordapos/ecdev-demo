@@ -29,6 +29,10 @@ const Product = sequelize.define('product', {
     allowNull: false,
     type: Sequelize.INTEGER,
   },
+  brandId: {
+    allowNull: false,
+    type: Sequelize.INTEGER,
+  },
 }, { timestamps: true })
 
 module.exports = Product

@@ -29,17 +29,6 @@ const Filters = ({ brands }) => {
     setBrand(!viewBrand)
   }
 
-  // const renderBrands = (items) => {
-  //   return items.map((item, index) => {
-  //     return (
-  //       <label className='filter__category__form__item' key={index}>
-  //         <Field type="checkbox" name="checked" value={item.id} onClick={() => arrayHelpers.remove(index)} />
-  //         {item.name}
-  //       </label>
-  //     )
-  //   })
-  // }
-
   const tagCollection = brands
 
   return (
