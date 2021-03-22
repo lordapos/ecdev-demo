@@ -32,7 +32,6 @@ const Header = () => {
   ]
 
   useEffect(() => {
-    let scroll = 0
     window.onscroll = () => {
       if (window.pageYOffset > 100) {
         setView('header--hide')
@@ -40,7 +39,6 @@ const Header = () => {
       } else {
         setView('')
       }
-      scroll = window.pageYOffset
     }
   }, [dispatch])
 

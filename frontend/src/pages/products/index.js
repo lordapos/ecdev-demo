@@ -44,15 +44,18 @@ const ProductsPage = () => {
               </select>
             </div>
           </div>
-          {
-            loading ? ('')
-              : error ? (<Message variant='error'>{error}</Message>)
-              : (<div className='products__list'>
-                {products.map((product, index) => (
-                  <ProductCard key={index} product={product}/>
-                ))}
-              </div>)
-          }
+          <div className='products__content'>
+            
+            {
+              loading ? ('')
+                : error ? (<Message variant='error'>{error}</Message>)
+                : (<div className='products__list'>
+                  {products.map((product, index) => (
+                    <ProductCard key={index} product={product}/>
+                  ))}
+                </div>)
+            }
+          </div>
         </div>
       </section>
     </Layout>
