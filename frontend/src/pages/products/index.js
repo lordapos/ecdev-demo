@@ -7,6 +7,7 @@ import ProductCard from '../../components/ProductCard/ProductCard'
 import Message from '../../components/Message/Message'
 import './_products.scss'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
+import Filters from '../../components/Filters/Filters'
 
 const ProductsPage = () => {
   const dispatch = useDispatch()
@@ -27,6 +28,17 @@ const ProductsPage = () => {
     { to: '/products', label: 'Cameras' },
   ]
 
+  const brands = [
+    { id: 1, name: 'Canon' },
+    { id: 2, name: 'EOS' },
+    { id: 3, name: 'Fuji' },
+    { id: 4, name: 'Fujifilm' },
+    { id: 5, name: 'Kodak' },
+    { id: 6, name: 'Leica' },
+    { id: 7, name: 'Nikon' },
+    { id: 8, name: 'Olympus' },
+  ]
+
   return (
     <Layout>
       <SEO title='Products'/>
@@ -45,7 +57,7 @@ const ProductsPage = () => {
             </div>
           </div>
           <div className='products__content'>
-            
+            <Filters brands={brands}/>
             {
               loading ? ('')
                 : error ? (<Message variant='error'>{error}</Message>)

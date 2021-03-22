@@ -19,6 +19,12 @@
     }
   }
 
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+
   &__sort {
     margin-left: auto;
     display: flex;
@@ -51,6 +57,7 @@
   align-items: stretch;
   flex-wrap: wrap;
   margin: 0 -.5rem 0.5rem;
+  width: 80%;
 
   @include media(sm) {
     margin: 0 0 0.5rem;
