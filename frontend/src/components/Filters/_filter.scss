@@ -106,9 +106,18 @@
 }
 
 .filter {
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   padding-right: 1rem;
   width: 20%;
+
+  @include media(lg) {
+    width: 30%;
+  }
+
+  @include media(sm) {
+    width: 100%;
+    padding-right: 0;
+  }
 
   &__category {
     border-top: 1px solid $devider;
@@ -127,7 +136,7 @@
 
       .filter__category__brand {
         opacity: 1;
-        height: 230px;
+        height: 100px;
         display: block;
       }
 
