@@ -1,4 +1,5 @@
 const Product = require('../../../models/Product')
+const Brand = require('../../../models/Brand')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
@@ -12,6 +13,18 @@ module.exports = {
       })
     } catch (e) {
       throw new Error('Fetch products is not available')
+    }
+  },
+
+  async getBrands () {
+    try {
+      return await Brand.findAll({
+        order: [
+          ['name', 'ASC'],
+        ],
+      })
+    } catch (e) {
+      throw new Error('Fetch brands is not available')
     }
   },
 

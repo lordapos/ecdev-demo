@@ -8,14 +8,18 @@ import Message from '../../components/Message/Message'
 import './_products.scss'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import Filters from '../../components/Filters/Filters'
+import { getBrand } from '../../redux/actions/brandAction'
 
 const ProductsPage = () => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
+  const brandList = useSelector((state) => state.brands)
   const { loading, error, products } = productList
+  const { brandLoading, brands, error: brandError } = brandList
 
   useEffect(() => {
     dispatch(listProducts())
+    dispatch(getBrand())
   }, [dispatch])
 
   const sort = event => {
@@ -26,17 +30,6 @@ const ProductsPage = () => {
   const breadcrumbs = [
     { to: '/', label: 'EcDevShop' },
     { to: '/products', label: 'Cameras' },
-  ]
-
-  const brands = [
-    { id: 1, name: 'Canon' },
-    { id: 2, name: 'EOS' },
-    { id: 3, name: 'Fuji' },
-    { id: 4, name: 'Fujifilm' },
-    { id: 5, name: 'Kodak' },
-    { id: 6, name: 'Leica' },
-    { id: 7, name: 'Nikon' },
-    { id: 8, name: 'Olympus' },
   ]
 
   return (
@@ -57,7 +50,11 @@ const ProductsPage = () => {
             </div>
           </div>
           <div className='products__content'>
-            <Filters brands={brands}/>
+            {
+              brandLoading ? ('')
+                : brandError ? (<Message variant='error'>{brandError}</Message>)
+                : (<Filters brands={brands}/>)
+            }
             {
               loading ? ('')
                 : error ? (<Message variant='error'>{error}</Message>)

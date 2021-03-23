@@ -90,3 +90,7 @@ export const ORDER_LIST_FAIL = 'ORDER_LIST_FAIL'
 export const ROLE_REQUEST = 'ROLE_REQUEST'
 export const ROLE_SUCCESS = 'ROLE_SUCCESS'
 export const ROLE_FAIL = 'ROLE_FAIL'
+
+export const BRAND_REQUEST = 'BRAND_REQUEST'
+export const BRAND_SUCCESS = 'BRAND_SUCCESS'
+export const BRAND_FAIL = 'BRAND_FAIL'

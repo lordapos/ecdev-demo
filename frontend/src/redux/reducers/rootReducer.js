@@ -11,6 +11,7 @@ import { cartReducer } from './cartReducer'
 import { userDeleteReducer, userDetailsReducer, userListReducer, userLoginReducer, userRegisterReducer, userUpdateProfileReducer } from './userReducer'
 import { orderCreateReducer, orderDeliverReducer, orderDetailsReducer, orderListMyReducer, orderListReducer, orderPayReducer } from './orderReducer'
 import { roleReducer } from './roleReducer'
+import { brandReducer } from './brandReducer'
 
 export default combineReducers({
   app: AppReducer,
@@ -33,4 +34,5 @@ export default combineReducers({
   orderListMy: orderListMyReducer,
   orderList: orderListReducer,
   roles: roleReducer,
+  brands: brandReducer,
 })

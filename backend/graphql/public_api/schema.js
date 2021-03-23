@@ -21,6 +21,11 @@ module.exports = buildSchema(`
       token: String!
     }
     
+    type Brand {
+      id: Int!
+      name: String!
+    }
+    
     input CartItem {
       id: Int!
       name: String!
@@ -31,6 +36,7 @@ module.exports = buildSchema(`
 
     type Query {
       getProducts: [Product!]!
+      getBrands: [Brand!]!
       getSortProducts(sort: String!): [Product!]!
       getProductById(id: ID!): Product!
       updateCart(items: [CartItem!]!): [Product!]!
