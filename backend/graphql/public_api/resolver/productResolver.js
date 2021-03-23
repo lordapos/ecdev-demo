@@ -39,31 +39,56 @@ module.exports = {
   async getSortProducts ({ sort }) {
     try {
       let args = {}
-      if (sort === 'date-desc') {
-        args = {
-          order: [
+      let order = null
+      let price = null
+      let brandId = null
+      if (sort.sortBy) {
+        if (sort.sortBy === 'date-desc') {
+          order = {
+            order: [
+              ['createdAt', 'DESC'],
+            ],
+          }
+        } else if (sort.sortBy === 'low_to_high') {
+          order = {
+            order: [
+              ['price', 'ASC'],
+            ],
+          }
+        } else if (sort.sortBy === 'high_to_low') {
+          order = {
+            order: [
+              ['price', 'DESC'],
+            ],
+          }
+        } else {
+          order = [
             ['createdAt', 'DESC'],
-          ],
-        }
-      } else if (sort === 'low_to_high') {
-        args = {
-          order: [
-            ['price', 'ASC'],
-          ],
-        }
-      } else if (sort === 'high_to_low') {
-        args = {
-          order: [
-            ['price', 'DESC'],
-          ],
-        }
-      } else {
-        args = {
-          order: [
-            ['createdAt', 'DESC'],
-          ],
+          ]
         }
       }
+      if (sort.price) {
+        price = {
+          [Op.lte]: sort.price,
+        }
+      } else {
+        price = {
+          [Op.lte]: 2000,
+        }
+      }
+      if (sort.brands) {
+        brandId = {
+          [Op.or]: [sort.brands],
+        }
+      }
+      args = {
+        order,
+        where: {
+          price,
+          brandId,
+        },
+      }
+      console.log(args)
       return await Product.findAll(args)
     } catch (e) {
       throw new Error('Fetch products is not available')

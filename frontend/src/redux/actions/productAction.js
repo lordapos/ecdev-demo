@@ -27,11 +27,11 @@ const queryfy = obj => {
   return `{${props}}`;
 }
 
-export const listProducts = (sort = null) => async (dispatch) => {
+export const listProducts = (search = null) => async (dispatch, getState) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
-
-    if (!sort || sort) {
+    const { sort: { sorting } } = getState()
+    if (!search || (sorting.brands.length < 1 && sorting.price === null && sorting.sortBy === null) ) {
       const query = `
           query {
             getProducts {
@@ -44,10 +44,15 @@ export const listProducts = (sort = null) => async (dispatch) => {
         payload: data.data.getProducts,
       })
     } else {
+      const arrBrand = []
+      sorting.brands.forEach(item => {
+        arrBrand.push(item.id)
+      })
+
       const query = `
           query {
-            getSortProducts(sort: "${sort}") {
-             id, name, image, price, rating, numReviews 
+            getSortProducts(sort: {sortBy: "${sorting.sortBy}", price: ${sorting.price}, brands: [${arrBrand}]}) {
+             id, name, image, price, rating, numReviews
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })

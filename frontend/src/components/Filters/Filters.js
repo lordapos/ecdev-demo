@@ -9,7 +9,7 @@ const Filters = ({ brands }) => {
   const dispatch = useDispatch()
   const sortList = useSelector((state) => state.sort)
   const { sorting } = sortList
-  const [value, setValue] = useState(20000)
+  const [value, setValue] = useState(2000)
   const [viewPrice, setViewPrice] = useState(false)
   const [viewBrand, setBrand] = useState(false)
   const [checkedBrand, setCheckedBrand] = useState([])
@@ -63,7 +63,7 @@ const Filters = ({ brands }) => {
         <h5 className='filter__category__title' onClick={changeRage}>Price <span className='filter__category__arrow'> </span></h5>
         <div className='filter__category__rage'>
           <InputRange
-            maxValue={20000}
+            maxValue={2000}
             minValue={0}
             value={value}
             onChangeComplete ={value => sortPrice({ value })}
