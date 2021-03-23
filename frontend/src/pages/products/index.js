@@ -9,13 +9,16 @@ import './_products.scss'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import Filters from '../../components/Filters/Filters'
 import { getBrand } from '../../redux/actions/brandAction'
+import { SORT_ADD } from '../../redux/actions/actionTypes'
 
 const ProductsPage = () => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
   const brandList = useSelector((state) => state.brands)
+  const sortList = useSelector((state) => state.sort)
   const { loading, error, products } = productList
   const { brandLoading, brands, error: brandError } = brandList
+  const { sorting } = sortList
 
   useEffect(() => {
     dispatch(listProducts())
@@ -23,8 +26,12 @@ const ProductsPage = () => {
   }, [dispatch])
 
   const sort = event => {
-    const val = event.target.value
-    dispatch(listProducts(val))
+    dispatch({ type: SORT_ADD, payload: {
+        sortBy: event.target.value,
+        price: sorting.price,
+        brands: sorting.brands,
+    }})
+    dispatch(listProducts('sort'))
   }
 
   const breadcrumbs = [

@@ -1,6 +1,6 @@
 import { BRAND_FAIL, BRAND_REQUEST, BRAND_SUCCESS } from '../actions/actionTypes'
 
-export const brandReducer = (state = { brands: null }, action ) => {
+export const brandReducer = (state = { brands: null, brandLoading: true }, action ) => {
   switch (action.type) {
     case BRAND_REQUEST:
       return { brandLoading: true, ...state }

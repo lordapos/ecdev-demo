@@ -94,3 +94,6 @@ export const ROLE_FAIL = 'ROLE_FAIL'
 export const BRAND_REQUEST = 'BRAND_REQUEST'
 export const BRAND_SUCCESS = 'BRAND_SUCCESS'
 export const BRAND_FAIL = 'BRAND_FAIL'
+
+export const SORT_ADD = 'SORT_ADD'
+export const SORT_RESET = 'SORT_RESET'

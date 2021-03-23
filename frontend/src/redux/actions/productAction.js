@@ -31,7 +31,7 @@ export const listProducts = (sort = null) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
 
-    if (!sort) {
+    if (!sort || sort) {
       const query = `
           query {
             getProducts {

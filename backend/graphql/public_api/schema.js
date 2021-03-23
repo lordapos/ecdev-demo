@@ -33,11 +33,17 @@ module.exports = buildSchema(`
       price: Float!
       qty: Int!
     }
+    
+    input sortItem {
+      sortBy: String
+      price: Float
+      brands: [Int]
+    }
 
     type Query {
       getProducts: [Product!]!
       getBrands: [Brand!]!
-      getSortProducts(sort: String!): [Product!]!
+      getSortProducts(sort: sortItem!): [Product!]!
       getProductById(id: ID!): Product!
       updateCart(items: [CartItem!]!): [Product!]!
     }
