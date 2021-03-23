@@ -5,6 +5,9 @@
   margin: .5rem;
   border: 1px solid $border;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   &:hover {
     .products__item__button {
@@ -14,6 +17,7 @@
 
   &__title {
     font-weight: 500;
+    padding: 1rem 1rem 0;
   }
 
   &__image {
@@ -30,8 +34,13 @@
     }
   }
 
+  .rating {
+    padding: 1rem 1rem 0;
+  }
+
   &__info {
     padding: 1rem 1rem .5rem;
+    position: relative;
   }
 
   &__description {
@@ -47,6 +56,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
+    padding: 0 1rem .5rem;
   }
 
   &__button {

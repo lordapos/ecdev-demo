@@ -8,7 +8,10 @@ module.exports = buildSchema(`
       description: String!
       price: Float!
       userId: Int!
+      brandId: Int!
       qty: Int
+      rating: Int
+      numReviews: Int
     }
     
     type User {

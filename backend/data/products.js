@@ -7,6 +7,8 @@ const products = [
     price: 599,
     userId: 1,
     brandId: 1,
+    rating: 4,
+    numReviews: 54,
   },
   {
     name: 'Canon PowerShot SX620',
@@ -16,6 +18,8 @@ const products = [
     price: 299,
     userId: 1,
     brandId: 1,
+    rating: 3,
+    numReviews: 67,
   },
   {
     name: 'Sony QX30 Smartphone Attachable Lens Style Camera',
@@ -25,6 +29,8 @@ const products = [
     price: 699.95,
     userId: 1,
     brandId: 2,
+    rating: 5,
+    numReviews: 38,
   },
   {
     name: 'Sony Cyber-shot DSC-H300',
@@ -34,6 +40,8 @@ const products = [
     price: 179.80,
     userId: 1,
     brandId: 2,
+    rating: 5,
+    numReviews: 84,
   },
   {
     name: 'Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G',
@@ -43,6 +51,8 @@ const products = [
     price: 553.97,
     userId: 1,
     brandId: 3,
+    rating: 4,
+    numReviews: 95,
   },
   {
     name: 'Nikon Coolpix L340 20.2 MP Digital Camera with 28x Optical Zoom and 3.0-Inch LCD',
@@ -52,6 +62,8 @@ const products = [
     price: 289.99,
     userId: 1,
     brandId: 3,
+    rating: 4,
+    numReviews: 79,
   },
 ]
 

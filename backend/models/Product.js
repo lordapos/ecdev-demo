@@ -33,6 +33,14 @@ const Product = sequelize.define('product', {
     allowNull: false,
     type: Sequelize.INTEGER,
   },
+  rating: {
+    allowNull: true,
+    type: Sequelize.INTEGER,
+  },
+  numReviews: {
+    allowNull: true,
+    type: Sequelize.INTEGER,
+  }
 }, { timestamps: true })
 
 module.exports = Product

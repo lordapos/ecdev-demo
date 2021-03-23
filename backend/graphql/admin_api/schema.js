@@ -59,6 +59,10 @@ module.exports = buildSchema(`
       image: String!
       description: String!
       price: Float!
+      brandId: Int!
+      qty: Int
+      rating: Int
+      numReviews: Int
     }
     
     type Mutation {
