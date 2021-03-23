@@ -44,23 +44,17 @@ module.exports = {
       let brandId = null
       if (sort.sortBy) {
         if (sort.sortBy === 'date-desc') {
-          order = {
-            order: [
-              ['createdAt', 'DESC'],
-            ],
-          }
+          order = [
+            ['createdAt', 'DESC'],
+          ]
         } else if (sort.sortBy === 'low_to_high') {
-          order = {
-            order: [
-              ['price', 'ASC'],
-            ],
-          }
+          order = [
+            ['price', 'ASC'],
+          ]
         } else if (sort.sortBy === 'high_to_low') {
-          order = {
-            order: [
-              ['price', 'DESC'],
-            ],
-          }
+          order = [
+            ['price', 'DESC'],
+          ]
         } else {
           order = [
             ['createdAt', 'DESC'],
@@ -76,18 +70,30 @@ module.exports = {
           [Op.lte]: 2000,
         }
       }
-      if (sort.brands) {
+      if (sort.brands && sort.brands.length !== 0) {
         brandId = {
           [Op.or]: [sort.brands],
         }
+        console.log('brands')
+        console.log(sort.brands.length)
       }
-      args = {
-        order,
-        where: {
-          price,
-          brandId,
-        },
+      if (brandId) {
+        args = {
+          order,
+          where: {
+            price,
+            brandId,
+          },
+        }
+      } else {
+        args = {
+          order,
+          where: {
+            price,
+          },
+        }
       }
+
       console.log(args)
       return await Product.findAll(args)
     } catch (e) {
