@@ -8,6 +8,7 @@ import Message from '../../components/Message/Message'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import { PRODUCT_DETAILS_CLEAN } from '../../redux/actions/actionTypes'
 import './_product.scss'
+import ProductPreview from '../../components/ProductPage/ProductPreview/ProductPreview'
 
 const ProductPage = ({ location }) => {
   const [qty, setQty] = useState(1)
@@ -53,9 +54,7 @@ const ProductPage = ({ location }) => {
             error ? (<Message variant='error'>{error}</Message>) : (
               <div className="product__content">
                 <div className="product__content__left">
-                  <div className="product__image-wrap">
-                    <img className='product__image' src={product.image} alt="ecdev"/>
-                  </div>
+                  <ProductPreview mainImage={product.image} alt={product.name}/>
                 </div>
                 <div className="product__content__right">
                   <h1 className='product__title'>{product.name}</h1>
