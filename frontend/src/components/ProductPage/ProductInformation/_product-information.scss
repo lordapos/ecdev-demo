@@ -1,0 +1,73 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+
+.product {
+  &__information {
+    &__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__price {
+    font-size: 1.375rem;
+    display: flex;
+    align-items: center;
+
+    span {
+      font-size: 0.8125rem;
+      font-weight: 400;
+      padding-right: 3px;
+
+    }
+  }
+
+  &__sku {
+    &__abr {
+      color: #8C8C8C;
+    }
+  }
+
+  &__in-stock {
+    color: $green;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+
+    img {
+      margin-right: 8px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .highlights {
+    margin-top: 14px;
+
+    &__tagline {
+      font-weight: 500;
+      margin-bottom: 5px;
+    }
+
+    &__item {
+      margin-bottom: 5px;
+      font-size: 0.875rem;
+
+      &:before {
+        content: "\2022";
+        color: #8C8C8C;
+        font-weight: bold;
+        display: inline-block;
+        width: 1rem;
+      }
+    }
+
+  }
+}

@@ -10,37 +10,26 @@
     display: flex;
     align-items: stretch;
     margin-top: 1rem;
+    @include media(sm) {
+      flex-wrap: wrap;
+    }
 
     &__left,
     &__right {
       width: 50%;
+      @include media(sm) {
+        width: 100%;
+      }
     }
 
     &__right {
       padding-left: 4rem;
+      @include media(sm){
+        padding: 2rem 0 0 0 ;
+      }
     }
   }
 
-  &__image {
-    height: 500px;
-    width: 100%;
-
-    &-wrap {
-      width: 100%;
-    }
-  }
-
-  &__price {
-    margin-top: 1rem;
-  }
-
-  &__description {
-    margin-top: 1rem;
-  }
-
-  .rating {
-    margin-top: 1rem;
-  }
 
   &__outofstock {
     margin-top: 1rem;
@@ -75,15 +64,48 @@
   }
 
   &__add-to-cart {
+    display: flex;
+    align-items: center;
     margin-top: 2rem;
-    padding: .5rem 3rem;
-    background-color: $green;
+    padding: 0.55rem 4rem;
+    background-color: $black;
     color: $white;
     border-radius: 4px;
     transition: .3s ease-in, .3s ease-in-out;
 
+    &__icon {
+      width: 20px;
+      height: 18px;
+      margin-right: 0.5rem;
+    }
+
     &:hover {
-      background-color: $greenHover;
+      opacity: .8;
+    }
+  }
+
+  &__shipping {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    font-size: 0.875rem;
+
+    &__icon {
+      width: 21px;
+      height: 13px;
+      margin-right: 12px;
+    }
+
+    &__link {
+      color: $black;
+      text-transform: uppercase;
+      text-decoration: underline;
+      margin-right: 6px;
+      transition: .5s;
+
+      &:hover {
+        color: $green;
+      }
     }
   }
 }

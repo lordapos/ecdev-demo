@@ -9,7 +9,7 @@
     &__left {
       display: flex;
       align-items: center;
-      padding-right: 20px;
+      padding: 20px 0 20px 20px;
     }
 
     &__right {
@@ -20,6 +20,9 @@
       width: 100%;
       min-height: 480px;
       padding: 20px;
+      @include media(sm){
+        min-height: unset;
+      }
 
       img {
         width: fit-content;
@@ -28,10 +31,8 @@
   }
 
   &__thumbs {
-    width: 70px;
-
     &__item {
-      width: 100%;
+      width: 70px;
       height: 70px;
       margin-bottom: 10px;
       background: #F7F7F7;
@@ -39,6 +40,10 @@
       justify-content: center;
       align-items: center;
       cursor: pointer;
+      @include media(xs) {
+        height: 50px;
+        width: 50px;
+      }
 
       &:hover {
         border: 1px solid $green;
@@ -48,6 +53,10 @@
         width: 52px;
         height: 52px;
         object-fit: contain;
+        @include media(xs) {
+          height: 35px;
+          width: 35px;
+        }
       }
     }
   }
