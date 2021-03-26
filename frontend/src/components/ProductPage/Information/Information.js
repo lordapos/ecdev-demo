@@ -1,10 +1,10 @@
 import React from 'react'
-import './_product-information.scss'
+import './_information.scss'
 import Rating from '../../Rating/Rating'
 
 import iconStock from '../../../images/ic_stock.svg'
 
-const ProductInformation = ({ name, price, rating, numReviews }) => {
+const Information = ({ name, price, rating, numReviews }) => {
   return (
     <div className='product__information'>
       <div className='product__information__inner'>
@@ -33,4 +33,4 @@ const ProductInformation = ({ name, price, rating, numReviews }) => {
     </div>
   )
 }
-export default ProductInformation
+export default Information

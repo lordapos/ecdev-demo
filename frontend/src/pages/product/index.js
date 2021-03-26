@@ -8,11 +8,12 @@ import Message from '../../components/Message/Message'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import { PRODUCT_DETAILS_CLEAN } from '../../redux/actions/actionTypes'
 import './_product.scss'
-import ProductPreview from '../../components/ProductPage/ProductPreview/ProductPreview'
-import ProductInformation from '../../components/ProductPage/ProductInformation/ProductInformation'
+import Preview from '../../components/ProductPage/Preview/Preview'
+import Information from '../../components/ProductPage/Information/Information'
 
 import iconCart from '../../images/ic_cart_white.svg'
 import iconShipping from '../../images/ic_shipping.svg'
+import Tabs from '../../components/ProductPage/Tabs/Tabs'
 
 const ProductPage = ({ location }) => {
   const [qty, setQty] = useState(1)
@@ -58,10 +59,10 @@ const ProductPage = ({ location }) => {
             error ? (<Message variant='error'>{error}</Message>) : (
               <div className="product__content">
                 <div className="product__content__left">
-                  <ProductPreview mainImage={product.image} alt={product.name}/>
+                  <Preview mainImage={product.image} alt={product.name}/>
                 </div>
                 <div className="product__content__right">
-                  <ProductInformation name={product.name} price={product.price} rating={product.rating} numReviews={product.numReviews}/>
+                  <Information name={product.name} price={product.price} rating={product.rating} numReviews={product.numReviews}/>
                   <button onClick={addToCartHandler} className='product__add-to-cart'>
                     <img src={iconCart} alt='icon cart' className="product__add-to-cart__icon"/>
                     Add to cart
@@ -71,6 +72,9 @@ const ProductPage = ({ location }) => {
                     <a href="/" className="product__shipping__link">FREE SHIPPING</a>
                     <span className="product__shipping__text">Available</span>
                   </div>
+                </div>
+                <div className="product__content__bottom">
+                  <Tabs/>
                 </div>
               </div>
             )}

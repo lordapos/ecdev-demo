@@ -1,7 +1,7 @@
 import React from 'react'
-import './_product-preview.scss'
+import './_preview.scss'
 
-const ProductPreview = ({mainImage, alt}) => {
+const Preview = ({mainImage, alt}) => {
   return (
     <div className="product__preview">
       <div className="product__preview__left">
@@ -29,4 +29,4 @@ const ProductPreview = ({mainImage, alt}) => {
     </div>
   );
 };
-export default ProductPreview;
+export default Preview;
