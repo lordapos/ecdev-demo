@@ -74,7 +74,7 @@ const ProductPage = ({ location }) => {
                   </div>
                 </div>
                 <div className="product__content__bottom">
-                  <Tabs/>
+                  <Tabs numReviews={product.numReviews}/>
                 </div>
               </div>
             )}
