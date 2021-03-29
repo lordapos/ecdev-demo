@@ -9,6 +9,7 @@ const products = [
     brandId: 1,
     rating: 4,
     numReviews: 54,
+    sku: '156YRT34'
   },
   {
     name: 'Canon PowerShot SX620',
@@ -20,6 +21,7 @@ const products = [
     brandId: 1,
     rating: 3,
     numReviews: 67,
+    sku: '256YRT34'
   },
   {
     name: 'Sony QX30 Smartphone Attachable Lens Style Camera',
@@ -31,6 +33,8 @@ const products = [
     brandId: 2,
     rating: 5,
     numReviews: 38,
+    sku: '356YRT34'
+
   },
   {
     name: 'Sony Cyber-shot DSC-H300',
@@ -42,6 +46,8 @@ const products = [
     brandId: 2,
     rating: 5,
     numReviews: 84,
+    sku: '456YRT34'
+
   },
   {
     name: 'Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G',
@@ -53,6 +59,8 @@ const products = [
     brandId: 3,
     rating: 4,
     numReviews: 95,
+    sku: '556YRT34'
+
   },
   {
     name: 'Nikon Coolpix L340 20.2 MP Digital Camera with 28x Optical Zoom and 3.0-Inch LCD',
@@ -64,6 +72,8 @@ const products = [
     brandId: 3,
     rating: 4,
     numReviews: 79,
+    sku: '656YRT34'
+
   },
 ]
 

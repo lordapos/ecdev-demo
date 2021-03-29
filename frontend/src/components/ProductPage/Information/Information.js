@@ -4,11 +4,11 @@ import Rating from '../../Rating/Rating'
 
 import iconStock from '../../../images/ic_stock.svg'
 
-const Information = ({ name, price, rating, numReviews }) => {
+const Information = ({ name, price, rating, numReviews, sku }) => {
   return (
     <div className='product__information'>
       <div className='product__information__inner'>
-        <p className='product__sku'><span className='product__sku__abr'>SKU: </span>756YRT34</p>
+        <p className='product__sku'><span className='product__sku__abr'>SKU: </span>{sku}</p>
         <Rating value={rating} text={numReviews}/>
       </div>
       <h1 className='product__title'>{name}</h1>

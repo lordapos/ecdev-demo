@@ -35,7 +35,7 @@ export const listProducts = (search = null) => async (dispatch, getState) => {
       const query = `
           query {
             getProducts {
-             id, name, image, price, rating, numReviews 
+             id, name, image, price, rating, numReviews, sku 
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })
@@ -80,7 +80,7 @@ export const productDetails = (id) => async (dispatch) => {
     const query = `
           query {
             getProductById(id: "${id}") {
-             id, name, image, price, description, rating, numReviews, brandId
+             id, name, image, price, description, rating, numReviews, brandId, sku
             }
           }`
     const { data } = await axios.post('/public-api', { query: query })
@@ -160,7 +160,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     const query = `
         mutation {
           updateProduct(data: ${queryfy(product)}) {
-            id, name, image, price, description, rating, numReviews, brandId
+            id, name, image, price, description, rating, numReviews, brandId, sku
           }
         }
       `
@@ -205,7 +205,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
     const query = `
         mutation {
           addProduct(data: ${queryfy(product)}) {
-            id, name, image, price, description, rating, numReviews, brandId
+            id, name, image, price, description, rating, numReviews, brandId, sku
           }
         }
       `

@@ -125,9 +125,11 @@
 
 .reviews-result {
   display: flex;
-  flex-wrap: wrap;
   padding: 1rem;
   border: 1px solid #E4E4E4;
+  @include media(md){
+    flex-wrap: wrap;
+  }
 
   &__left {
     width: 50%;
