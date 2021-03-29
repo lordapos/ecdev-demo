@@ -19,15 +19,15 @@ const Information = ({ name, price, rating, numReviews }) => {
           In Stock
         </p>
       </div>
-      <div className="highlights">
-        <p className="highlights__tagline">Product Highlights</p>
-        <ul className="highlights__list">
-          <li className="highlights__item">Large 24.1 Megapixel APS-C Sensor</li>
-          <li className="highlights__item">Full HD Movie Recording</li>
-          <li className="highlights__item">Built-in Wi-Fi and NFC</li>
-          <li className="highlights__item">Canon Connect App</li>
-          <li className="highlights__item">3fps Burst Shooting</li>
-          <li className="highlights__item">3.0" LCD Screen</li>
+      <div className='highlights'>
+        <p className='highlights__tagline'>Product Highlights</p>
+        <ul className='highlights__list'>
+          <li className='highlights__item'>Large 24.1 Megapixel APS-C Sensor</li>
+          <li className='highlights__item'>Full HD Movie Recording</li>
+          <li className='highlights__item'>Built-in Wi-Fi and NFC</li>
+          <li className='highlights__item'>Canon Connect App</li>
+          <li className='highlights__item'>3fps Burst Shooting</li>
+          <li className='highlights__item'>3.0' LCD Screen</li>
         </ul>
       </div>
     </div>

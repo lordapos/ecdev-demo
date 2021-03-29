@@ -4,6 +4,7 @@ import Footer from '../Footer/Footer'
 import Header from '../Header/Header'
 import MobileMenu from '../MobileMenu/MobileMenu'
 import { toggleMenu } from '../../redux/actions/appAction'
+import ReviewPopup from '../ReviewPopup/ReviewPopup'
 
 const Layout = ({ children, history }) => {
   const dispatch = useDispatch()
@@ -15,6 +16,7 @@ const Layout = ({ children, history }) => {
       <Header/>
       <main>
         <MobileMenu/>
+        <ReviewPopup/>
         {children}
       </main>
       <Footer/>
