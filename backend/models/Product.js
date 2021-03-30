@@ -25,7 +25,7 @@ const Product = sequelize.define('product', {
     type: Sequelize.TEXT,
     allowNull: false,
   },
-  youtubeLink : {
+  youtubeEmbed  : {
     type: Sequelize.STRING,
     allowNull: false,
   },

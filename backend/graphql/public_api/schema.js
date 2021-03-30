@@ -10,7 +10,7 @@ module.exports = buildSchema(`
       userId: Int!
       brandId: Int!
       sku: String!
-      youtubeLink: String!
+      youtubeEmbed: String!
       highlights: String
       specs: String
       qty: Int

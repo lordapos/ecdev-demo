@@ -8,7 +8,7 @@ const products = [
     rating: 4,
     numReviews: 54,
     sku: '156YRT34',
-    youtubeLink: 'https://www.youtube.com/watch?v=ZMvWFGFyeD8',
+    youtubeEmbed: 'ZMvWFGFyeD8',
     description: JSON.stringify(
       [
         {
@@ -60,7 +60,7 @@ const products = [
     rating: 3,
     numReviews: 67,
     sku: '256YRT34',
-    youtubeLink: 'https://www.youtube.com/watch?v=ZMvWFGFyeD8',
+    youtubeEmbed: 'cdU4yTR8KhE',
     description: JSON.stringify(
       [
         {
@@ -112,7 +112,7 @@ const products = [
     rating: 5,
     numReviews: 38,
     sku: '356YRT34',
-    youtubeLink: 'https://www.youtube.com/watch?v=ZMvWFGFyeD8',
+    youtubeEmbed: 'sKj-b07H32M',
     description: JSON.stringify(
       [
         {
@@ -164,7 +164,7 @@ const products = [
     rating: 5,
     numReviews: 84,
     sku: '456YRT34',
-    youtubeLink: 'https://www.youtube.com/watch?v=ZMvWFGFyeD8',
+    youtubeEmbed: 'bqlZoXrutYI',
     description: JSON.stringify(
       [
         {
@@ -216,7 +216,7 @@ const products = [
     rating: 4,
     numReviews: 95,
     sku: '556YRT34',
-    youtubeLink: 'https://www.youtube.com/watch?v=ZMvWFGFyeD8',
+    youtubeEmbed: 'p5PvHlk3yig',
     description: JSON.stringify(
       [
         {
@@ -268,7 +268,7 @@ const products = [
     rating: 4,
     numReviews: 79,
     sku: '656YRT34',
-    youtubeLink: 'https://www.youtube.com/watch?v=ZMvWFGFyeD8',
+    youtubeEmbed: 'khoXxYLi0ME',
     description: JSON.stringify(
       [
         {

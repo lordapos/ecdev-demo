@@ -90,9 +90,8 @@
 
 .videos-tab {
   &__preview {
-    max-width: 400px;
-    height: 200px;
-    background: #8C8C8C;
+    max-width: 425px;
+    height: 240px;
     position: relative;
     display: flex;
     align-items: center;
@@ -103,7 +102,7 @@
     &:hover {
       .videos-tab__preview__icon {
         path {
-          fill: $green;
+          fill: #3dd5a2db;
         }
       }
     }
