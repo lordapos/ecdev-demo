@@ -2,12 +2,12 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import './_review-popup.scss'
-import { togglePopup } from '../../redux/actions/appAction'
+import { toggleReviewPopup } from '../../redux/actions/appAction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const ReviewPopup = () => {
-  const reviewPopup = useSelector((state) => state.app.visiblePopupForm)
+  const reviewPopup = useSelector((state) => state.app.visibleReviewPopupForm)
   const reviewClasses = reviewPopup ? 'review-popup review-popup--show' : 'review-popup '
   const dispatch = useDispatch()
 
@@ -16,7 +16,7 @@ const ReviewPopup = () => {
   }
 
   const hidePopup = () => {
-    dispatch(togglePopup(!reviewPopup))
+    dispatch(toggleReviewPopup(!reviewPopup))
   }
   return (
     <div className={reviewClasses}>

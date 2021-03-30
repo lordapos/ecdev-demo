@@ -1,21 +1,22 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { togglePopup, toggleYoutubePopup } from '../../../redux/actions/appAction'
+import { toggleReviewPopup, toggleYoutubePopup } from '../../../redux/actions/appAction'
 import './_tabs.scss'
 import Rating from '../../Rating/Rating'
 
 const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
   const [tab, setTab] = useState('description')
+  const tabsClasses = ['product-tabs']
+  tabsClasses.push(tab)
 
   const dispatch = useDispatch()
 
-  const visiblePopup = useSelector((state) => state.app.visiblePopupForm)
+  const visiblePopup = useSelector((state) => state.app.visibleReviewPopupForm)
   const visibleYoutubePopup = useSelector((state) => state.app.visibleYoutubePopupForm)
 
   const addVisiblePopup = () => {
-    dispatch(togglePopup(!visiblePopup))
+    dispatch(toggleReviewPopup(!visiblePopup))
   }
-
   const addVisibleYoutubePopup = () => {
     dispatch(toggleYoutubePopup(!visibleYoutubePopup))
   }
@@ -44,11 +45,10 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
       )
     })
   }
-
   const renderDescription = (items) => {
     return items.map((item, index) => {
       return (
-        <li className="description-tab__item" key={index}>
+        <li className='description-tab__item' key={index}>
           <p className='description-tab__tagline'>
             {item.title}
           </p>
@@ -59,9 +59,6 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
       )
     })
   }
-
-  const tabsClasses = ['product-tabs']
-  tabsClasses.push(tab)
 
   const videoStyle = {
     backgroundImage: `url('https://img.youtube.com/vi/${youtubeEmbed}/maxresdefault.jpg')`,
@@ -101,7 +98,7 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
         <h5 className='product-tab__headline'>
           Description
         </h5>
-        <ul className="description-tab__list">
+        <ul className='description-tab__list'>
           {renderDescription(description)}
         </ul>
       </div>
@@ -120,7 +117,7 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
 
         <div className='videos-tab__preview'
              onClick={addVisibleYoutubePopup}
-              style={videoStyle}
+             style={videoStyle}
         >
           <svg width='59' height='60' viewBox='0 0 59 60' fill='none' xmlns='http://www.w3.org/2000/svg' className='videos-tab__preview__icon'>
             <path

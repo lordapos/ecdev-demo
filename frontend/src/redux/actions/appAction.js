@@ -7,7 +7,7 @@ export const toggleMenu = (visible) => async (dispatch) => {
     })
 }
 
-export const togglePopup = (visible) => async (dispatch) => {
+export const toggleReviewPopup = (visible) => async (dispatch) => {
     dispatch({
         type: REVIEW_POPUP,
         payload: visible
