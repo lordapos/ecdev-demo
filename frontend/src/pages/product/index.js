@@ -19,6 +19,8 @@ const ProductPage = ({ location }) => {
   const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
+  const [highlights, setHighlights] = useState([])
+
   useEffect(() => {
     const ID = location.pathname.split('/')[2]
     dispatch(productDetails(ID))
@@ -29,6 +31,13 @@ const ProductPage = ({ location }) => {
 
   const productInfo = useSelector(state => state.productDetails)
   const { loading, error, product } = productInfo
+
+  useEffect(() => {
+    if (product.highlights) {
+      setHighlights(JSON.parse(product.highlights))
+    }
+
+  }, [product])
 
   const changeQty = (value) => {
     if (value < 1) {
@@ -68,7 +77,7 @@ const ProductPage = ({ location }) => {
                     rating={product.rating}
                     numReviews={product.numReviews}
                     sku={product.sku}
-                    highlights = {product.highlights}
+                    highlights={highlights}
                   />
                   <button onClick={addToCartHandler} className='product__add-to-cart'>
                     <img src={iconCart} alt='icon cart' className="product__add-to-cart__icon"/>
