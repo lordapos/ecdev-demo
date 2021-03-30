@@ -62,7 +62,14 @@ const ProductPage = ({ location }) => {
                   <Preview mainImage={product.image} alt={product.name}/>
                 </div>
                 <div className="product__content__right">
-                  <Information name={product.name} price={product.price} rating={product.rating} numReviews={product.numReviews} sku={product.sku}/>
+                  <Information
+                    name={product.name}
+                    price={product.price}
+                    rating={product.rating}
+                    numReviews={product.numReviews}
+                    sku={product.sku}
+                    highlights = {product.highlights}
+                  />
                   <button onClick={addToCartHandler} className='product__add-to-cart'>
                     <img src={iconCart} alt='icon cart' className="product__add-to-cart__icon"/>
                     Add to cart

@@ -1,10 +1,20 @@
-import React from 'react'
+import React, {useEffect}  from  'react'
 import './_information.scss'
 import Rating from '../../Rating/Rating'
 
 import iconStock from '../../../images/ic_stock.svg'
 
-const Information = ({ name, price, rating, numReviews, sku }) => {
+const Information = ({ name, price, rating, numReviews, sku, highlights }) => {
+
+
+
+  useEffect(() =>{
+    const json = highlights;
+    console.log('_____',json)
+  })
+
+
+
   return (
     <div className='product__information'>
       <div className='product__information__inner'>

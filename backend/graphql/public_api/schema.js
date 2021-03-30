@@ -10,6 +10,7 @@ module.exports = buildSchema(`
       userId: Int!
       brandId: Int!
       sku: String!
+      highlights: String
       qty: Int
       rating: Int
       numReviews: Int

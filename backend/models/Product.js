@@ -25,6 +25,10 @@ const Product = sequelize.define('product', {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  highlights: {
+    type: Sequelize.JSON,
+    allowNull: false,
+  },
   price: {
     type: Sequelize.FLOAT,
     allowNull: false,

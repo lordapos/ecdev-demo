@@ -9,7 +9,8 @@ const products = [
     brandId: 1,
     rating: 4,
     numReviews: 54,
-    sku: '156YRT34'
+    sku: '156YRT34',
+    highlights: ['["Large 24.1 Megapixel APS-C Sensor', 'Full HD Movie Recording', 'Built-in Wi-Fi and NFC', 'Canon Connect App', '3fps Burst Shooting', '3.0\' LCD Screen"]']
   },
   {
     name: 'Canon PowerShot SX620',
@@ -21,7 +22,9 @@ const products = [
     brandId: 1,
     rating: 3,
     numReviews: 67,
-    sku: '256YRT34'
+    sku: '256YRT34',
+    highlights: ['["Large 24.1 Megapixel APS-C Sensor', 'Full HD Movie Recording', 'Built-in Wi-Fi and NFC', 'Canon Connect App', '3fps Burst Shooting', '3.0\' LCD Screen"]']
+
   },
   {
     name: 'Sony QX30 Smartphone Attachable Lens Style Camera',
@@ -33,7 +36,8 @@ const products = [
     brandId: 2,
     rating: 5,
     numReviews: 38,
-    sku: '356YRT34'
+    sku: '356YRT34',
+    highlights: ['["Large 24.1 Megapixel APS-C Sensor', 'Full HD Movie Recording', 'Built-in Wi-Fi and NFC', 'Canon Connect App', '3fps Burst Shooting', '3.0\' LCD Screen"]']
 
   },
   {
@@ -46,7 +50,8 @@ const products = [
     brandId: 2,
     rating: 5,
     numReviews: 84,
-    sku: '456YRT34'
+    sku: '456YRT34',
+    highlights: ['["Large 24.1 Megapixel APS-C Sensor', 'Full HD Movie Recording', 'Built-in Wi-Fi and NFC', 'Canon Connect App', '3fps Burst Shooting', '3.0\' LCD Screen"]']
 
   },
   {
@@ -59,7 +64,8 @@ const products = [
     brandId: 3,
     rating: 4,
     numReviews: 95,
-    sku: '556YRT34'
+    sku: '556YRT34',
+    highlights: ['["Large 24.1 Megapixel APS-C Sensor', 'Full HD Movie Recording', 'Built-in Wi-Fi and NFC', 'Canon Connect App', '3fps Burst Shooting', '3.0\' LCD Screen"]']
 
   },
   {
@@ -72,7 +78,8 @@ const products = [
     brandId: 3,
     rating: 4,
     numReviews: 79,
-    sku: '656YRT34'
+    sku: '656YRT34',
+    highlights: ['["Large 24.1 Megapixel APS-C Sensor', 'Full HD Movie Recording', 'Built-in Wi-Fi and NFC', 'Canon Connect App', '3fps Burst Shooting', '3.0\' LCD Screen"]']
 
   },
 ]
