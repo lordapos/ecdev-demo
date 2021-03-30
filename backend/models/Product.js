@@ -18,14 +18,22 @@ const Product = sequelize.define('product', {
     allowNull: false,
   },
   description: {
-    type: Sequelize.TEXT,
+    type: Sequelize.JSON,
     allowNull: false,
   },
   sku: {
     type: Sequelize.TEXT,
     allowNull: false,
   },
+  youtubeLink : {
+    type: Sequelize.STRING,
+    allowNull: false,
+  },
   highlights: {
+    type: Sequelize.JSON,
+    allowNull: false,
+  },
+  specs: {
     type: Sequelize.JSON,
     allowNull: false,
   },

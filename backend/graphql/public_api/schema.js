@@ -5,12 +5,14 @@ module.exports = buildSchema(`
       id: Int!
       name: String!
       image: String!
-      description: String!
+      description: String
       price: Float!
       userId: Int!
       brandId: Int!
       sku: String!
+      youtubeLink: String!
       highlights: String
+      specs: String
       qty: Int
       rating: Int
       numReviews: Int

@@ -20,6 +20,8 @@ const ProductPage = ({ location }) => {
   const dispatch = useDispatch()
 
   const [highlights, setHighlights] = useState([])
+  const [specs, setSpecs] = useState([])
+  const [description, setDescription] = useState([])
 
   useEffect(() => {
     const ID = location.pathname.split('/')[2]
@@ -35,6 +37,12 @@ const ProductPage = ({ location }) => {
   useEffect(() => {
     if (product.highlights) {
       setHighlights(JSON.parse(product.highlights))
+    }
+    if (product.specs){
+      setSpecs(JSON.parse(product.specs))
+    }
+    if (product.description){
+      setDescription(JSON.parse(product.description))
     }
 
   }, [product])
@@ -90,7 +98,11 @@ const ProductPage = ({ location }) => {
                   </div>
                 </div>
                 <div className="product__content__bottom">
-                  <Tabs numReviews={product.numReviews}/>
+                  <Tabs
+                    numReviews={product.numReviews}
+                    specs = {specs}
+                    description = {description}
+                  />
                 </div>
               </div>
             )}
