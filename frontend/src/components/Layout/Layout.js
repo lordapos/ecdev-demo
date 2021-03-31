@@ -7,7 +7,7 @@ import { toggleMenu } from '../../redux/actions/appAction'
 import ReviewPopup from '../ReviewPopup/ReviewPopup'
 import VideoPopup from '../VideoPopup/VideoPopup'
 
-const Layout = ({ children, history, youtubeEmbed }) => {
+const Layout = ({ children, history, youtubeEmbed, productId }) => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(toggleMenu(false))
@@ -17,7 +17,7 @@ const Layout = ({ children, history, youtubeEmbed }) => {
       <Header/>
       <main>
         <MobileMenu/>
-        <ReviewPopup/>
+        <ReviewPopup productId={productId}/>
         <VideoPopup youtubeEmbed={youtubeEmbed}/>
         {children}
       </main>

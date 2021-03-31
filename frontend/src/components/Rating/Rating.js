@@ -11,16 +11,16 @@ const Rating = ({ value, text, hideCountReviewers }) => {
   return (
     <div className='rating'>
       <span>
-        <FontAwesomeIcon style={value <= 1 ? style : null} icon={faStar}/>
+        <FontAwesomeIcon style={value < 1 ? style : null} icon={faStar}/>
       </span>
       <span>
-        <FontAwesomeIcon style={value <= 2 ? style : null} icon={faStar}/>
+        <FontAwesomeIcon style={value < 2 ? style : null} icon={faStar}/>
       </span>
       <span>
-        <FontAwesomeIcon style={value <= 3 ? style : null} icon={faStar}/>
+        <FontAwesomeIcon style={value < 3 ? style : null} icon={faStar}/>
       </span>
       <span>
-        <FontAwesomeIcon style={value <= 4 ? style : null} icon={faStar}/>
+        <FontAwesomeIcon style={value < 4 ? style : null} icon={faStar}/>
       </span>
       <span>
         <FontAwesomeIcon style={value < 5 ? style : null} icon={faStar}/>

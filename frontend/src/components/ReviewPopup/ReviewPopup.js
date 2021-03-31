@@ -7,11 +7,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 import { addReview } from '../../redux/actions/reviewAction'
 
-const ReviewPopup = () => {
+const ReviewPopup = ({productId}) => {
   const reviewPopup = useSelector((state) => state.app.visibleReviewPopupForm)
   const reviewClasses = reviewPopup ? 'review-popup review-popup--show' : 'review-popup'
   const dispatch = useDispatch()
-  const [ratingNumber, setRatingNumber] = useState(null)
+  const [ratingNumber, setRatingNumber] = useState(1)
 
   const handleClick = (e) => {
     const allNodesRating = document.getElementsByClassName('review-form__rating__item')
@@ -26,7 +26,8 @@ const ReviewPopup = () => {
     setRatingNumber(currentData)
   }
 
-  const hidePopup = () => {
+  const hidePopup = (e) => {
+    e.preventDefault()
     dispatch(toggleReviewPopup(!reviewPopup))
   }
 
@@ -56,13 +57,13 @@ const ReviewPopup = () => {
             }
             return errors
           }}
-          onSubmit={(values, { setSubmitting }) => {
+          onSubmit={(values, { setSubmitting, resetForm }) => {
             values.rating = ratingNumber
-            values.productId = 1 //TODO get product ID
-            console.log(values)
+            values.productId = productId
+            resetForm({})
+            dispatch(toggleReviewPopup(!reviewPopup))
             dispatch(addReview(values))
             setSubmitting(false)
-
           }}
         >
           {({
@@ -79,7 +80,7 @@ const ReviewPopup = () => {
               <div className='review-form__group'>
                 <label htmlFor='title' className='review-form__label'>Your overall rating *</label>
                 <div className='review-form__rating'>
-                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={1} onClick={handleClick}/>
+                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item active' data-value={1} onClick={handleClick}/>
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={2} onClick={handleClick}/>
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={3} onClick={handleClick}/>
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={4} onClick={handleClick}/>
@@ -145,7 +146,7 @@ const ReviewPopup = () => {
                   {errors.email && touched.email && errors.email}
                 </span>
               </div>
-              <button className='review-form__button-clear review-form__button'>
+              <button className='review-form__button-clear review-form__button' onClick={hidePopup} >
                 Cancel
               </button>
               <button type='submit' disabled={isSubmitting} className='review-form__button-submit review-form__button'>

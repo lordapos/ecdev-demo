@@ -24,6 +24,7 @@ const ProductPage = ({ location }) => {
   const [description, setDescription] = useState([])
   const [images, setImages] = useState([])
   const [reviews, setReviews] = useState([])
+  const [productId] = useState(location.pathname.split('/')[2])
 
   useEffect(() => {
     const ID = location.pathname.split('/')[2]
@@ -76,7 +77,7 @@ const ProductPage = ({ location }) => {
   }
 
   return (
-    <Layout youtubeEmbed={product.youtubeEmbed}>
+    <Layout youtubeEmbed={product.youtubeEmbed} productId={productId}>
       <SEO title={product.name ? product.name : 'Product'}/>
       <section className='product'>
         <div className="product__inner">
