@@ -4,7 +4,7 @@ import { toggleReviewPopup, toggleYoutubePopup } from '../../../redux/actions/ap
 import './_tabs.scss'
 import Rating from '../../Rating/Rating'
 
-const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
+const Tabs = ({ numReviews, specs, description, youtubeEmbed, reviews }) => {
   const [tab, setTab] = useState('description')
   const tabsClasses = ['product-tabs']
   tabsClasses.push(tab)
@@ -60,10 +60,40 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
     })
   }
 
+  const renderReview = (items) => {
+    return items.map((item, index) => {
+      return (
+        <li className='review-comments__item' key={index}>
+          <div className='review-comments__head'>
+            <div className='review-comments__head__inner'>
+              <Rating value={item.rating} hideCountReviewers={true}/>
+              <span className='review-comments__user-name'>
+                {item.name}
+              </span>
+            </div>
+            <span className='review-comments__date-of-publication'>{toDate(item.createdAt)}</span>
+          </div>
+          <div className='review-comments__body'>
+            <p className='review-comments__title'>
+              {item.title}
+            </p>
+            <p className='review-comments__text'>
+              {item.review}
+            </p>
+          </div>
+        </li>
+      )
+    })
+  }
+
+  const toDate = (val) => {
+    return new Date(val).toLocaleString();
+  }
+
   const videoStyle = {
     backgroundImage: `url('https://img.youtube.com/vi/${youtubeEmbed}/maxresdefault.jpg')`,
     backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat'
+    backgroundRepeat: 'no-repeat',
   }
 
   return (
@@ -171,62 +201,7 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed }) => {
         </div>
         <div className='review-comments'>
           <ul className='review-comments__list'>
-            <li className='review-comments__item'>
-              <div className='review-comments__head'>
-                <div className='review-comments__head__inner'>
-                  <Rating value={6} hideCountReviewers={true}/>
-                  <span className='review-comments__user-name'>
-                Max Cooper
-              </span>
-                </div>
-                <span className='review-comments__date-of-publication'>
-              December 17, 2020
-            </span>
-              </div>
-              <div className='review-comments__body'>
-                <p className='review-comments__title'>
-                  What a dandy little camera
-                </p>
-                <p className='review-comments__text'>
-                  I own, and have used for at least twenty eight years, several view cameras, currently I have, 6 or 7, so maybe this gives me some
-                  qualification.
-                  I
-                  have only seen three or four Technikardan Cameras, I own a 6 X 9. This camera is incredible compact folded up, and relative light, I own a
-                  lighter
-                  4 X 5, I do not use it, and if you had a choice between the two neither would you. I carry this camera almost every where I go, in my
-                  backpack,
-                  along with two Super Rollex 6 X 9 film backs.
-                </p>
-              </div>
-            </li>
-            <li className='review-comments__item'>
-              <div className='review-comments__head'>
-                <div className='review-comments__head__inner'>
-                  <Rating value={6} hideCountReviewers={true}/>
-                  <span className='review-comments__user-name'>
-                Max Cooper
-              </span>
-                </div>
-                <span className='review-comments__date-of-publication'>
-              December 17, 2020
-            </span>
-              </div>
-              <div className='review-comments__body'>
-                <p className='review-comments__title'>
-                  What a dandy little camera
-                </p>
-                <p className='review-comments__text'>
-                  I own, and have used for at least twenty eight years, several view cameras, currently I have, 6 or 7, so maybe this gives me some
-                  qualification.
-                  I
-                  have only seen three or four Technikardan Cameras, I own a 6 X 9. This camera is incredible compact folded up, and relative light, I own a
-                  lighter
-                  4 X 5, I do not use it, and if you had a choice between the two neither would you. I carry this camera almost every where I go, in my
-                  backpack,
-                  along with two Super Rollex 6 X 9 film backs.
-                </p>
-              </div>
-            </li>
+            {renderReview(reviews)}
           </ul>
           <button className='review-comments__button' onClick={addVisiblePopup}>
             <svg width='17' height='18' viewBox='0 0 17 18' fill='none' xmlns='http://www.w3.org/2000/svg'>

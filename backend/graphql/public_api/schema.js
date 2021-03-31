@@ -11,7 +11,7 @@ module.exports = buildSchema(`
       userId: Int!
       brandId: Int!
       sku: String!
-      youtubeEmbed: String!
+      youtubeEmbed: String
       highlights: String
       specs: String
       qty: Int
@@ -19,16 +19,6 @@ module.exports = buildSchema(`
       numReviews: Int
       review: String
     }
-    
-   type Review {
-      id: Int!
-      name: String!
-      email: String!
-      title: String!
-      review: String!
-      rating: Int!
-      productId: Int!
-   }
     
     type User {
       id: Int!
@@ -55,6 +45,15 @@ module.exports = buildSchema(`
       price: Float
       brands: [Int]
     }
+    
+    input Review {
+      name: String!
+      email: String!
+      title: String!
+      review: String!
+      rating: Int!
+      productId: Int!
+   }
 
     type Query {
       getProducts: [Product!]!

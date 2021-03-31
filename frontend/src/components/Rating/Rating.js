@@ -23,7 +23,7 @@ const Rating = ({ value, text, hideCountReviewers }) => {
         <FontAwesomeIcon style={value <= 4 ? style : null} icon={faStar}/>
       </span>
       <span>
-        <FontAwesomeIcon style={value <= 5 ? style : null} icon={faStar}/>
+        <FontAwesomeIcon style={value < 5 ? style : null} icon={faStar}/>
       </span>
       {
         hideCountReviewers ? null

@@ -23,6 +23,7 @@ const ProductPage = ({ location }) => {
   const [specs, setSpecs] = useState([])
   const [description, setDescription] = useState([])
   const [images, setImages] = useState([])
+  const [reviews, setReviews] = useState([])
 
   useEffect(() => {
     const ID = location.pathname.split('/')[2]
@@ -48,16 +49,11 @@ const ProductPage = ({ location }) => {
     if (product.images){
       setImages(JSON.parse(product.images))
     }
+    if (product.review){
+      setReviews(JSON.parse(product.review))
+    }
 
   }, [product])
-
-  const changeQty = (value) => {
-    if (value < 1) {
-      setQty(1)
-    } else {
-      setQty(value)
-    }
-  }
 
   const breadcrumbs = [
     { to: '/', label: 'EcDevShop' },
@@ -110,6 +106,7 @@ const ProductPage = ({ location }) => {
                     specs = {specs}
                     description = {description}
                     youtubeEmbed = {product.youtubeEmbed}
+                    reviews = {reviews}
                   />
                 </div>
               </div>

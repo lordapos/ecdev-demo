@@ -28,20 +28,29 @@ module.exports = {
     }
   },
 
-  // where: { id: decoded.id }, include: 'roles',
-
-
   async getProductById ({ id }) {
     try {
-
-      const temp = await Product.findOne({
+      const product = await Product.findOne({
         where: { id }, include: 'reviews',
       })
-      console.log(temp.reviews)
 
-      return await Product.findOne({
-        where: { id }, include: 'reviews',
-      })
+      return {
+        id: product.id,
+        name: product.name,
+        image: product.image,
+        images: product.images,
+        description: product.description,
+        price: product.price,
+        userId: product.userId,
+        brandId: product.brandId,
+        sku: product.sku,
+        youtubeEmbed: product.youtubeEmbed,
+        highlights: product.highlights,
+        specs: product.specs,
+        rating: product.rating,
+        numReviews: product.numReviews,
+        review: JSON.stringify(product.reviews),
+      }
     } catch (e) {
       throw new Error('Fetch product is not available')
     }
@@ -85,8 +94,6 @@ module.exports = {
         brandId = {
           [Op.or]: [sort.brands],
         }
-        console.log('brands')
-        console.log(sort.brands.length)
       }
       if (brandId) {
         args = {
