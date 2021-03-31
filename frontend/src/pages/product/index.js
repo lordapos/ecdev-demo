@@ -16,7 +16,6 @@ import iconShipping from '../../images/ic_shipping.svg'
 import Tabs from '../../components/ProductPage/Tabs/Tabs'
 
 const ProductPage = ({ location }) => {
-  const [qty, setQty] = useState(1)
   const dispatch = useDispatch()
 
   const [highlights, setHighlights] = useState([])
@@ -73,7 +72,7 @@ const ProductPage = ({ location }) => {
   ]
 
   const addToCartHandler = () => {
-    dispatch(addToCart(product.id, qty))
+    dispatch(addToCart(product.id, 1))
   }
 
   return (
