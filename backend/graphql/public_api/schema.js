@@ -5,6 +5,7 @@ module.exports = buildSchema(`
       id: Int!
       name: String!
       image: String!
+      images: String
       description: String
       price: Float!
       userId: Int!

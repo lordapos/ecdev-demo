@@ -35,7 +35,7 @@ export const listProducts = (search = null) => async (dispatch, getState) => {
       const query = `
           query {
             getProducts {
-             id, name, image, price, rating, numReviews, sku, highlights, specs, youtubeEmbed 
+             id, name, image, images, price, rating, numReviews, sku, highlights, specs, youtubeEmbed 
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })
@@ -52,7 +52,7 @@ export const listProducts = (search = null) => async (dispatch, getState) => {
       const query = `
           query {
             getSortProducts(sort: {sortBy: "${sorting.sortBy}", price: ${sorting.price}, brands: [${arrBrand}]}) {
-             id, name, image, price, rating, numReviews
+             id, name, image,images, price, rating, numReviews
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })
@@ -80,7 +80,7 @@ export const productDetails = (id) => async (dispatch) => {
     const query = `
           query {
             getProductById(id: "${id}") {
-             id, name, image, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
+             id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
             }
           }`
     const { data } = await axios.post('/public-api', { query: query })
@@ -160,7 +160,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
     const query = `
         mutation {
           updateProduct(data: ${queryfy(product)}) {
-            id, name, image, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
+            id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
           }
         }
       `
@@ -205,7 +205,7 @@ export const createProduct = (product) => async (dispatch, getState) => {
     const query = `
         mutation {
           addProduct(data: ${queryfy(product)}) {
-            id, name, image, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
+            id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
           }
         }
       `

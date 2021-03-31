@@ -1,31 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './_preview.scss'
 
-const Preview = ({mainImage, alt}) => {
+const Preview = ({alt, images}) => {
+
+  const [mainImage, setMainImage] = useState(`${images[0]}`)
+
+  const currentImage = mainImage === 'undefined'? images[0] : mainImage;
+
+  const handleChangeImage = (e) =>{
+    setMainImage(e.target.src)
+  }
+
+  const renderItems = (items) =>{
+    return items.map((item, index) =>{
+      return(
+        <li className='product__thumbs__item' key={index} onClick={handleChangeImage}>
+          <img src={item} alt={alt}/>
+        </li>
+      )
+    })
+  }
+
   return (
     <div className='product__preview'>
       <div className='product__preview__left'>
-        <ul className='product__thumbs '>
-          <li className='product__thumbs__item'>
-            <img src={mainImage} alt={alt}/>
-          </li>
-          <li className='product__thumbs__item'>
-            <img src={mainImage} alt={alt}/>
-          </li>
-          <li className='product__thumbs__item'>
-            <img src={mainImage} alt={alt}/>
-          </li>
-          <li className='product__thumbs__item'>
-            <img src={mainImage} alt={alt}/>
-          </li>
-          <li className='product__thumbs__item'>
-            <img src={mainImage} alt={alt}/>
-          </li>
+        <ul className='product__thumbs'>
+          {renderItems(images)}
         </ul>
       </div>
       <div className='product__preview__right'>
-        <img src={mainImage} alt={alt}/>
+        <img src={currentImage} alt={alt}/>
       </div>
+
     </div>
   );
 };

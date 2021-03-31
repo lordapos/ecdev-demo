@@ -1,7 +1,16 @@
 const products = [
   {
     name: 'Canon PowerShot SX540',
-    image: '/uploads/product-photo.png',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
     price: 599,
     userId: 1,
     brandId: 1,
@@ -53,7 +62,16 @@ const products = [
   },
   {
     name: 'Canon PowerShot SX620',
-    image: '/uploads/product-photo.png',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
     price: 299,
     userId: 1,
     brandId: 1,
@@ -105,7 +123,16 @@ const products = [
   },
   {
     name: 'Sony QX30 Smartphone Attachable Lens Style Camera',
-    image: '/uploads/product-photo.png',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
     price: 699.95,
     userId: 1,
     brandId: 2,
@@ -157,7 +184,16 @@ const products = [
   },
   {
     name: 'Sony Cyber-shot DSC-H300',
-    image: '/uploads/product-photo.png',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
     price: 179.80,
     userId: 1,
     brandId: 2,
@@ -209,7 +245,16 @@ const products = [
   },
   {
     name: 'Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G',
-    image: '/uploads/product-photo.png',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
     price: 553.97,
     userId: 1,
     brandId: 3,
@@ -261,7 +306,16 @@ const products = [
   },
   {
     name: 'Nikon Coolpix L340 20.2 MP Digital Camera with 28x Optical Zoom and 3.0-Inch LCD',
-    image: '/uploads/product-photo.png',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
     price: 289.99,
     userId: 1,
     brandId: 3,

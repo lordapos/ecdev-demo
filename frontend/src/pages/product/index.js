@@ -22,6 +22,7 @@ const ProductPage = ({ location }) => {
   const [highlights, setHighlights] = useState([])
   const [specs, setSpecs] = useState([])
   const [description, setDescription] = useState([])
+  const [images, setImages] = useState([])
 
   useEffect(() => {
     const ID = location.pathname.split('/')[2]
@@ -43,6 +44,9 @@ const ProductPage = ({ location }) => {
     }
     if (product.description){
       setDescription(JSON.parse(product.description))
+    }
+    if (product.images){
+      setImages(JSON.parse(product.images))
     }
 
   }, [product])
@@ -76,7 +80,10 @@ const ProductPage = ({ location }) => {
             error ? (<Message variant='error'>{error}</Message>) : (
               <div className="product__content">
                 <div className="product__content__left">
-                  <Preview mainImage={product.image} alt={product.name}/>
+                  <Preview
+                    images={images}
+                    alt={product.name}
+                  />
                 </div>
                 <div className="product__content__right">
                   <Information
