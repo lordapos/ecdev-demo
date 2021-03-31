@@ -1,5 +1,6 @@
 const express = require('express')
 const dotenv = require('dotenv')
+const compression = require('compression');
 const sequelize = require('./utils/database')
 const { graphqlHTTP } = require('express-graphql')
 const rootResolver = require('./graphql/public_api/resolver/rootResolver')
@@ -16,6 +17,7 @@ const path = require('path')
 dotenv.config()
 
 const app = express()
+app.use(compression());
 app.use(cors())
 app.use(express.json())
 app.use('/api/upload', uploadRoutes)
