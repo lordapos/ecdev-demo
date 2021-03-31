@@ -6,7 +6,7 @@ import SEO from '../../components/Seo'
 import { addToCart } from '../../redux/actions/cartAction'
 import Message from '../../components/Message/Message'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
-import { PRODUCT_DETAILS_CLEAN } from '../../redux/actions/actionTypes'
+import { PRODUCT_DETAILS_CLEAN, REVIEW_CLEAN } from '../../redux/actions/actionTypes'
 import './_product.scss'
 import Preview from '../../components/ProductPage/Preview/Preview'
 import Information from '../../components/ProductPage/Information/Information'
@@ -36,6 +36,17 @@ const ProductPage = ({ location }) => {
   const productInfo = useSelector(state => state.productDetails)
   const { loading, error, product } = productInfo
 
+  const review = useSelector(state => state.review)
+  const { success } = review
+
+  useEffect(() => {
+    if (success) {
+      const ID = location.pathname.split('/')[2]
+      dispatch(productDetails(ID))
+      dispatch({ type: REVIEW_CLEAN })
+    }
+  }, [dispatch, success])
+
   useEffect(() => {
     if (product.highlights) {
       setHighlights(JSON.parse(product.highlights))
@@ -52,7 +63,6 @@ const ProductPage = ({ location }) => {
     if (product.review){
       setReviews(JSON.parse(product.review))
     }
-
   }, [product])
 
   const breadcrumbs = [
