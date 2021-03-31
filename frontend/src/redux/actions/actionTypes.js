@@ -100,3 +100,7 @@ export const BRAND_FAIL = 'BRAND_FAIL'
 export const SORT_ADD = 'SORT_ADD'
 export const SORT_RESET = 'SORT_RESET'
 
+export const REVIEW_REQUEST = 'REVIEW_REQUEST'
+export const REVIEW_SUCCESS = 'REVIEW_SUCCESS'
+export const REVIEW_FAIL = 'REVIEW_FAIL'
+export const REVIEW_CLEAN = 'REVIEW_CLEAN'

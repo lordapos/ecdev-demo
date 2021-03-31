@@ -51,7 +51,7 @@ module.exports = buildSchema(`
       email: String!
       title: String!
       review: String!
-      rating: Int!
+      rating: Int
       productId: Int!
    }
 
@@ -66,5 +66,6 @@ module.exports = buildSchema(`
     type Mutation {
       createUser(email: String!, password: String!, name: String!): User!
       login(email: String!, password: String!): User!
+      addReview(data: Review!): String
     }
 `)

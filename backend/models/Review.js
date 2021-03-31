@@ -27,8 +27,7 @@ const Review = sequelize.define('review', {
   },
   rating: {
     type: Sequelize.INTEGER,
-    allowNull: false,
-    defaultValue: 1
+    allowNull: true,
   },
 
   productId: {

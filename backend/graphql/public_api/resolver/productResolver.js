@@ -1,5 +1,6 @@
 const Product = require('../../../models/Product')
 const Brand = require('../../../models/Brand')
+const Review = require('../../../models/Review')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
@@ -143,6 +144,22 @@ module.exports = {
       return newProduct
     } catch (e) {
       throw new Error('Update cart is not available')
+    }
+  },
+
+  async addReview ({ data }) {
+    try {
+      await Review.create({
+        name: data.name,
+        email: data.email,
+        title: data.title,
+        review: data.review,
+        rating: data.rating,
+        productId: data.productId,
+      })
+      return 'Review created'
+    } catch (e) {
+      throw new Error('Something went wrong, please try again later')
     }
   },
 }

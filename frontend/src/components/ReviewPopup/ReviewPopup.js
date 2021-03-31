@@ -1,19 +1,17 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import './_review-popup.scss'
 import { toggleReviewPopup } from '../../redux/actions/appAction'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { addReview } from '../../redux/actions/reviewAction'
 
 const ReviewPopup = () => {
   const reviewPopup = useSelector((state) => state.app.visibleReviewPopupForm)
   const reviewClasses = reviewPopup ? 'review-popup review-popup--show' : 'review-popup'
   const dispatch = useDispatch()
-
   const [ratingNumber, setRatingNumber] = useState(null)
-
-
 
   const handleClick = (e) => {
     const allNodesRating = document.getElementsByClassName('review-form__rating__item')
@@ -28,16 +26,16 @@ const ReviewPopup = () => {
     setRatingNumber(currentData)
   }
 
-
   const hidePopup = () => {
     dispatch(toggleReviewPopup(!reviewPopup))
   }
+
   return (
     <div className={reviewClasses}>
       <div className='review-popup__inner'>
         <div className='review-popup__close' onClick={hidePopup}>✖</div>
         <Formik
-          initialValues={{ email: '', name: '', title: '', review: '', count: '' }}
+          initialValues={{ email: '', name: '', title: '', review: '', rating: ratingNumber }}
           validate={values => {
             const errors = {}
             if (!values.email) {
@@ -56,16 +54,15 @@ const ReviewPopup = () => {
             if (!values.name) {
               errors.name = 'Required'
             }
-            if (!values.count) {
-              errors.count = 'Need to chose mark'
-            }
             return errors
           }}
           onSubmit={(values, { setSubmitting }) => {
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2))
-              setSubmitting(false)
-            }, 400)
+            values.rating = ratingNumber
+            values.productId = 1 //TODO get product ID
+            console.log(values)
+            dispatch(addReview(values))
+            setSubmitting(false)
+
           }}
         >
           {({
@@ -76,7 +73,6 @@ const ReviewPopup = () => {
             handleBlur,
             handleSubmit,
             isSubmitting,
-            /* and other goodies */
           }) => (
             <form onSubmit={handleSubmit} className='review-form'>
               <legend className='review-form__legend'>Write a review</legend>
@@ -89,17 +85,6 @@ const ReviewPopup = () => {
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={4} onClick={handleClick}/>
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={5} onClick={handleClick}/>
                 </div>
-
-                <input
-                  type='number'
-                  name='count'
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={ ratingNumber === null ? values.title : ratingNumber}
-                  hidden
-                  className='review-form__input'
-                />
-
               </div>
               <div className='review-form__group'>
                 <label htmlFor='title' className='review-form__label'>Title *</label>
@@ -115,7 +100,6 @@ const ReviewPopup = () => {
                 <span className='review-form__error'>
                    {errors.title && touched.title && errors.title}
                 </span>
-
               </div>
               <div className='review-form__group'>
                 <label htmlFor='review' className='review-form__label'>Review *</label>
