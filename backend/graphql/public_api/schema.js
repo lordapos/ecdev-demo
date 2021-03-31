@@ -17,7 +17,18 @@ module.exports = buildSchema(`
       qty: Int
       rating: Int
       numReviews: Int
+      review: String
     }
+    
+   type Review {
+      id: Int!
+      name: String!
+      email: String!
+      title: String!
+      review: String!
+      rating: Int!
+      productId: Int!
+   }
     
     type User {
       id: Int!

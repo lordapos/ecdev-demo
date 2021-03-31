@@ -80,7 +80,7 @@ export const productDetails = (id) => async (dispatch) => {
     const query = `
           query {
             getProductById(id: "${id}") {
-             id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed 
+             id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed, review 
             }
           }`
     const { data } = await axios.post('/public-api', { query: query })

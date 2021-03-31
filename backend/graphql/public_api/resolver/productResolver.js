@@ -28,9 +28,20 @@ module.exports = {
     }
   },
 
+  // where: { id: decoded.id }, include: 'roles',
+
+
   async getProductById ({ id }) {
     try {
-      return await Product.findByPk(id)
+
+      const temp = await Product.findOne({
+        where: { id }, include: 'reviews',
+      })
+      console.log(temp.reviews)
+
+      return await Product.findOne({
+        where: { id }, include: 'reviews',
+      })
     } catch (e) {
       throw new Error('Fetch product is not available')
     }

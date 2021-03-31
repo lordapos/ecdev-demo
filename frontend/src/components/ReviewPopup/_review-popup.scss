@@ -21,10 +21,9 @@
     padding: 22px 30px;
     @include media(xs) {
       margin: 15px;
-    }
-    @include media(xss) {
       padding: 15px;
     }
+
   }
 
   &__close {

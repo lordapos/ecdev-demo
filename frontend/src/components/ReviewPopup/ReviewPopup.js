@@ -13,6 +13,8 @@ const ReviewPopup = () => {
 
   const [ratingNumber, setRatingNumber] = useState(null)
 
+
+
   const handleClick = (e) => {
     const allNodesRating = document.getElementsByClassName('review-form__rating__item')
     for (const item of allNodesRating) {
@@ -26,9 +28,6 @@ const ReviewPopup = () => {
     setRatingNumber(currentData)
   }
 
-  useEffect(() => {
-    console.log(ratingNumber)
-  }, [ratingNumber])
 
   const hidePopup = () => {
     dispatch(toggleReviewPopup(!reviewPopup))
@@ -96,7 +95,7 @@ const ReviewPopup = () => {
                   name='count'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.title}
+                  value={ ratingNumber === null ? values.title : ratingNumber}
                   hidden
                   className='review-form__input'
                 />

@@ -52,7 +52,7 @@ const importData = async () => {
     await UserRole.create(InsertArr);
     await Brand.bulkCreate(brands, { validate: true })
     await Product.bulkCreate(products, { validate: true })
-    // await Review.bulkCreate(reviews, { validate: true })
+    await Review.bulkCreate(reviews, { validate: true })
     console.log('Data Imported!');
     process.exit();
   } catch (e) {
