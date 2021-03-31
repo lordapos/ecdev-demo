@@ -8,11 +8,14 @@ const Order = require('./models/Order')
 const products = require('./data/products')
 const brands = require('./data/brands')
 const roles = require('./data/roles')
+const reviews = require('./data/reviews')
 const UserRole = require('./models/UserRole')
+const Review = require('./models/Review')
 
 dotenv.config()
 
 const sequelize = require('./utils/database')
+const { Model } = require('sequelize')
 async function db() {
   try {
     await sequelize.sync()
@@ -30,6 +33,7 @@ const importData = async () => {
     await Product.destroy({ where: {} })
     await Brand.destroy({ where: {} })
     await Order.destroy({ where: {} })
+    await Review.destroy({ where: {} })
     await Role.bulkCreate(roles, { validate: true })
     const new_user = await User.create({
       name: 'ecdev',
@@ -48,6 +52,7 @@ const importData = async () => {
     await UserRole.create(InsertArr);
     await Brand.bulkCreate(brands, { validate: true })
     await Product.bulkCreate(products, { validate: true })
+    // await Review.bulkCreate(reviews, { validate: true })
     console.log('Data Imported!');
     process.exit();
   } catch (e) {
@@ -64,6 +69,7 @@ const destroyData = async () => {
     await Brand.destroy({ where: {} })
     await UserRole.destroy({ where: {} })
     await Order.destroy({ where: {} })
+    await Review.destroy({ where: {} })
     console.log('Data Destroyed!');
     process.exit();
   } catch (e) {

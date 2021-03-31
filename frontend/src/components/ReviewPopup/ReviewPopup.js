@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import './_review-popup.scss'
@@ -8,12 +8,27 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const ReviewPopup = () => {
   const reviewPopup = useSelector((state) => state.app.visibleReviewPopupForm)
-  const reviewClasses = reviewPopup ? 'review-popup review-popup--show' : 'review-popup '
+  const reviewClasses = reviewPopup ? 'review-popup review-popup--show' : 'review-popup'
   const dispatch = useDispatch()
 
+  const [ratingNumber, setRatingNumber] = useState(null)
+
   const handleClick = (e) => {
-    e.target.parentNode.classList.add('active')
+    const allNodesRating = document.getElementsByClassName('review-form__rating__item')
+    for (const item of allNodesRating) {
+      item.classList.remove('active')
+    }
+    const currentData = e.target.parentNode.dataset.value
+
+    for (let i = 0; i < currentData; i++) {
+      allNodesRating[i].classList.add('active')
+    }
+    setRatingNumber(currentData)
   }
+
+  useEffect(() => {
+    console.log(ratingNumber)
+  }, [ratingNumber])
 
   const hidePopup = () => {
     dispatch(toggleReviewPopup(!reviewPopup))

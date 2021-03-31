@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../utils/database')
+const Review = require('./Review')
 
 const Product = sequelize.define('product', {
   id: {
@@ -62,5 +63,7 @@ const Product = sequelize.define('product', {
     type: Sequelize.INTEGER,
   }
 }, { timestamps: true })
+
+Product.hasMany(Review, { as: 'reviews', foreignKey: 'productId' })
 
 module.exports = Product
