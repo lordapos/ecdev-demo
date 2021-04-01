@@ -115,7 +115,13 @@ picture {
 }
 
 main {
-  padding-top: 80px;
+  padding-top: 108px;
+  @include media(sm) {
+    padding-top: 101px;
+  }
+  @include media(xs) {
+    padding-top: 93px;
+  }
 }
 
 section {
@@ -127,5 +133,22 @@ section {
 
   @include media(xs) {
     margin-top: 1rem;
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 30px;
+  border: 1px solid $white;
+  font-size: 0.875rem;
+  color: $white;
+
+  svg {
+    width: 5px;
+    height: 10px;
+    padding-left: 5px;
+    margin-top: 4px;
   }
 }

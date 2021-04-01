@@ -3,7 +3,10 @@
 
 .footer {
   background: $footer;
-  margin-top: 2rem;
+  margin-top: 140px;
+  @include media(md){
+    margin-top: 70px;
+  }
 
   &__logo {
     @include media(xs) {
