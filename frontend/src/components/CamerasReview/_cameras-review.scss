@@ -13,7 +13,10 @@
   }
 
   &__tagline {
-    margin-bottom: 46px;
+    max-width: 876px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 46px;
   }
 
   &__list {

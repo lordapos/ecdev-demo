@@ -1,0 +1,122 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+.incredible-shots {
+  padding: 80px 0;
+  background: url("../../images/incredible-shots/bg.png") no-repeat center;
+  background-size: cover;
+
+
+  &__inner {
+    max-width: 1132px;
+    width: 100%;
+    padding: 0 1rem;
+    margin: 0 auto;
+    @include media(lg){
+      max-width: 960px;
+    }
+    @include media(md){
+      max-width: 720px;
+    }
+    @include media(sm){
+      max-width: 540px;
+    }
+  }
+
+  &__information {
+    padding: 32px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(6px);
+    @include media(xs){
+      padding: 16px;
+    }
+
+    &__inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border: 1px solid #FFFFFF;
+      box-sizing: border-box;
+      box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.1);
+      padding: 16px 60px;
+      @include media(md) {
+        padding: 22px 60px;
+      }
+      @include media(sm){
+        flex-wrap: wrap-reverse;
+        padding: 40px;
+      }
+      @include media(xs){
+        padding: 16px;
+      }
+    }
+  }
+
+  &__left {
+    color: $white;
+    max-width: 350px;
+    width: 100%;
+    padding-right: 16px;
+    @include media(sm){
+      max-width: 100%;
+      padding-right: unset;
+      margin-top: 32px;
+    }
+  }
+
+  &__headline {
+    color: $white;
+    margin-bottom: 16px;
+    @include media(sm){
+      text-align: center;
+    }
+  }
+
+  &__tagline {
+    margin-bottom: 82px;
+    @include media(md) {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 30px;
+    border: 1px solid $white;
+    font-size: 0.875rem;
+    color: $white;
+    @include media(sm){
+      margin: 0 auto;
+    }
+
+    svg {
+      width: 5px;
+      height: 10px;
+      padding-left: 5px;
+      margin-top: 4px;
+    }
+  }
+
+  &__right {
+    max-width: 440px;
+    width: 100%;
+    padding-left: 16px;
+    @include media(sm){
+      max-width: 100%;
+      padding-left: unset;
+    }
+
+  }
+
+  &__image {
+    width: 100%;
+    @include media(sm){
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+    }
+  }
+
+}
