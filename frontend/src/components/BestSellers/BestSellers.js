@@ -14,7 +14,7 @@ const BestSellers = () => {
     <section className="best-sellers">
       <div className="best-sellers__inner">
         <h3 className='best-sellers__headline'>Best Sellers Today</h3>
-        <Link className="best-sellers__view-more">
+        <Link className="best-sellers__view-more" to='/'>
           View more <img src={iconArrow} alt="icon arrow"/>
         </Link>
         <div className="best-sellers__list">
