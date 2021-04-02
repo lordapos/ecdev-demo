@@ -1,18 +1,38 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { toggleReviewPopup, toggleYoutubePopup } from '../../../redux/actions/appAction'
 import './_tabs.scss'
 import Rating from '../../Rating/Rating'
 
-const Tabs = ({ numReviews, specs, description, youtubeEmbed, reviews }) => {
+const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews }) => {
   const [tab, setTab] = useState('description')
+  const [ratingList, setRatingList] = useState({})
+
   const tabsClasses = ['product-tabs']
   tabsClasses.push(tab)
 
-  const dispatch = useDispatch()
+  useEffect(() => {
+    setRatingList(calcRatingCountRepetition())
+  }, [ratingList, reviews])
 
+
+  const dispatch = useDispatch()
   const visiblePopup = useSelector((state) => state.app.visibleReviewPopupForm)
   const visibleYoutubePopup = useSelector((state) => state.app.visibleYoutubePopupForm)
+
+  const calcRatingCountRepetition = () => {
+    const ratingArray = []
+    reviews.map(item => {
+      ratingArray.push(item.rating)
+    })
+
+    return (
+      ratingArray.reduce((acc, el) => {
+        acc[el] = (acc[el] || 0) + 1;
+        return acc;
+      }, {})
+    )
+  }
 
   const addVisiblePopup = () => {
     dispatch(toggleReviewPopup(!visiblePopup))
@@ -87,7 +107,7 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed, reviews }) => {
   }
 
   const toDate = (val) => {
-    return new Date(val).toLocaleString();
+    return new Date(val).toLocaleString()
   }
 
   const videoStyle = {
@@ -164,39 +184,58 @@ const Tabs = ({ numReviews, specs, description, youtubeEmbed, reviews }) => {
           <div className='reviews-result__left'>
             <p className='reviews-result__all-review'><span>{numReviews}</span> User Review</p>
             <span className='reviews-result__mark'>
-              5.0
+              {rating}
             </span>
-            <Rating value={6} hideCountReviewers={true}/>
+            <Rating value={rating} hideCountReviewers={true}/>
           </div>
           <div className='reviews-result__right'>
             <ul className='reviews-result__list'>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>5 <span>Stars</span></div>
                 <div className='reviews-result__item__scale'></div>
-                <div className='reviews-result__item__count'>(220)</div>
+                <div className='reviews-result__item__count'>({
+                  ratingList[5] !== undefined ?
+                    ratingList[5]
+                    : 0
+                })</div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>4 <span>Stars</span></div>
                 <div className='reviews-result__item__scale'></div>
-                <div className='reviews-result__item__count'>(0)</div>
+                <div className='reviews-result__item__count'>({
+                  ratingList[4] !== undefined ?
+                    ratingList[4]
+                    : 0
+                })</div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>3 <span>Stars</span></div>
                 <div className='reviews-result__item__scale'></div>
-                <div className='reviews-result__item__count'>(0)</div>
+                <div className='reviews-result__item__count'>({
+                  ratingList[3] !== undefined ?
+                    ratingList[3]
+                    : 0
+                })</div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>2 <span>Stars</span></div>
                 <div className='reviews-result__item__scale'></div>
-                <div className='reviews-result__item__count'>(0)</div>
+                <div className='reviews-result__item__count'>({
+                  ratingList[2] !== undefined ?
+                    ratingList[2]
+                    : 0
+                })</div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>1 <span>Stars</span></div>
                 <div className='reviews-result__item__scale'></div>
-                <div className='reviews-result__item__count'>(0)</div>
+                <div className='reviews-result__item__count'>({
+                  ratingList[1] !== undefined ?
+                    ratingList[1]
+                    : 0
+                })</div>
               </li>
             </ul>
-
           </div>
         </div>
         <div className='review-comments'>

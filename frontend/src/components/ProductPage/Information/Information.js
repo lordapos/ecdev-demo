@@ -4,7 +4,7 @@ import Rating from '../../Rating/Rating'
 
 import iconStock from '../../../images/ic_stock.svg'
 
-const Information = ({ name, price, rating, numReviews, sku, highlights }) => {
+const Information = ({ name, price, rating, numReviews, sku, highlights,  }) => {
 
   const renderItems = (items) =>{
      return items.map((item, index) => {
@@ -13,6 +13,7 @@ const Information = ({ name, price, rating, numReviews, sku, highlights }) => {
       )
     })
   }
+
 
   return (
     <div className='product__information'>

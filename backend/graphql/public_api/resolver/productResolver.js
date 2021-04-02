@@ -112,8 +112,6 @@ module.exports = {
           },
         }
       }
-
-      console.log(args)
       return await Product.findAll(args)
     } catch (e) {
       throw new Error('Fetch products is not available')
@@ -156,10 +154,40 @@ module.exports = {
         review: data.review,
         rating: data.rating,
         productId: data.productId,
+
       })
+      const id = data.productId
+
+      let product = await Product.findOne({
+        where: { id }, include: 'reviews',
+      })
+      const reviews = product.reviews
+
+      product.rating = calcMiddleReviewValue(reviews)
+      product.numReviews = reviews.length
+
+      await product.save()
+
       return 'Review created'
     } catch (e) {
       throw new Error('Something went wrong, please try again later')
     }
   },
+}
+
+const calcMiddleReviewValue = (reviews) => {
+  const ratingArray = []
+  const ratingLength = reviews.length
+
+  reviews.map(item => {
+    ratingArray.push(item.rating)
+  })
+
+  if (ratingArray.length !== 0) {
+    const allRatingValue = ratingArray.reduce((previousValue, currentValue) => {
+      return previousValue + currentValue
+    })
+    return Math.ceil(allRatingValue / ratingLength)
+
+  }
 }
