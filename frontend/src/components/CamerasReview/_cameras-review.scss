@@ -1,0 +1,100 @@
+@import "./src/styles/mixins";
+@import "./src/styles/config";
+
+
+.cameras-review {
+  margin-top: 140px;
+  @include media(md){
+    margin-top: 70px;
+  }
+  &__inner {
+    @include container
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  &__tagline {
+    max-width: 876px;
+    width: 100%;
+    text-align: center;
+    margin: 0 auto 46px;
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    width: calc(50% - 5px);
+    display: flex;
+    align-items: flex-end;
+    min-height: 434px;
+
+    &:last-child {
+      @include media(sm) {
+        margin-bottom: unset;
+      }
+    }
+
+    @include media(md) {
+      min-height: 300px;
+    }
+    @include media(sm) {
+      width: 100%;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__item--dx {
+    background: url("../../images/cameras-review/cameras-review1.png") no-repeat;
+    background-size: cover;
+  }
+
+  &__item--fx {
+    background: url("../../images/cameras-review/cameras-review2.png") no-repeat;
+    background-size: cover;
+  }
+
+  &__information {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    padding: 10px 22px;
+  }
+
+  &__name {
+    font-size: 1.375rem;
+    color: $white;
+    display: block;
+  }
+
+  &__link {
+    color: $green;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: max-content;
+    padding-right: 10px;
+    cursor: pointer;
+    &:hover{
+      text-decoration: underline;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      display: block;
+      right: 0;
+      top: 8px;
+      background: url("../../images/cameras-review/ic_green-arrow.svg") no-repeat;
+      background-size: contain;
+      width: 5px;
+      height: 10px;
+    }
+  }
+}

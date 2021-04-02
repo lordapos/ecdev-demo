@@ -112,6 +112,7 @@ const ProductPage = ({ location }) => {
                 </div>
                 <div className="product__content__bottom">
                   <Tabs
+                    rating={product.rating}
                     numReviews={product.numReviews}
                     specs = {specs}
                     description = {description}

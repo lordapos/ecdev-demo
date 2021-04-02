@@ -3,7 +3,10 @@
 
 .footer {
   background: $footer;
-  margin-top: 2rem;
+  margin-top: 140px;
+  @include media(md){
+    margin-top: 70px;
+  }
 
   &__logo {
     @include media(xs) {
@@ -19,6 +22,9 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    @include media(xs){
+      flex-direction: column;
+    }
   }
 
   &__head {
@@ -34,9 +40,15 @@
     @include media(md) {
       margin-right: 0;
     }
+    @include media(xs){
+      margin-top: 20px;
+    }
 
     &__title {
       color: $white;
+      @include media(xs){
+        text-align: center;
+      }
     }
 
     &__list {
@@ -133,6 +145,9 @@
         width: 100%;
         justify-content: center;
       }
+      @include media(xs){
+        flex-direction: column;
+      }
     }
 
     &__item {
@@ -142,6 +157,7 @@
 
       @include media(xs) {
         padding-right: 0;
+        margin-right: 0;
       }
 
       &:after {

@@ -14,8 +14,8 @@ const products = [
     price: 599,
     userId: 1,
     brandId: 1,
-    rating: 4,
-    numReviews: 54,
+    rating: 5,
+    numReviews: 1,
     sku: '156YRT34',
     youtubeEmbed: 'ZMvWFGFyeD8',
     description: JSON.stringify(
@@ -75,8 +75,8 @@ const products = [
     price: 299,
     userId: 1,
     brandId: 1,
-    rating: 3,
-    numReviews: 67,
+    rating: 5,
+    numReviews: 1,
     sku: '256YRT34',
     youtubeEmbed: 'cdU4yTR8KhE',
     description: JSON.stringify(
@@ -137,7 +137,7 @@ const products = [
     userId: 1,
     brandId: 2,
     rating: 5,
-    numReviews: 38,
+    numReviews: 1,
     sku: '356YRT34',
     youtubeEmbed: 'sKj-b07H32M',
     description: JSON.stringify(
@@ -198,7 +198,7 @@ const products = [
     userId: 1,
     brandId: 2,
     rating: 5,
-    numReviews: 84,
+    numReviews: 1,
     sku: '456YRT34',
     youtubeEmbed: 'bqlZoXrutYI',
     description: JSON.stringify(
@@ -258,8 +258,8 @@ const products = [
     price: 553.97,
     userId: 1,
     brandId: 3,
-    rating: 4,
-    numReviews: 95,
+    rating: 5,
+    numReviews: 1,
     sku: '556YRT34',
     youtubeEmbed: 'p5PvHlk3yig',
     description: JSON.stringify(
@@ -319,8 +319,8 @@ const products = [
     price: 289.99,
     userId: 1,
     brandId: 3,
-    rating: 4,
-    numReviews: 79,
+    rating: 5,
+    numReviews: 1,
     sku: '656YRT34',
     youtubeEmbed: 'khoXxYLi0ME',
     description: JSON.stringify(
