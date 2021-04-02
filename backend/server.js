@@ -25,7 +25,7 @@ app.use('/api/upload', uploadRoutes)
 app.use('/public-api', graphqlHTTP({
   schema: schema,
   rootValue: rootResolver,
-  graphiql: false,
+  graphiql: true,
 }))
 
 app.use("/logged-api", protect, graphqlHTTP({

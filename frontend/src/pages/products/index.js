@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Layout from '../../components/Layout/Layout'
 import SEO from '../../components/Seo'
@@ -10,20 +10,36 @@ import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import Filters from '../../components/Filters/Filters'
 import { getBrand } from '../../redux/actions/brandAction'
 import { SORT_ADD } from '../../redux/actions/actionTypes'
+import { graphql } from 'gatsby'
 
-const ProductsPage = () => {
+const ProductsPage = ({ data }) => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
   const brandList = useSelector((state) => state.brands)
   const sortList = useSelector((state) => state.sort)
-  const { loading, error, products } = productList
-  const { brandLoading, brands, error: brandError } = brandList
+  const { error, products: updatedProducts } = productList
+  const { brands: updatedBrands, error: brandError } = brandList
   const { sorting } = sortList
+  const [products, setProducts] = useState([])
+  const [brands, setBrands] = useState([])
 
   useEffect(() => {
-    dispatch(listProducts())
-    dispatch(getBrand())
-  }, [dispatch])
+    if (!updatedProducts) {
+      dispatch(listProducts())
+    } else {
+      setProducts(updatedProducts)
+    }
+    if (!updatedBrands) {
+      dispatch(getBrand())
+    } else {
+      setBrands(updatedBrands)
+    }
+  }, [dispatch, updatedProducts, updatedBrands])
+
+  useEffect(() => {
+    setProducts(data.swapi.getProducts)
+    setBrands(data.swapi.getBrands)
+  }, [data])
 
   const sort = event => {
     dispatch({ type: SORT_ADD, payload: {
@@ -57,20 +73,14 @@ const ProductsPage = () => {
             </div>
           </div>
           <div className='products__content'>
-            {
-              brandLoading ? ('')
-                : brandError ? (<Message variant='error'>{brandError}</Message>)
-                : (<Filters brands={brands}/>)
-            }
-            {
-              loading ? ('')
-                : error ? (<Message variant='error'>{error}</Message>)
-                : (<div className='products__list'>
-                  {products.map((product, index) => (
-                    <ProductCard key={index} product={product}/>
-                  ))}
-                </div>)
-            }
+            <Filters brands={brands}/>
+            <div className='products__list'>
+              {products.map((product, index) => (
+                <ProductCard key={index} product={product}/>
+              ))}
+            </div>
+            {error && <Message variant='error'>{error}</Message>}
+            {brandError && <Message variant='error'>{brandError}</Message>}
           </div>
         </div>
       </section>
@@ -79,3 +89,16 @@ const ProductsPage = () => {
 }
 
 export default ProductsPage
+
+export const query = graphql`
+  query {
+    swapi {
+      getProducts {
+        id, name, image,images, price, rating, numReviews
+      }
+      getBrands {
+        id, name
+      }
+    }
+  }
+`

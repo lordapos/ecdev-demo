@@ -1,3 +1,10 @@
+let url = ''
+if (process.env.NODE_ENV === 'production') {
+  url = 'https://backend.ecdevstage2.com/public-api'
+} else {
+  url = 'http://localhost:5000/public-api'
+}
+
 module.exports = {
   siteMetadata: {
     title: "Ecdev Shop",
@@ -30,6 +37,14 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
+    },
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        typeName: "SWAPI",
+        fieldName: "swapi",
+        url: url,
+      },
     },
   ],
 }
