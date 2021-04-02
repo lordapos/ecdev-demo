@@ -37,8 +37,10 @@ const ProductsPage = ({ data }) => {
   }, [dispatch, updatedProducts, updatedBrands])
 
   useEffect(() => {
-    setProducts(data.swapi.getProducts)
-    setBrands(data.swapi.getBrands)
+    if (data) {
+      setProducts(data.swapi.getProducts)
+      setBrands(data.swapi.getBrands)
+    }
   }, [data])
 
   const sort = event => {

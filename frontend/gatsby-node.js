@@ -11,12 +11,11 @@ exports.createPages = async ({ actions, graphql }) => {
     }
   `)
   const pageTemplate = path.resolve(`./src/templates/product.js`)
-  data.swapi.getProducts.forEach(({ id, slug }) => {
+  data.swapi.getProducts.forEach(({ slug }) => {
     actions.createPage({
       path: `/product/${slug}`,
       component: slash(pageTemplate),
       context: {
-        id: id,
         slug: slug,
       },
     })

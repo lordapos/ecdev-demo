@@ -1,10 +1,3 @@
-let url = ''
-if (process.env.NODE_ENV === 'production') {
-  url = 'https://backend.ecdevstage2.com/public-api'
-} else {
-  url = 'http://localhost:5000/public-api'
-}
-
 module.exports = {
   siteMetadata: {
     title: "Ecdev Shop",
@@ -42,8 +35,9 @@ module.exports = {
       resolve: "gatsby-source-graphql",
       options: {
         typeName: "SWAPI",
+        queryLimit: 1000,
         fieldName: "swapi",
-        url: url,
+        url: 'https://backend.ecdevstage2.com/public-api',
       },
     },
   ],

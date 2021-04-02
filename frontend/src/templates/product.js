@@ -29,25 +29,20 @@ const ProductPage = ({ data, location }) => {
   const review = useSelector(state => state.review)
   const { success } = review
 
-  console.log(data)
-
   useEffect(() => {
-    if (!updatedProduct) {
-      dispatch(productDetails(product.id))
-    } else {
-      setProduct(updatedProduct)
-    }
-  },[updatedProduct])
-
-  useEffect(() => {
+    const slug = location.pathname.split('/')[2]
+    dispatch(productDetails(slug))
+    setProduct(updatedProduct)
     return () => {
       dispatch({ type: PRODUCT_DETAILS_CLEAN })
     }
-  }, [dispatch, location])
+  },[dispatch, location])
 
   useEffect(() => {
-    setProduct(data.swapi.getProductBySlug)
-  }, [data])
+    if (data) {
+      setProduct(data.swapi.getProductBySlug)
+    }
+  }, [data, location])
 
   useEffect(() => {
     if (success) {
