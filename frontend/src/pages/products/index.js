@@ -94,7 +94,7 @@ export const query = graphql`
   query {
     swapi {
       getProducts {
-        id, name, image,images, price, rating, numReviews
+        id, name, image,images, price, rating, numReviews, slug
       }
       getBrands {
         id, name

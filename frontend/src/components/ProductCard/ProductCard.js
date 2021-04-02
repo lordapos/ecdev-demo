@@ -13,11 +13,11 @@ const ProductCard = ({ product }) => {
 
   return (
     <div className='products__item'>
-      <Link to={`/product/${product.id}`} className="products__item__image-wrap">
+      <Link to={`/product/${product.slug}`} className="products__item__image-wrap">
         <img className='products__item__image' src={product.image} alt={product.name}/>
       </Link>
         <Rating value={product.rating} text={`${product.numReviews}`} />
-        <Link to={`/product/${product.id}`} className='h6 products__item__title'>{product.name}</Link>
+        <Link to={`/product/${product.slug}`} className='h6 products__item__title'>{product.name}</Link>
         <div className="products__item__bottom">
           <h5 className='products__item__price'>
             <sup><small>$</small></sup>{product.price}</h5>

@@ -57,6 +57,35 @@ module.exports = {
     }
   },
 
+  async getProductBySlug ({ slug }) {
+    try {
+      const product = await Product.findOne({
+        where: { slug }, include: 'reviews',
+      })
+
+      return {
+        id: product.id,
+        slug: product.slug,
+        name: product.name,
+        image: product.image,
+        images: product.images,
+        description: product.description,
+        price: product.price,
+        userId: product.userId,
+        brandId: product.brandId,
+        sku: product.sku,
+        youtubeEmbed: product.youtubeEmbed,
+        highlights: product.highlights,
+        specs: product.specs,
+        rating: product.rating,
+        numReviews: product.numReviews,
+        review: JSON.stringify(product.reviews),
+      }
+    } catch (e) {
+      throw new Error('Fetch product is not available')
+    }
+  },
+
   async getSortProducts ({ sort }) {
     try {
       let args = {}

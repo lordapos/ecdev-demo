@@ -4,6 +4,7 @@ module.exports = buildSchema(`
     type Product {
       id: Int!
       name: String!
+      slug: String!
       image: String!
       images: String
       description: String
@@ -60,6 +61,7 @@ module.exports = buildSchema(`
       getBrands: [Brand!]!
       getSortProducts(sort: sortItem!): [Product!]!
       getProductById(id: ID!): Product!
+      getProductBySlug(slug: String!): Product!
       updateCart(items: [CartItem!]!): [Product!]!
     }
     

@@ -35,7 +35,7 @@ export const listProducts = (search = null) => async (dispatch, getState) => {
       const query = `
           query {
             getProducts {
-             id, name, image, images, price, rating, numReviews, sku, highlights, specs, youtubeEmbed 
+             id, name, image, images, price, rating, numReviews, slug
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })
@@ -52,7 +52,7 @@ export const listProducts = (search = null) => async (dispatch, getState) => {
       const query = `
           query {
             getSortProducts(sort: {sortBy: "${sorting.sortBy}", price: ${sorting.price}, brands: [${arrBrand}]}) {
-             id, name, image,images, price, rating, numReviews
+             id, name, image,images, price, rating, numReviews, slug
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })

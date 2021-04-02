@@ -1,6 +1,7 @@
 const products = [
   {
     name: 'Canon PowerShot SX540',
+    slug: 'canon-powershot-sx540',
     image: '/uploads/products/product-photo1.png',
     images: JSON.stringify((
       [
@@ -62,6 +63,7 @@ const products = [
   },
   {
     name: 'Canon PowerShot SX620',
+    slug: 'canon-powershot-sx620',
     image: '/uploads/products/product-photo1.png',
     images: JSON.stringify((
       [
@@ -123,6 +125,7 @@ const products = [
   },
   {
     name: 'Sony QX30 Smartphone Attachable Lens Style Camera',
+    slug: 'sony-smartphone-qx30',
     image: '/uploads/products/product-photo1.png',
     images: JSON.stringify((
       [
@@ -184,6 +187,7 @@ const products = [
   },
   {
     name: 'Sony Cyber-shot DSC-H300',
+    slug: 'sony-cyber-shot-dsc-h300',
     image: '/uploads/products/product-photo1.png',
     images: JSON.stringify((
       [
@@ -245,6 +249,7 @@ const products = [
   },
   {
     name: 'Nikon D3500 W/ AF-P DX NIKKOR 18-55mm f/3.5-5.6G',
+    slug: 'nikon-d3500',
     image: '/uploads/products/product-photo1.png',
     images: JSON.stringify((
       [
@@ -306,6 +311,7 @@ const products = [
   },
   {
     name: 'Nikon Coolpix L340 20.2 MP Digital Camera with 28x Optical Zoom and 3.0-Inch LCD',
+    slug: 'nikon-coolpix-l340',
     image: '/uploads/products/product-photo1.png',
     images: JSON.stringify((
       [

@@ -1,10 +1,31 @@
-// Create dynamic routing
+const { slash } = require(`gatsby-core-utils`)
+const path = require(`path`)
+exports.createPages = async ({ actions, graphql }) => {
+  const { data } = await graphql(`
+    query {
+      swapi {
+        getProducts {
+          id, slug
+        }
+      }
+    }
+  `)
+  const pageTemplate = path.resolve(`./src/templates/product.js`)
+  data.swapi.getProducts.forEach(({ id, slug }) => {
+    actions.createPage({
+      path: `/product/${slug}`,
+      component: slash(pageTemplate),
+      context: {
+        id: id,
+        slug: slug,
+      },
+    })
+  })
+}
+
 exports.onCreatePage = ({ page, actions }) => {
   const { createPage } = actions
-  if (page.path === `/product/`) {
-    page.matchPath = `/product/*`
-    createPage(page)
-  } else if (page.path === `/order/`) {
+  if (page.path === `/order/`) {
     page.matchPath = `/order/*`
     createPage(page)
   }  else if (page.path === `/admin/user/`) {
