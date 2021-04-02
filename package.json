@@ -2,7 +2,7 @@
   "name": "ecdev-shop",
   "version": "1.0.0",
   "description": "ecdev-shop",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "server": "nodemon backend/server",
     "backend": "node backend/server",
