@@ -116,6 +116,7 @@ picture {
 
 main {
   padding-top: 108px;
+  min-height: 70vh;
   @include media(sm) {
     padding-top: 101px;
   }
