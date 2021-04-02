@@ -13,7 +13,7 @@ const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews })
 
   useEffect(() => {
     setRatingList(calcRatingCountRepetition())
-  }, [ratingList, reviews])
+  }, [ reviews])
 
 
   const dispatch = useDispatch()

@@ -8,9 +8,15 @@
   display: flex;
   align-items: center;
   margin-top: 0;
+
   @include media(sm){
     min-height: unset;
     padding: 55px 0;
+  }
+  @include media(xs){
+    background: url("../../images/banner/mobile-bg.png") no-repeat center;
+    min-height: 600px;
+    background-size: cover;
   }
   &__inner {
     @include container;
