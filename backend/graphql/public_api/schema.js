@@ -55,6 +55,14 @@ module.exports = buildSchema(`
       rating: Int
       productId: Int!
    }
+   
+   input Mail {
+      name: String!
+      email: String!
+      website: String
+      message: String
+      radioGroup: String
+   }
 
     type Query {
       getProducts: [Product!]!
@@ -69,5 +77,6 @@ module.exports = buildSchema(`
       createUser(email: String!, password: String!, name: String!): User!
       login(email: String!, password: String!): User!
       addReview(data: Review!): String
+      sendMail(data: Mail!): String
     }
 `)
