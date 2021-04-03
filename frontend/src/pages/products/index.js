@@ -9,7 +9,7 @@ import './_products.scss'
 import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
 import Filters from '../../components/Filters/Filters'
 import { getBrand } from '../../redux/actions/brandAction'
-import { SORT_ADD } from '../../redux/actions/actionTypes'
+import { SORT_ADD, SORT_RESET } from '../../redux/actions/actionTypes'
 import { graphql } from 'gatsby'
 
 const ProductsPage = ({ data }) => {
@@ -42,6 +42,14 @@ const ProductsPage = ({ data }) => {
       setBrands(data.swapi.getBrands)
     }
   }, [data])
+
+  useEffect(() => {
+    return () => {
+      dispatch({type: SORT_RESET})
+      dispatch(listProducts())
+      setProducts(updatedProducts)
+    }
+  }, [dispatch])
 
   const sort = event => {
     dispatch({ type: SORT_ADD, payload: {
