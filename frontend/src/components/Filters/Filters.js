@@ -3,9 +3,9 @@ import InputRange from 'react-input-range'
 import './_filter.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { SORT_ADD } from '../../redux/actions/actionTypes'
-import { listProducts } from '../../redux/actions/productAction'
+import { listSortProducts } from '../../redux/actions/productAction'
 
-const Filters = ({ brands }) => {
+const Filters = ({ brands, category }) => {
   const dispatch = useDispatch()
   const sortList = useSelector((state) => state.sort)
   const { sorting } = sortList
@@ -33,7 +33,7 @@ const Filters = ({ brands }) => {
         price: value,
         brands: sorting.brands,
       }})
-    dispatch(listProducts('sort'))
+    dispatch(listSortProducts(category))
   }
 
   const changeRage = () => {
@@ -50,7 +50,7 @@ const Filters = ({ brands }) => {
         price: sorting.price,
         brands: values,
       }})
-    dispatch(listProducts('sort'))
+    dispatch(listSortProducts(category))
   }
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const Filters = ({ brands }) => {
             value={value}
             onChangeComplete ={value => sortPrice({ value })}
             onChange={value => changePrice({ value })}/>
-                    </div>
+        </div>
       </div>
       <div className={brand.join(' ')}>
         <button className='h5 filter__category__title' onClick={changeBrand}>Brand <span className='filter__category__arrow'> </span></button>

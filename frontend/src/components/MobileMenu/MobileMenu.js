@@ -24,7 +24,7 @@ const MobileMenu = () => {
 
   const links = [
     { to: '/', label: 'Home' },
-    { to: '/products', label: 'Cameras' },
+    { to: '/cameras', label: 'Cameras' },
   ]
 
   return (

@@ -7,10 +7,12 @@ const Brand = require('./models/Brand')
 const Order = require('./models/Order')
 const products = require('./data/products')
 const brands = require('./data/brands')
+const categories = require('./data/categories')
 const roles = require('./data/roles')
 const reviews = require('./data/reviews')
 const UserRole = require('./models/UserRole')
 const Review = require('./models/Review')
+const Category = require('./models/Category')
 
 dotenv.config()
 
@@ -32,6 +34,7 @@ const importData = async () => {
     await UserRole.destroy({ where: {} })
     await Product.destroy({ where: {} })
     await Brand.destroy({ where: {} })
+    await Category.destroy({ where: {} })
     await Order.destroy({ where: {} })
     await Review.destroy({ where: {} })
     await Role.bulkCreate(roles, { validate: true })
@@ -51,6 +54,7 @@ const importData = async () => {
     }
     await UserRole.create(InsertArr);
     await Brand.bulkCreate(brands, { validate: true })
+    await Category.bulkCreate(categories, { validate: true })
     await Product.bulkCreate(products, { validate: true })
     await Review.bulkCreate(reviews, { validate: true })
     console.log('Data Imported!');
@@ -67,6 +71,7 @@ const destroyData = async () => {
     await User.destroy({ where: {} })
     await Role.destroy({ where: {} })
     await Brand.destroy({ where: {} })
+    await Category.destroy({ where: {} })
     await UserRole.destroy({ where: {} })
     await Order.destroy({ where: {} })
     await Review.destroy({ where: {} })

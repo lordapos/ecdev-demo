@@ -13,46 +13,36 @@ import {
 import { logout } from './userAction'
 
 const queryfy = obj => {
-  if( typeof obj === 'number' ) {
-    return obj;
+  if (typeof obj === 'number') {
+    return obj
   }
 
-  if( typeof obj !== 'object' || Array.isArray( obj ) ) {
-    return JSON.stringify( obj );
+  if (typeof obj !== 'object' || Array.isArray(obj)) {
+    return JSON.stringify(obj)
   }
-  let props = Object.keys( obj ).map( key =>
-    `${key}:${queryfy( obj[key] )}`
-  ).join( ', ' );
+  let props = Object.keys(obj).map(key =>
+    `${key}:${queryfy(obj[key])}`,
+  ).join(', ')
 
-  return `{${props}}`;
+  return `{${props}}`
 }
 
-export const listProducts = (search = null) => async (dispatch, getState) => {
+export const listSortProducts = (category) => async (dispatch, getState) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST })
     const { sort: { sorting } } = getState()
-    if (!search || (sorting.brands.length < 1 && sorting.price === null && sorting.sortBy === null) ) {
-      const query = `
-          query {
-            getProducts {
-             id, name, image, images, price, rating, numReviews, slug
-            }
-          }`
-      const { data } = await axios.post('/public-api', { query: query })
-      dispatch({
-        type: PRODUCT_LIST_SUCCESS,
-        payload: data.data.getProducts,
-      })
-    } else {
-      const arrBrand = []
+    const arrBrand = []
+    if (sorting.brands) {
       sorting.brands.forEach(item => {
         arrBrand.push(item.id)
       })
+    }
 
+    if (sorting.sortBy || sorting.price || arrBrand.length > 0) {
       const query = `
           query {
-            getSortProducts(sort: {sortBy: "${sorting.sortBy}", price: ${sorting.price}, brands: [${arrBrand}]}) {
-             id, name, image,images, price, rating, numReviews, slug
+            getSortProducts(sort: {sortBy: "${sorting.sortBy}", price: ${sorting.price}, brands: [${arrBrand}]}, category: "${category}") {
+             id, name, image,images, price, rating, numReviews, slug, categoryId
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })
@@ -61,8 +51,19 @@ export const listProducts = (search = null) => async (dispatch, getState) => {
         type: PRODUCT_LIST_SUCCESS,
         payload: data.data.getSortProducts,
       })
+    } else {
+      const query = `
+        query {
+          getCatProducts(category: "${category}") {
+           id, name, image, images, price, rating, numReviews, slug, categoryId
+          }
+        }`
+      const { data } = await axios.post('/public-api', { query: query })
+      dispatch({
+        type: PRODUCT_LIST_SUCCESS,
+        payload: data.data.getCatProducts,
+      })
     }
-
   } catch (error) {
     dispatch({
       type: PRODUCT_LIST_FAIL,

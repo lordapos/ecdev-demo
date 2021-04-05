@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { listProducts } from '../../redux/actions/productAction'
+import { listSortProducts } from '../../redux/actions/productAction'
 import ProductCard from '../../components/ProductCard/ProductCard'
 import Message from '../../components/Message/Message'
 
@@ -13,7 +13,7 @@ const FeaturedProducts = () => {
   const productLength = 4
 
   useEffect(() => {
-    dispatch(listProducts())
+    dispatch(listSortProducts('cameras'))
   }, [dispatch])
 
   return (
@@ -25,7 +25,6 @@ const FeaturedProducts = () => {
             : error ? (<Message variant='error'>{error}</Message>)
             : (<div className='products__list'>
               {
-
                 products.map((product, index) => (
                   product.id <= productLength ?
                     <ProductCard key={index} product={product}/>

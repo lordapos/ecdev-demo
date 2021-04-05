@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Layout from '../../components/Layout/Layout'
-import SEO from '../../components/Seo'
-import { listProducts } from '../../redux/actions/productAction'
-import ProductCard from '../../components/ProductCard/ProductCard'
-import Message from '../../components/Message/Message'
-import './_products.scss'
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
-import Filters from '../../components/Filters/Filters'
-import { getBrand } from '../../redux/actions/brandAction'
-import { SORT_ADD, SORT_RESET } from '../../redux/actions/actionTypes'
+import Layout from '../components/Layout/Layout'
+import SEO from '../components/Seo'
+import { listSortProducts } from '../redux/actions/productAction'
+import ProductCard from '../components/ProductCard/ProductCard'
+import Message from '../components/Message/Message'
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
+import Filters from '../components/Filters/Filters'
+import { getBrand } from '../redux/actions/brandAction'
+import { PRODUCT_LIST_RESET, SORT_ADD, SORT_RESET } from '../redux/actions/actionTypes'
 import { graphql } from 'gatsby'
 
-const ProductsPage = ({ data }) => {
+const CamerasPage = ({ data, location }) => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
   const brandList = useSelector((state) => state.brands)
@@ -22,10 +21,11 @@ const ProductsPage = ({ data }) => {
   const { sorting } = sortList
   const [products, setProducts] = useState([])
   const [brands, setBrands] = useState([])
+  const slug = location.pathname.split('/')[1]
 
   useEffect(() => {
     if (!updatedProducts || updatedProducts.length === 0) {
-      dispatch(listProducts())
+      dispatch(listSortProducts(slug))
     } else {
       setProducts(updatedProducts)
     }
@@ -34,11 +34,11 @@ const ProductsPage = ({ data }) => {
     } else {
       setBrands(updatedBrands)
     }
-  }, [dispatch, updatedProducts, updatedBrands])
+  }, [dispatch, updatedProducts, updatedBrands, slug])
 
   useEffect(() => {
     if (data) {
-      setProducts(data.swapi.getProducts)
+      setProducts(data.swapi.getCatProducts)
       setBrands(data.swapi.getBrands)
     }
   }, [data])
@@ -46,12 +46,12 @@ const ProductsPage = ({ data }) => {
   useEffect(() => {
     return () => {
       dispatch({ type: SORT_RESET })
-      dispatch(listProducts())
+      dispatch({ type: PRODUCT_LIST_RESET })
     }
-  }, [dispatch])
+  }, [dispatch, slug])
 
   useEffect(() => {
-    if (updatedProducts[0] && updatedProducts.length > 0) {
+    if (updatedProducts && updatedProducts[0] && updatedProducts.length > 0) {
       setProducts(updatedProducts)
     }
   }, [updatedProducts])
@@ -64,7 +64,7 @@ const ProductsPage = ({ data }) => {
         brands: sorting.brands,
       },
     })
-    dispatch(listProducts('sort'))
+    dispatch(listSortProducts(slug))
   }
 
   const breadcrumbs = [
@@ -90,7 +90,7 @@ const ProductsPage = ({ data }) => {
             </div>
           </div>
           <div className='products__content'>
-            <Filters brands={brands}/>
+            <Filters brands={brands} category={slug}/>
             <div className='products__list'>
               {products.map((product, index) => (
                 <ProductCard key={index} product={product}/>
@@ -105,13 +105,13 @@ const ProductsPage = ({ data }) => {
   )
 }
 
-export default ProductsPage
+export default CamerasPage
 
 export const query = graphql`
-  query {
+  query($category: String!) {
     swapi {
-      getProducts {
-        id, name, image,images, price, rating, numReviews, slug
+      getCatProducts(category: $category) {
+        id, name, image, images, price, rating, numReviews, slug
       }
       getBrands {
         id, name

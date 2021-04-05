@@ -59,6 +59,10 @@ const Product = sequelize.define('product', {
     allowNull: false,
     type: Sequelize.INTEGER,
   },
+  categoryId: {
+    allowNull: false,
+    type: Sequelize.INTEGER,
+  },
   rating: {
     allowNull: true,
     type: Sequelize.INTEGER,
