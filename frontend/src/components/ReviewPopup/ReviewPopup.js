@@ -34,7 +34,7 @@ const ReviewPopup = ({productId}) => {
   return (
     <div className={reviewClasses}>
       <div className='review-popup__inner'>
-        <div className='review-popup__close' onClick={hidePopup}>✖</div>
+        <div className='review-popup__close' onClick={hidePopup} onKeyDown={hidePopup} role='button' tabIndex={0}>✖</div>
         <Formik
           initialValues={{ email: '', name: '', title: '', review: '', rating: ratingNumber }}
           validate={values => {
@@ -75,7 +75,7 @@ const ReviewPopup = ({productId}) => {
             handleSubmit,
             isSubmitting,
           }) => (
-            <form onSubmit={handleSubmit} className='review-form'>
+            <form onSubmit={handleSubmit} className='review-form' autoComplete='off'>
               <legend className='review-form__legend'>Write a review</legend>
               <div className='review-form__group'>
                 <label htmlFor='title' className='review-form__label'>Your overall rating *</label>

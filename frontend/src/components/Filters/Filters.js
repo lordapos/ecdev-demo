@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import InputRange from 'react-input-range'
 import './_filter.scss'
 import { useDispatch, useSelector } from 'react-redux'
@@ -60,7 +60,7 @@ const Filters = ({ brands }) => {
   return (
     <div className='filter'>
       <div className={rage.join(' ')}>
-        <h5 className='filter__category__title' onClick={changeRage}>Price <span className='filter__category__arrow'> </span></h5>
+        <button className='h5 filter__category__title' onClick={changeRage}>Price <span className='filter__category__arrow'> </span></button>
         <div className='filter__category__rage'>
           <InputRange
             maxValue={2000}
@@ -71,7 +71,7 @@ const Filters = ({ brands }) => {
                     </div>
       </div>
       <div className={brand.join(' ')}>
-        <h5 className='filter__category__title' onClick={changeBrand}>Brand <span className='filter__category__arrow'> </span></h5>
+        <button className='h5 filter__category__title' onClick={changeBrand}>Brand <span className='filter__category__arrow'> </span></button>
         <div className="filter__category__brand">
           <form action="#" className='filter__category__form'>
             {brands.map(tag => (
@@ -90,10 +90,10 @@ const Filters = ({ brands }) => {
                       }
                       checked.push(val)
                       setCheckedBrand(checked)
-                      submitForm(checkedBrand)
                     } else {
                       setCheckedBrand(checked.filter(x => x.id !== e.target.value))
                     }
+                    submitForm(checkedBrand)
                   }}
                 />
                 <span>{tag.name}</span>

@@ -24,7 +24,7 @@ const ProductsPage = ({ data }) => {
   const [brands, setBrands] = useState([])
 
   useEffect(() => {
-    if (!updatedProducts) {
+    if (!updatedProducts || updatedProducts.length === 0) {
       dispatch(listProducts())
     } else {
       setProducts(updatedProducts)
@@ -45,18 +45,25 @@ const ProductsPage = ({ data }) => {
 
   useEffect(() => {
     return () => {
-      dispatch({type: SORT_RESET})
+      dispatch({ type: SORT_RESET })
       dispatch(listProducts())
-      setProducts(updatedProducts)
     }
   }, [dispatch])
 
+  useEffect(() => {
+    if (updatedProducts[0] && updatedProducts.length > 0) {
+      setProducts(updatedProducts)
+    }
+  }, [updatedProducts])
+
   const sort = event => {
-    dispatch({ type: SORT_ADD, payload: {
+    dispatch({
+      type: SORT_ADD, payload: {
         sortBy: event.target.value,
         price: sorting.price,
         brands: sorting.brands,
-    }})
+      },
+    })
     dispatch(listProducts('sort'))
   }
 
@@ -75,7 +82,7 @@ const ProductsPage = ({ data }) => {
             <h3 className='products__title'>DSLR and Mirrorless Cameras</h3>
             <div className="products__sort">
               <label htmlFor="sort">Sort by:</label>
-              <select name="sort" className='products__select' id="sort" onChange={sort}>
+              <select name="sort" className='products__select' id="sort" onChange={sort} onBlur={sort}>
                 <option value="date-desc">Date</option>
                 <option value="low_to_high">Price: Low to High</option>
                 <option value="high_to_low">Price: High to Low</option>

@@ -14,9 +14,9 @@ const Preview = ({alt, images}) => {
   const renderItems = (items) =>{
     return items.map((item, index) =>{
       return(
-        <li className='product__thumbs__item' key={index} onClick={handleChangeImage}>
+        <button className='product__thumbs__item' key={index} onClick={handleChangeImage} onKeyDown={handleChangeImage}>
           <img src={item} alt={alt}/>
-        </li>
+        </button>
       )
     })
   }
@@ -24,9 +24,9 @@ const Preview = ({alt, images}) => {
   return (
     <div className='product__preview'>
       <div className='product__preview__left'>
-        <ul className='product__thumbs'>
+        <div className='product__thumbs'>
           {renderItems(images)}
-        </ul>
+        </div>
       </div>
       <div className='product__preview__right'>
         <img src={currentImage} alt={alt}/>

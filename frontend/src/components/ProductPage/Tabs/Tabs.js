@@ -12,31 +12,28 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
   tabsClasses.push(tab)
 
   useEffect(() => {
-    setRatingList(calcRatingCountRepetition())
-  }, [ reviews])
+    const calcRatingCountRepetition = () => {
+      const ratingArray = []
+      reviews.forEach(item => {
+        ratingArray.push(item.rating)
+      })
 
+      return (
+        ratingArray.reduce((acc, el) => {
+          acc[el] = (acc[el] || 0) + 1
+          return acc
+        }, {})
+      )
+    }
+    setRatingList(calcRatingCountRepetition())
+  }, [reviews])
 
   const dispatch = useDispatch()
   const visiblePopup = useSelector((state) => state.app.visibleReviewPopupForm)
 
-  const calcRatingCountRepetition = () => {
-    const ratingArray = []
-    reviews.map(item => {
-      ratingArray.push(item.rating)
-    })
-
-    return (
-      ratingArray.reduce((acc, el) => {
-        acc[el] = (acc[el] || 0) + 1;
-        return acc;
-      }, {})
-    )
-  }
-
   const addVisiblePopup = () => {
     dispatch(toggleReviewPopup(!visiblePopup))
   }
-
 
   const tabHandler = (tab, e) => {
     const tabsNode = document.getElementsByClassName('product-tabs__item')
@@ -109,26 +106,27 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
 
   return (
     <div className={tabsClasses.join(' ')}>
-      <ul className='product-tabs__list'>
-        <li
+      <div className='product-tabs__list'>
+        <button
           className='product-tabs__item active'
           onClick={(e) => tabHandler('description', e)}
         >
           Description
-        </li>
-        <li
+        </button>
+        <button
           className='product-tabs__item'
           onClick={(e) => tabHandler('specs', e)}
         >
           Specs
-        </li>
-        <li
+        </button>
+        <button
           className='product-tabs__item'
           onClick={(e) => tabHandler('reviews', e)}
+          onKeyDown={(e) => tabHandler('reviews', e)}
         >
           Reviews
-        </li>
-      </ul>
+        </button>
+      </div>
       <div className='product-tab__item description-tab'>
         <h5 className='product-tab__headline'>
           Description
@@ -166,7 +164,8 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                   ratingList[5] !== undefined ?
                     ratingList[5]
                     : 0
-                })</div>
+                })
+                </div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>4 <span>Stars</span></div>
@@ -175,7 +174,8 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                   ratingList[4] !== undefined ?
                     ratingList[4]
                     : 0
-                })</div>
+                })
+                </div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>3 <span>Stars</span></div>
@@ -184,7 +184,8 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                   ratingList[3] !== undefined ?
                     ratingList[3]
                     : 0
-                })</div>
+                })
+                </div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>2 <span>Stars</span></div>
@@ -193,7 +194,8 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                   ratingList[2] !== undefined ?
                     ratingList[2]
                     : 0
-                })</div>
+                })
+                </div>
               </li>
               <li className='reviews-result__item'>
                 <div className='reviews-result__item__name'>1 <span>Stars</span></div>
@@ -202,7 +204,8 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                   ratingList[1] !== undefined ?
                     ratingList[1]
                     : 0
-                })</div>
+                })
+                </div>
               </li>
             </ul>
           </div>

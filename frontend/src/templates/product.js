@@ -32,11 +32,16 @@ const ProductPage = ({ data, location }) => {
   useEffect(() => {
     const slug = location.pathname.split('/')[2]
     dispatch(productDetails(slug))
-    setProduct(updatedProduct)
     return () => {
       dispatch({ type: PRODUCT_DETAILS_CLEAN })
     }
   },[dispatch, location])
+
+  useEffect(() => {
+    if (updatedProduct && updatedProduct.slug) {
+      setProduct(updatedProduct)
+    }
+  }, [updatedProduct])
 
   useEffect(() => {
     if (data) {
@@ -46,10 +51,10 @@ const ProductPage = ({ data, location }) => {
 
   useEffect(() => {
     if (success) {
-      dispatch(productDetails(product.id))
+      dispatch(productDetails(product.slug))
       dispatch({ type: REVIEW_CLEAN })
     }
-  }, [dispatch, success])
+  }, [dispatch, success, product])
 
   useEffect(() => {
     if (product.highlights) {

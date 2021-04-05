@@ -23,9 +23,6 @@ const OrderPage = ({ location }) => {
   const orderPay = useSelector((state) => state.orderPay)
   const { success: successPay } = orderPay
 
-  const orderDeliver = useSelector((state) => state.orderDeliver)
-  const { success: successDeliver } = orderDeliver
-
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
 
@@ -45,12 +42,6 @@ const OrderPage = ({ location }) => {
       }
       document.body.appendChild(script)
     }
-    const orderId = location.pathname.split('/')[2]
-    if (!order || successPay || successDeliver || order.id !== orderId) {
-      dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
-      dispatch(getOrderDetails(orderId))
-    }
 
     if (!order.isPaid) {
       if (!window.paypal) {
@@ -59,10 +50,30 @@ const OrderPage = ({ location }) => {
         setSdkReady(true)
       }
     }
+  }, [dispatch, userInfo, location, order])
+
+  useEffect(() => {
+    const orderId = location.pathname.split('/')[2]
+    if (!order || successPay) {
+
+      dispatch({ type: ORDER_PAY_RESET })
+      dispatch({ type: ORDER_DELIVER_RESET })
+      dispatch(getOrderDetails(orderId))
+    }
+  }, [dispatch, successPay, location, order])
+
+  useEffect(() => {
     return () => {
       dispatch({ type: ORDER_DETAILS_RESET })
     }
-  }, [dispatch, userInfo])
+  }, [dispatch])
+
+  useEffect(() => {
+    const orderId = location.pathname.split('/')[2]
+    if (!order.id) {
+      dispatch(getOrderDetails(orderId))
+    }
+  }, [dispatch, order, location])
 
   const successPaymentHandler = (paymentResult) => {
     const orderId = location.pathname.split('/')[2]
