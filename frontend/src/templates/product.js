@@ -107,8 +107,7 @@ const ProductPage = ({ data, location }) => {
               </button>
               <div className="product__shipping">
                 <img src={iconShipping} alt="icon shipping" className="product__shipping__icon"/>
-                <a href="/" className="product__shipping__link">FREE SHIPPING</a>
-                <span className="product__shipping__text">Available</span>
+                <span className="product__shipping__text">FREE SHIPPING Available</span>
               </div>
             </div>
             <div className="product__content__bottom">

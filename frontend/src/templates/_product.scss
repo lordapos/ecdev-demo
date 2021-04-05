@@ -99,17 +99,5 @@
       height: 13px;
       margin-right: 12px;
     }
-
-    &__link {
-      color: $black;
-      text-transform: uppercase;
-      text-decoration: underline;
-      margin-right: 6px;
-      transition: .5s;
-
-      &:hover {
-        color: $green;
-      }
-    }
   }
 }

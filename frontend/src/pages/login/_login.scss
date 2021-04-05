@@ -7,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap-reverse;
     padding-top: 2rem;
   }
 
@@ -15,6 +16,10 @@
     flex-direction: column;
     padding: 2rem 10%;
     width: 50%;
+    @include media(sm){
+      width: 100%;
+      padding: 0;
+    }
   }
 
   &__form {
@@ -72,5 +77,10 @@
     background-color: $light;
     border-radius: 1rem;
     padding: 2rem;
+    @include media(sm){
+      width: 100%;
+      height: auto;
+      margin-bottom: 45px;
+    }
   }
 }
