@@ -212,24 +212,26 @@ const ProfilePage = () => {
                 ) : errorOrders ? (
                   <Message variant='error'>{errorOrders}</Message>
                 ) : (
-                  <ul className='profile__orders__list'>
-                    <li className='profile__orders__item profile__orders__item--head'>
-                      <div className='profile__orders__item__tab'>
-                        <h6>DATE</h6>
-                      </div>
-                      <div className='profile__orders__item__tab'>
-                        <h6>TOTAL</h6>
-                      </div>
-                      <div className='profile__orders__item__tab'>
-                        <h6>PAID</h6>
-                      </div>
-                      <div className='profile__orders__item__tab'>
-                        <h6>DELIVERED</h6>
-                      </div>
-                      <div className='profile__orders__item__tab'> </div>
-                    </li>
-                    {renderOrders(orders)}
-                  </ul>
+                  <div className="profile__orders__overflow-container">
+                    <ul className='profile__orders__list'>
+                      <li className='profile__orders__item profile__orders__item--head'>
+                        <div className='profile__orders__item__tab'>
+                          <h6>DATE</h6>
+                        </div>
+                        <div className='profile__orders__item__tab'>
+                          <h6>TOTAL</h6>
+                        </div>
+                        <div className='profile__orders__item__tab'>
+                          <h6>PAID</h6>
+                        </div>
+                        <div className='profile__orders__item__tab'>
+                          <h6>DELIVERED</h6>
+                        </div>
+                        <div className='profile__orders__item__tab'> </div>
+                      </li>
+                      {renderOrders(orders)}
+                    </ul>
+                  </div>
                 )}
               </div>
             </div>

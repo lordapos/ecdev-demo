@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import './_banner.scss'
 
 const Banner = () => {
@@ -11,12 +12,12 @@ const Banner = () => {
           <p className="banner__tagline">
             Introducing the D5, an FX-format DSLR that makes the impossible possible.
           </p>
-          <button className="banner__button button">
+          <Link to='/product/canon-powershot-sx540' className="banner__button button">
             Buy now
             <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M1 1L4 5L1 9" stroke="white" strokeWidth="1.5"/>
             </svg>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

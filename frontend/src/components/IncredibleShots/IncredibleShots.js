@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import './_incredible-shots.scss'
 import lens from '../../images/incredible-shots/lens.png'
 
@@ -16,12 +17,12 @@ const IncredibleShots = () => {
               <p className="incredible-shots__tagline">
                 See your photos and videos come to life with stunning clarity and rich detail through legendary Canon cameras.
               </p>
-              <button className="incredible-shots__button button">
+              <Link className="incredible-shots__button button" to='/product/sony-cyber-shot-dsc-h300'>
                 Shop now
                 <svg width="5" height="10" viewBox="0 0 5 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 1L4 5L1 9" stroke="white" strokeWidth="1.5"/>
                 </svg>
-              </button>
+              </Link>
             </div>
             <div className='incredible-shots__right'>
               <img src={lens} alt="lens" className='incredible-shots__image'/>

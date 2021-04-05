@@ -18,7 +18,7 @@ const CamerasReview = () => {
               <span className='cameras-review__name'>
                 DX Series DSLRs
               </span>
-              <Link to='/' className='cameras-review__link'>
+              <Link to='/product/canon-powershot-sx620' className='cameras-review__link'>
                 See DX Series Cameras
               </Link>
             </div>
@@ -28,7 +28,7 @@ const CamerasReview = () => {
               <span className='cameras-review__name'>
                 FX Series DSLRs
               </span>
-              <Link to='/' className='cameras-review__link'>
+              <Link to='/product/sony-cyber-shot-dsc-h300' className='cameras-review__link'>
                 See FX Series Cameras
               </Link>
             </div>

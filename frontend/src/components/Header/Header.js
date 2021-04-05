@@ -20,7 +20,6 @@ const Header = () => {
         <li className='header__nav__item' key={index}>
           <Link
             to={link.to}
-            activeClassName='header__nav__link--active'
             className='header__nav__link'>{link.label}</Link>
         </li>
       )
@@ -83,7 +82,6 @@ const Header = () => {
           <li className='header__nav__item'>
             <Link
               to={userLink}
-              activeClassName='header__nav__link--active'
               className='header__nav__link header__nav__link--icon'
             >
               <div className='user-icon' style={user}></div>
@@ -92,7 +90,6 @@ const Header = () => {
           <li className='header__nav__item'>
             <Link
               to='/cart'
-              activeClassName='header__nav__link--active'
               className='header__nav__link header__nav__link--icon'
             >
               <div className='cart-icon' style={cartBG}></div>

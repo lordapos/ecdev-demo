@@ -5,7 +5,7 @@ import { faStar } from '@fortawesome/free-solid-svg-icons'
 
 const Rating = ({ value, text, hideCountReviewers }) => {
   const style = {
-    color: '#dddddd'
+    color: '#dddddd',
   }
 
   return (

@@ -37,7 +37,7 @@ module.exports = {
         typeName: "SWAPI",
         queryLimit: 1000,
         fieldName: "swapi",
-        url: 'https://backend.ecdevstage2.com/public-api',
+        url: 'http://localhost:5000/public-api',
       },
     },
   ],
