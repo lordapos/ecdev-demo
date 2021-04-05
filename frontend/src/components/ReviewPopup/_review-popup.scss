@@ -81,11 +81,9 @@
         position: absolute;
         border-bottom: 1px solid #E4E4E4;
         bottom: 0;
-        width: calc(100% + 60px);
+        width: 100%;
+        left: 0;
         align-self: start;
-        @include media(xs) {
-          width: calc(100% + 30px);
-        }
       }
 
     }
