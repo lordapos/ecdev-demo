@@ -1,4 +1,4 @@
-import { MOBILE_NAVIGATION_MENU, REVIEW_POPUP, YOUTUBE_POPUP } from './actionTypes'
+import { MOBILE_NAVIGATION_MENU, REVIEW_POPUP } from './actionTypes'
 
 export const toggleMenu = (visible) => async (dispatch) => {
     dispatch({
@@ -10,13 +10,6 @@ export const toggleMenu = (visible) => async (dispatch) => {
 export const toggleReviewPopup = (visible) => async (dispatch) => {
     dispatch({
         type: REVIEW_POPUP,
-        payload: visible
-    })
-}
-
-export const toggleYoutubePopup = (visible) => async (dispatch) => {
-    dispatch({
-        type: YOUTUBE_POPUP,
         payload: visible
     })
 }

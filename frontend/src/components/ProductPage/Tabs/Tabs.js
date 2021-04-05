@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { toggleReviewPopup, toggleYoutubePopup } from '../../../redux/actions/appAction'
+import { toggleReviewPopup } from '../../../redux/actions/appAction'
 import './_tabs.scss'
 import Rating from '../../Rating/Rating'
 
-const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews }) => {
+const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
   const [tab, setTab] = useState('description')
   const [ratingList, setRatingList] = useState({})
 
@@ -18,7 +18,6 @@ const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews })
 
   const dispatch = useDispatch()
   const visiblePopup = useSelector((state) => state.app.visibleReviewPopupForm)
-  const visibleYoutubePopup = useSelector((state) => state.app.visibleYoutubePopupForm)
 
   const calcRatingCountRepetition = () => {
     const ratingArray = []
@@ -37,9 +36,7 @@ const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews })
   const addVisiblePopup = () => {
     dispatch(toggleReviewPopup(!visiblePopup))
   }
-  const addVisibleYoutubePopup = () => {
-    dispatch(toggleYoutubePopup(!visibleYoutubePopup))
-  }
+
 
   const tabHandler = (tab, e) => {
     const tabsNode = document.getElementsByClassName('product-tabs__item')
@@ -110,12 +107,6 @@ const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews })
     return new Date(val).toLocaleString()
   }
 
-  const videoStyle = {
-    backgroundImage: `url('https://img.youtube.com/vi/${youtubeEmbed}/maxresdefault.jpg')`,
-    backgroundSize: 'cover',
-    backgroundRepeat: 'no-repeat',
-  }
-
   return (
     <div className={tabsClasses.join(' ')}>
       <ul className='product-tabs__list'>
@@ -130,12 +121,6 @@ const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews })
           onClick={(e) => tabHandler('specs', e)}
         >
           Specs
-        </li>
-        <li
-          className='product-tabs__item'
-          onClick={(e) => tabHandler('videos', e)}
-        >
-          Video
         </li>
         <li
           className='product-tabs__item'
@@ -159,22 +144,6 @@ const Tabs = ({ specs, description, youtubeEmbed, reviews, rating, numReviews })
         <ul className='specs-tab__list'>
           {renderSpecs(specs)}
         </ul>
-      </div>
-      <div className='product-tab__item videos-tab'>
-        <h5 className='product-tab__headline'>
-          Video
-        </h5>
-
-        <div className='videos-tab__preview'
-             onClick={addVisibleYoutubePopup}
-             style={videoStyle}
-        >
-          <svg width='59' height='60' viewBox='0 0 59 60' fill='none' xmlns='http://www.w3.org/2000/svg' className='videos-tab__preview__icon'>
-            <path
-              d='M22.3927 0H36.6073C48.9395 0 59 10.231 59 22.7723V37.2277C59 49.769 48.907 60 36.6073 60H22.3927C10.0605 60 0 49.736 0 37.2277V22.7723C0 10.231 10.0605 0 22.3927 0ZM21.6788 20.9901V39.0429C21.6788 41.4851 24.3075 42.9703 26.352 41.6832L40.5666 32.6403C42.4813 31.4191 42.4813 28.5809 40.5666 27.3927L26.3196 18.3498C24.3075 17.0627 21.6788 18.5479 21.6788 20.9901Z'
-              fill='#ffffffad'/>
-          </svg>
-        </div>
       </div>
       <div className='product-tab__item reviews-tab'>
         <h5 className='product-tab__headline'>

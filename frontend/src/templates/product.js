@@ -80,7 +80,7 @@ const ProductPage = ({ data, location }) => {
   }
 
   return (
-    <Layout youtubeEmbed={product.youtubeEmbed} productId={product.id}>
+    <Layout productId={product.id}>
       <SEO title={product.name ? product.name : 'Product'}/>
       <section className='product'>
         <div className="product__inner">
@@ -117,7 +117,6 @@ const ProductPage = ({ data, location }) => {
                 numReviews={product.numReviews}
                 specs = {specs}
                 description = {description}
-                youtubeEmbed = {product.youtubeEmbed}
                 reviews = {reviews}
               />
             </div>
