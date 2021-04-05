@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: "Ecdev Shop",
@@ -37,7 +41,7 @@ module.exports = {
         typeName: "SWAPI",
         queryLimit: 1000,
         fieldName: "swapi",
-        url: 'https://backend.ecdevstage2.com/public-api',
+        url: `${process.env.BACKEND_GRAPHQL}`,
       },
     },
   ],
