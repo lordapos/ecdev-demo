@@ -87,7 +87,7 @@ const ShippingPage = () => {
               />
             </div>
             <div className="shipping__form__submit">
-              <button className='shipping__form__button' type='submit'>Continue to payment</button>
+              <button className='shipping__form__button' type='submit'>Continue</button>
             </div>
           </form>
         </div>
