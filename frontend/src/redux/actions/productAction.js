@@ -32,7 +32,7 @@ export const listSortProducts = (category) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_LIST_REQUEST })
     const { sort: { sorting } } = getState()
     const arrBrand = []
-    if (sorting.brands.length > 0) {
+    if (sorting.brands && sorting.brands.length > 0) {
       sorting.brands.forEach(item => {
         arrBrand.push(item.id)
       })
