@@ -27,7 +27,7 @@ const CamerasPage = ({ data, location }) => {
   }, [dispatch, slug])
 
   useEffect(() => {
-    if (typeof updatedProducts === 'object' && updatedProducts.length > 0 && url === location.href) {
+    if (typeof updatedProducts === 'object' && url === location.href) {
       setProducts(updatedProducts)
     }
   }, [updatedProducts, location, url])
