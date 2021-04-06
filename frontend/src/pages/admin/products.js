@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { deleteProduct, listProducts } from '../../redux/actions/productAction'
+import { deleteProduct, listSortProducts } from '../../redux/actions/productAction'
 import AdminLayout from '../../components/Layout/AdminLayout'
 import SEO from '../../components/Seo'
 import Message from '../../components/Message/Message'
@@ -20,7 +20,7 @@ const ProductsPage = () => {
   } = productDelete
 
   useEffect(() => {
-    dispatch(listProducts())
+    dispatch(listSortProducts('cameras'))
   }, [dispatch, successDelete])
 
   const deleteHandler = (id) => {

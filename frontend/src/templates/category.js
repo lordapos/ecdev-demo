@@ -7,41 +7,17 @@ import ProductCard from '../components/ProductCard/ProductCard'
 import Message from '../components/Message/Message'
 import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
 import Filters from '../components/Filters/Filters'
-import { getBrand } from '../redux/actions/brandAction'
 import { PRODUCT_LIST_RESET, SORT_ADD, SORT_RESET } from '../redux/actions/actionTypes'
 import { graphql } from 'gatsby'
 
 const CamerasPage = ({ data, location }) => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
-  const brandList = useSelector((state) => state.brands)
   const sortList = useSelector((state) => state.sort)
-  const { error, products: updatedProducts } = productList
-  const { brands: updatedBrands, error: brandError } = brandList
+  const { error, products: updatedProducts, url } = productList
   const { sorting } = sortList
-  const [products, setProducts] = useState([])
-  const [brands, setBrands] = useState([])
+  const [products, setProducts] = useState(data.swapi.getCatProducts)
   const slug = location.pathname.split('/')[1]
-
-  useEffect(() => {
-    if (!updatedProducts || updatedProducts.length === 0) {
-      dispatch(listSortProducts(slug))
-    } else {
-      setProducts(updatedProducts)
-    }
-    if (!updatedBrands) {
-      dispatch(getBrand())
-    } else {
-      setBrands(updatedBrands)
-    }
-  }, [dispatch, updatedProducts, updatedBrands, slug])
-
-  useEffect(() => {
-    if (data) {
-      setProducts(data.swapi.getCatProducts)
-      setBrands(data.swapi.getBrands)
-    }
-  }, [data])
 
   useEffect(() => {
     return () => {
@@ -51,10 +27,10 @@ const CamerasPage = ({ data, location }) => {
   }, [dispatch, slug])
 
   useEffect(() => {
-    if (updatedProducts && updatedProducts[0] && updatedProducts.length > 0) {
+    if (typeof updatedProducts === 'object' && updatedProducts.length > 0 && url === location.href) {
       setProducts(updatedProducts)
     }
-  }, [updatedProducts])
+  }, [updatedProducts, location, url])
 
   const sort = event => {
     dispatch({
@@ -90,14 +66,13 @@ const CamerasPage = ({ data, location }) => {
             </div>
           </div>
           <div className='products__content'>
-            <Filters brands={brands} category={slug}/>
+            <Filters brands={data.swapi.getBrands} category={slug}/>
             <div className='products__list'>
               {products.map((product, index) => (
                 <ProductCard key={index} product={product}/>
               ))}
             </div>
             {error && <Message variant='error'>{error}</Message>}
-            {brandError && <Message variant='error'>{brandError}</Message>}
           </div>
         </div>
       </section>

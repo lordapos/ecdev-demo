@@ -32,13 +32,13 @@ export const listSortProducts = (category) => async (dispatch, getState) => {
     dispatch({ type: PRODUCT_LIST_REQUEST })
     const { sort: { sorting } } = getState()
     const arrBrand = []
-    if (sorting.brands) {
+    if (sorting.brands.length > 0) {
       sorting.brands.forEach(item => {
         arrBrand.push(item.id)
       })
     }
 
-    if (sorting.sortBy || sorting.price || arrBrand.length > 0) {
+    if (sorting.sortBy || sorting.price || (sorting.brands && sorting.brands.length > 0)) {
       const query = `
           query {
             getSortProducts(sort: {sortBy: "${sorting.sortBy}", price: ${sorting.price}, brands: [${arrBrand}]}, category: "${category}") {
@@ -46,10 +46,10 @@ export const listSortProducts = (category) => async (dispatch, getState) => {
             }
           }`
       const { data } = await axios.post('/public-api', { query: query })
-
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
         payload: data.data.getSortProducts,
+        url: window.location.href,
       })
     } else {
       const query = `
@@ -62,6 +62,7 @@ export const listSortProducts = (category) => async (dispatch, getState) => {
       dispatch({
         type: PRODUCT_LIST_SUCCESS,
         payload: data.data.getCatProducts,
+        url: window.location.href,
       })
     }
   } catch (error) {
