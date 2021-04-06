@@ -44,12 +44,6 @@ const ProductPage = ({ data, location }) => {
   }, [updatedProduct, slug])
 
   useEffect(() => {
-    if (data) {
-      setProduct(data.swapi.getProductBySlug)
-    }
-  }, [data, location])
-
-  useEffect(() => {
     if (success) {
       dispatch(productDetails(product.slug))
       dispatch({ type: REVIEW_CLEAN })
