@@ -14,6 +14,12 @@ const Category = sequelize.define('category', {
     allowNull: false,
     unique: true,
   },
+  slug: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    unique: true,
+  },
+
 }, { timestamps: false })
 
 Category.hasMany(Product, { as: 'products', foreignKey: 'categoryId' })
