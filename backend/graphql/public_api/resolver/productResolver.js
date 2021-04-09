@@ -90,7 +90,7 @@ module.exports = {
   async getSortProducts ({ sort, category }) {
     try {
       const categoryArr = await Category.findOne({
-        where: { name: category }
+        where: { slug: category }
       })
       let args = {}
       let order = null
