@@ -22,32 +22,26 @@ const ProductPage = ({ data, location }) => {
   const [description, setDescription] = useState([])
   const [images, setImages] = useState([])
   const [reviews, setReviews] = useState([])
-  const [product, setProduct] = useState([])
+  const [product, setProduct] = useState(data.swapi.getProductBySlug)
 
   const productInfo = useSelector(state => state.productDetails)
   const { error, product: updatedProduct } = productInfo
   const review = useSelector(state => state.review)
   const { success } = review
+  const slug = location.pathname.split('/')[2]
 
   useEffect(() => {
-    const slug = location.pathname.split('/')[2]
     dispatch(productDetails(slug))
     return () => {
       dispatch({ type: PRODUCT_DETAILS_CLEAN })
     }
-  },[dispatch, location])
+  },[dispatch, location, slug])
 
   useEffect(() => {
-    if (updatedProduct && updatedProduct.slug) {
+    if (updatedProduct && updatedProduct.slug === slug) {
       setProduct(updatedProduct)
     }
-  }, [updatedProduct])
-
-  useEffect(() => {
-    if (data) {
-      setProduct(data.swapi.getProductBySlug)
-    }
-  }, [data, location])
+  }, [updatedProduct, slug])
 
   useEffect(() => {
     if (success) {
@@ -76,7 +70,7 @@ const ProductPage = ({ data, location }) => {
 
   const breadcrumbs = [
     { to: '/', label: 'EcDevShop' },
-    { to: '/products', label: 'Cameras' },
+    { to: '/cameras', label: 'Cameras' },
     { to: `/product/${product.id}`, label: product.name },
   ]
 

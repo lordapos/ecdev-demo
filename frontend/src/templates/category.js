@@ -1,60 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import Layout from '../../components/Layout/Layout'
-import SEO from '../../components/Seo'
-import { listProducts } from '../../redux/actions/productAction'
-import ProductCard from '../../components/ProductCard/ProductCard'
-import Message from '../../components/Message/Message'
-import './_products.scss'
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs'
-import Filters from '../../components/Filters/Filters'
-import { getBrand } from '../../redux/actions/brandAction'
-import { SORT_ADD, SORT_RESET } from '../../redux/actions/actionTypes'
+import Layout from '../components/Layout/Layout'
+import SEO from '../components/Seo'
+import { listSortProducts } from '../redux/actions/productAction'
+import ProductCard from '../components/ProductCard/ProductCard'
+import Message from '../components/Message/Message'
+import Breadcrumbs from '../components/Breadcrumbs/Breadcrumbs'
+import Filters from '../components/Filters/Filters'
+import { PRODUCT_LIST_RESET, SORT_ADD, SORT_RESET } from '../redux/actions/actionTypes'
 import { graphql } from 'gatsby'
 
-const ProductsPage = ({ data }) => {
+const CamerasPage = ({ data, location }) => {
   const dispatch = useDispatch()
   const productList = useSelector((state) => state.productList)
-  const brandList = useSelector((state) => state.brands)
   const sortList = useSelector((state) => state.sort)
-  const { error, products: updatedProducts } = productList
-  const { brands: updatedBrands, error: brandError } = brandList
+  const { error, products: updatedProducts, url } = productList
   const { sorting } = sortList
-  const [products, setProducts] = useState([])
-  const [brands, setBrands] = useState([])
-
-  useEffect(() => {
-    if (!updatedProducts || updatedProducts.length === 0) {
-      dispatch(listProducts())
-    } else {
-      setProducts(updatedProducts)
-    }
-    if (!updatedBrands) {
-      dispatch(getBrand())
-    } else {
-      setBrands(updatedBrands)
-    }
-  }, [dispatch, updatedProducts, updatedBrands])
-
-  useEffect(() => {
-    if (data) {
-      setProducts(data.swapi.getProducts)
-      setBrands(data.swapi.getBrands)
-    }
-  }, [data])
+  const [products, setProducts] = useState(data.swapi.getCatProducts)
+  const slug = location.pathname.split('/')[1]
 
   useEffect(() => {
     return () => {
       dispatch({ type: SORT_RESET })
-      dispatch(listProducts())
+      dispatch({ type: PRODUCT_LIST_RESET })
     }
-  }, [dispatch])
+  }, [dispatch, slug])
 
   useEffect(() => {
-    if (updatedProducts[0] && updatedProducts.length > 0) {
+    if (typeof updatedProducts === 'object' && url === location.href) {
       setProducts(updatedProducts)
     }
-  }, [updatedProducts])
+  }, [updatedProducts, location, url])
 
   const sort = event => {
     dispatch({
@@ -64,7 +40,7 @@ const ProductsPage = ({ data }) => {
         brands: sorting.brands,
       },
     })
-    dispatch(listProducts('sort'))
+    dispatch(listSortProducts(slug))
   }
 
   const breadcrumbs = [
@@ -90,14 +66,13 @@ const ProductsPage = ({ data }) => {
             </div>
           </div>
           <div className='products__content'>
-            <Filters brands={brands}/>
+            <Filters brands={data.swapi.getBrands} category={slug}/>
             <div className='products__list'>
               {products.map((product, index) => (
                 <ProductCard key={index} product={product}/>
               ))}
             </div>
             {error && <Message variant='error'>{error}</Message>}
-            {brandError && <Message variant='error'>{brandError}</Message>}
           </div>
         </div>
       </section>
@@ -105,13 +80,13 @@ const ProductsPage = ({ data }) => {
   )
 }
 
-export default ProductsPage
+export default CamerasPage
 
 export const query = graphql`
-  query {
+  query($category: String!) {
     swapi {
-      getProducts {
-        id, name, image,images, price, rating, numReviews, slug
+      getCatProducts(category: $category) {
+        id, name, image, images, price, rating, numReviews, slug
       }
       getBrands {
         id, name

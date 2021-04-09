@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'gatsby'
+import { graphql, StaticQuery, Link } from 'gatsby'
 import logo from '../../images/logo.svg'
 import './_header.scss'
 import userIcon from '../../images/ic_user.svg'
@@ -19,16 +19,12 @@ const Header = () => {
       return (
         <li className='header__nav__item' key={index}>
           <Link
-            to={link.to}
-            className='header__nav__link'>{link.label}</Link>
+            to={'/'+link.name.toLowerCase()}
+            className='header__nav__link'>{link.name}</Link>
         </li>
       )
     })
   }
-  const links = [
-    { to: '/', label: 'Home' },
-    { to: '/products', label: 'Cameras' },
-  ]
 
   useEffect(() => {
     window.onscroll = () => {
@@ -76,7 +72,28 @@ const Header = () => {
           <img src={logo} alt="prim"/>
         </Link>
         <nav className='header__nav'>
-          <ul className='header__nav__list'>{renderLinks(links)}</ul>
+          {/*<ul className='header__nav__list'>{renderLinks(links)}</ul>*/}
+          <StaticQuery
+            query={graphql`
+              query {
+                swapi {
+                  getCategories {
+                    id, name
+                  }
+                }
+              }
+            `}
+            render={data => (
+              <ul className='header__nav__list'>
+                <li className='header__nav__item'>
+                  <Link
+                    to='/'
+                    className='header__nav__link'>Home</Link>
+                </li>
+                {renderLinks(data.swapi.getCategories)}
+              </ul>
+            )}
+          />
         </nav>
         <ul className='header__nav__list'>
           <li className='header__nav__item'>

@@ -6,13 +6,15 @@ import IncredibleShots from '../components/IncredibleShots/IncredibleShots'
 import Banner from '../components/Banner/Banner'
 import BestSellers from '../components/BestSellers/BestSellers'
 import FeaturedProducts from '../components/FeaturedProducts/FeaturedProducts'
+import { graphql } from 'gatsby'
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
+
   return (
     <Layout>
       <SEO title='Find the best products'/>
       <Banner/>
-      <FeaturedProducts/>
+      <FeaturedProducts products={data.swapi.getCatProducts}/>
       <CamerasReview/>
       <IncredibleShots/>
       <BestSellers/>
@@ -21,3 +23,13 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const query = graphql`
+  query {
+    swapi {
+      getCatProducts(category: "cameras") {
+        id, name, image, images, price, rating, numReviews, slug
+      }
+    }
+  }
+`

@@ -1,5 +1,6 @@
 const Product = require('../../../models/Product')
 const Brand = require('../../../models/Brand')
+const Category = require('../../../models/Category')
 const Review = require('../../../models/Review')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
@@ -86,8 +87,11 @@ module.exports = {
     }
   },
 
-  async getSortProducts ({ sort }) {
+  async getSortProducts ({ sort, category }) {
     try {
+      const categoryArr = await Category.findOne({
+        where: { name: category }
+      })
       let args = {}
       let order = null
       let price = null
@@ -131,6 +135,7 @@ module.exports = {
           where: {
             price,
             brandId,
+            categoryId: categoryArr.id,
           },
         }
       } else {
@@ -138,6 +143,7 @@ module.exports = {
           order,
           where: {
             price,
+            categoryId: categoryArr.id,
           },
         }
       }
@@ -202,6 +208,33 @@ module.exports = {
       throw new Error('Something went wrong, please try again later')
     }
   },
+
+  async getCategories () {
+    try {
+      return await Category.findAll({
+        order: [
+          ['name', 'ASC'],
+        ],
+        include: 'products',
+      })
+    } catch (e) {
+      throw new Error('Fetch brands is not available')
+    }
+  },
+
+  async getCatProducts ({category}) {
+    try {
+      const products = await Category.findOne({
+        include: 'products',
+        where: {
+          name: category
+        }
+      })
+      return products.products
+    } catch (e) {
+      throw new Error('Fetch products is not available')
+    }
+  }
 }
 
 const calcMiddleReviewValue = (reviews) => {

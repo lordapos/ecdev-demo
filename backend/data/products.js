@@ -15,6 +15,7 @@ const products = [
     price: 599,
     userId: 1,
     brandId: 1,
+    categoryId: 1,
     rating: 5,
     numReviews: 1,
     sku: '156YRT34',
@@ -77,6 +78,7 @@ const products = [
     price: 299,
     userId: 1,
     brandId: 1,
+    categoryId: 1,
     rating: 5,
     numReviews: 1,
     sku: '256YRT34',
@@ -139,6 +141,7 @@ const products = [
     price: 699.95,
     userId: 1,
     brandId: 2,
+    categoryId: 1,
     rating: 5,
     numReviews: 1,
     sku: '356YRT34',
@@ -201,6 +204,7 @@ const products = [
     price: 179.80,
     userId: 1,
     brandId: 2,
+    categoryId: 1,
     rating: 5,
     numReviews: 1,
     sku: '456YRT34',
@@ -263,6 +267,7 @@ const products = [
     price: 553.97,
     userId: 1,
     brandId: 3,
+    categoryId: 1,
     rating: 5,
     numReviews: 1,
     sku: '556YRT34',
@@ -325,6 +330,7 @@ const products = [
     price: 289.99,
     userId: 1,
     brandId: 3,
+    categoryId: 1,
     rating: 5,
     numReviews: 1,
     sku: '656YRT34',
@@ -367,6 +373,201 @@ const products = [
         {
           key: 'Total Pixels',
           value: 'Approx. 24.7 megapixels'
+        },
+      ]
+    ),
+  },
+  {
+    name: 'Canon RF 50mm f/1.8 STM Lens',
+    slug: 'canon-rf-50mm',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
+    price: 199.00,
+    userId: 1,
+    brandId: 1,
+    categoryId: 2,
+    rating: 5,
+    numReviews: 1,
+    sku: 'CAR5018',
+    youtubeEmbed: 'khoXxYLi0ME',
+    description: JSON.stringify(
+      [
+        {
+          title: 'Smoother Shots, Simpler Controls.',
+          value: 'A stepping motor (gear-type STM) provides smooth and quiet, continuous AF during video recording and when shooting photos, while the Control Ring means for simple, direct setting changes.'
+        },
+        {
+          title: 'Stronger Color Balance & Brilliant, Soft Backgrounds.',
+          value: 'Optimized lens placement and coatings help deliver outstanding color balance, while minimizing ghosting and flare. The Circular 7-Blade Aperture helps deliver beautiful, soft backgrounds.'
+        },
+        {
+          title: '12-Pin Communication System.',
+          value: 'Up to 7 stops of shake correction with EOS R series cameras with In-Body Image Stabilizer. Minimum focusing distance of 0.98 Ft. and maximum magnification of 0.25x.'
+        },
+      ]
+    ),
+    highlights: JSON.stringify(
+      [
+        'Fixed Focal Length: Focal Length: 50mm',
+        'Lens Type: Standard Lens',
+        'BImage Stabilization: Image Stabilization: Yes (IS)',
+        'Filter Size: Focal Length: 43mm'
+      ]),
+    specs: JSON.stringify(
+      [
+        {
+          key: 'Focal Length',
+          value: '50mm'
+        },
+        {
+          key: 'Maximum and Minimum Aperture',
+          value: 'F1.8 - 22'
+        },
+        {
+          key: 'Lens Mount Type',
+          value: 'RF Mount'
+        },
+        {
+          key: 'Minimum Focusing Distance',
+          value: '0.98\' (0.30m)'
+        },
+      ]
+    ),
+  },
+  {
+    name: 'Sony FE 85mm F1.8 E-Mount Lens - Bundle With 67mm Filter Kit, Lens Case, Cleaning Kit, Capleash II',
+    slug: 'sony-FE-85mm-F1.8',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
+    price: 598.00,
+    userId: 1,
+    brandId: 2,
+    categoryId: 2,
+    rating: 5,
+    numReviews: 1,
+    sku: 'CAR5018',
+    youtubeEmbed: 'khoXxYLi0ME',
+    description: JSON.stringify(
+      [
+        {
+          title: 'Smoother Shots, Simpler Controls.',
+          value: 'A stepping motor (gear-type STM) provides smooth and quiet, continuous AF during video recording and when shooting photos, while the Control Ring means for simple, direct setting changes.'
+        },
+        {
+          title: 'Stronger Color Balance & Brilliant, Soft Backgrounds.',
+          value: 'Optimized lens placement and coatings help deliver outstanding color balance, while minimizing ghosting and flare. The Circular 7-Blade Aperture helps deliver beautiful, soft backgrounds.'
+        },
+        {
+          title: '12-Pin Communication System.',
+          value: 'Up to 7 stops of shake correction with EOS R series cameras with In-Body Image Stabilizer. Minimum focusing distance of 0.98 Ft. and maximum magnification of 0.25x.'
+        },
+      ]
+    ),
+    highlights: JSON.stringify(
+      [
+        'Fixed Focal Length: Focal Length: 50mm',
+        'Lens Type: Standard Lens',
+        'BImage Stabilization: Image Stabilization: Yes (IS)',
+        'Filter Size: Focal Length: 43mm'
+      ]),
+    specs: JSON.stringify(
+      [
+        {
+          key: 'Focal Length',
+          value: '50mm'
+        },
+        {
+          key: 'Maximum and Minimum Aperture',
+          value: 'F1.8 - 22'
+        },
+        {
+          key: 'Lens Mount Type',
+          value: 'RF Mount'
+        },
+        {
+          key: 'Minimum Focusing Distance',
+          value: '0.98\' (0.30m)'
+        },
+      ]
+    ),
+  },
+  {
+    name: 'Nikon NIKKOR Z 70-200mm f/2.8 VR S Lens for Z Series Mirrorless Cameras',
+    slug: 'nikon-nikkor-z-70-200mm',
+    image: '/uploads/products/product-photo1.png',
+    images: JSON.stringify((
+      [
+        '/uploads/products/product-photo1.png',
+        '/uploads/products/product-photo2.png',
+        '/uploads/products/product-photo3.png',
+        '/uploads/products/product-photo4.png',
+        '/uploads/products/product-photo5.png',
+      ]
+    )),
+    price: 1458.00,
+    userId: 1,
+    brandId: 3,
+    categoryId: 2,
+    rating: 5,
+    numReviews: 1,
+    sku: 'CAR5018',
+    youtubeEmbed: 'khoXxYLi0ME',
+    description: JSON.stringify(
+      [
+        {
+          title: 'Smoother Shots, Simpler Controls.',
+          value: 'A stepping motor (gear-type STM) provides smooth and quiet, continuous AF during video recording and when shooting photos, while the Control Ring means for simple, direct setting changes.'
+        },
+        {
+          title: 'Stronger Color Balance & Brilliant, Soft Backgrounds.',
+          value: 'Optimized lens placement and coatings help deliver outstanding color balance, while minimizing ghosting and flare. The Circular 7-Blade Aperture helps deliver beautiful, soft backgrounds.'
+        },
+        {
+          title: '12-Pin Communication System.',
+          value: 'Up to 7 stops of shake correction with EOS R series cameras with In-Body Image Stabilizer. Minimum focusing distance of 0.98 Ft. and maximum magnification of 0.25x.'
+        },
+      ]
+    ),
+    highlights: JSON.stringify(
+      [
+        'Fixed Focal Length: Focal Length: 50mm',
+        'Lens Type: Standard Lens',
+        'BImage Stabilization: Image Stabilization: Yes (IS)',
+        'Filter Size: Focal Length: 43mm'
+      ]),
+    specs: JSON.stringify(
+      [
+        {
+          key: 'Focal Length',
+          value: '50mm'
+        },
+        {
+          key: 'Maximum and Minimum Aperture',
+          value: 'F1.8 - 22'
+        },
+        {
+          key: 'Lens Mount Type',
+          value: 'RF Mount'
+        },
+        {
+          key: 'Minimum Focusing Distance',
+          value: '0.98\' (0.30m)'
         },
       ]
     ),

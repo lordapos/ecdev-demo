@@ -11,6 +11,7 @@ module.exports = buildSchema(`
       price: Float!
       userId: Int!
       brandId: Int!
+      categoryId: Int!
       sku: String!
       youtubeEmbed: String
       highlights: String
@@ -29,6 +30,11 @@ module.exports = buildSchema(`
     }
     
     type Brand {
+      id: Int!
+      name: String!
+    }
+    
+    type Category {
       id: Int!
       name: String!
     }
@@ -66,9 +72,11 @@ module.exports = buildSchema(`
    }
 
     type Query {
+      getCatProducts(category: String!): [Product!]!
       getProducts: [Product!]!
       getBrands: [Brand!]!
-      getSortProducts(sort: sortItem!): [Product!]!
+      getCategories: [Category!]!
+      getSortProducts(sort: sortItem!, category: String!): [Product!]!
       getProductById(id: ID!): Product!
       getProductBySlug(slug: String!): Product!
       updateCart(items: [CartItem!]!): [Product!]!

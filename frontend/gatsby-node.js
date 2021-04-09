@@ -7,16 +7,29 @@ exports.createPages = async ({ actions, graphql }) => {
         getProducts {
           id, slug
         }
+        getCategories {
+          id, name
+        }
       }
     }
   `)
   const pageTemplate = path.resolve(`./src/templates/product.js`)
+  const catTemplate = path.resolve(`./src/templates/category.js`)
   data.swapi.getProducts.forEach(({ slug }) => {
     actions.createPage({
       path: `/product/${slug}`,
       component: slash(pageTemplate),
       context: {
         slug: slug,
+      },
+    })
+  })
+  data.swapi.getCategories.forEach(({ name }) => {
+    actions.createPage({
+      path: `/${name.toLowerCase()}`,
+      component: slash(catTemplate),
+      context: {
+        category: name,
       },
     })
   })

@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import InputRange from 'react-input-range'
 import './_filter.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { SORT_ADD } from '../../redux/actions/actionTypes'
-import { listProducts } from '../../redux/actions/productAction'
+import { listSortProducts } from '../../redux/actions/productAction'
 
-const Filters = ({ brands }) => {
+const Filters = ({ brands, category }) => {
   const dispatch = useDispatch()
   const sortList = useSelector((state) => state.sort)
   const { sorting } = sortList
   const [value, setValue] = useState(2000)
   const [viewPrice, setViewPrice] = useState(false)
   const [viewBrand, setBrand] = useState(false)
-  const [checkedBrand, setCheckedBrand] = useState([])
+  const [checkedBrand, setCheckedBrand] = useState(sorting.brands ? sorting.brands : [])
   const rage = ['filter__category']
   const brand = ['filter__category']
   if (viewPrice) {
@@ -33,7 +33,7 @@ const Filters = ({ brands }) => {
         price: value,
         brands: sorting.brands,
       }})
-    dispatch(listProducts('sort'))
+    dispatch(listSortProducts(category))
   }
 
   const changeRage = () => {
@@ -50,12 +50,16 @@ const Filters = ({ brands }) => {
         price: sorting.price,
         brands: values,
       }})
-    dispatch(listProducts('sort'))
+    dispatch(listSortProducts(category))
   }
 
-  useEffect(() => {
-    submitForm(checkedBrand)
-  },[checkedBrand])
+  const removeArr = async (value) => {
+    const key = checkedBrand.findIndex(x => x.id === value)
+    const arr = checkedBrand;
+    arr.splice(key, 1)
+    submitForm(arr)
+    return true
+  }
 
   return (
     <div className='filter'>
@@ -68,7 +72,7 @@ const Filters = ({ brands }) => {
             value={value}
             onChangeComplete ={value => sortPrice({ value })}
             onChange={value => changePrice({ value })}/>
-                    </div>
+        </div>
       </div>
       <div className={brand.join(' ')}>
         <button className='h5 filter__category__title' onClick={changeBrand}>Brand <span className='filter__category__arrow'> </span></button>
@@ -81,19 +85,19 @@ const Filters = ({ brands }) => {
                   type="checkbox"
                   value={tag.id}
                   checked={checkedBrand.find(x => x.id === tag.id)}
-                  onChange={e => {
-                    let checked = checkedBrand
+                  onClick={e => {
                     if (e.target.checked) {
                       const val = {
                         name: e.target.name,
                         id: e.target.value,
                       }
-                      checked.push(val)
-                      setCheckedBrand(checked)
+                      const arr = checkedBrand
+                      arr.push(val)
+                      setCheckedBrand(arr)
+                      submitForm(checkedBrand)
                     } else {
-                      setCheckedBrand(checked.filter(x => x.id !== e.target.value))
+                      removeArr(e.target.value)
                     }
-                    submitForm(checkedBrand)
                   }}
                 />
                 <span>{tag.name}</span>
