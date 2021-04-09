@@ -45,7 +45,7 @@ const CamerasPage = ({ data, location }) => {
 
   const breadcrumbs = [
     { to: '/', label: 'EcDevShop' },
-    { to: '/products', label: 'Cameras' },
+    { to: '/'+data.swapi.getCategory.slug, label: data.swapi.getCategory.name },
   ]
 
   return (
@@ -90,6 +90,9 @@ export const query = graphql`
       }
       getBrands {
         id, name
+      }
+      getCategory (category: $category) {
+        name, slug
       }
     }
   }

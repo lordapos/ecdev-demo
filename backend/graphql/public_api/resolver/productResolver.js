@@ -234,6 +234,18 @@ module.exports = {
     } catch (e) {
       throw new Error('Fetch products is not available')
     }
+  },
+
+  async getCategory ({category}) {
+    try {
+      return await Category.findOne({
+        where: {
+          name: category
+        }
+      })
+    } catch (e) {
+      throw new Error('Fetch category is not available')
+    }
   }
 }
 

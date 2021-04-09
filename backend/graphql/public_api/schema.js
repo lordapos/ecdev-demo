@@ -76,6 +76,7 @@ module.exports = buildSchema(`
       getProducts: [Product!]!
       getBrands: [Brand!]!
       getCategories: [Category!]!
+      getCategory(category: String!): Category!
       getSortProducts(sort: sortItem!, category: String!): [Product!]!
       getProductById(id: ID!): Product!
       getProductBySlug(slug: String!): Product!

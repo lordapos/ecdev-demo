@@ -8,7 +8,7 @@ exports.createPages = async ({ actions, graphql }) => {
           id, slug
         }
         getCategories {
-          id, name
+          id, slug
         }
       }
     }
@@ -24,12 +24,12 @@ exports.createPages = async ({ actions, graphql }) => {
       },
     })
   })
-  data.swapi.getCategories.forEach(({ name }) => {
+  data.swapi.getCategories.forEach(({ slug }) => {
     actions.createPage({
-      path: `/${name.toLowerCase()}`,
+      path: `/${slug}`,
       component: slash(catTemplate),
       context: {
-        category: name,
+        category: slug,
       },
     })
   })
