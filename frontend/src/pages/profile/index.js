@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faTimes,
 } from '@fortawesome/free-solid-svg-icons'
-import { USER_DETAILS_RESET } from '../../redux/actions/actionTypes'
+import { USER_DETAILS_RESET, USER_UPDATE_PROFILE_RESET } from '../../redux/actions/actionTypes'
 import './_profile.scss'
 
 const ProfilePage = () => {
@@ -58,6 +58,7 @@ const ProfilePage = () => {
   useEffect(() => {
     return () => {
       dispatch({ type: USER_DETAILS_RESET })
+      dispatch({ type: USER_UPDATE_PROFILE_RESET })
     }
   }, [dispatch])
 
