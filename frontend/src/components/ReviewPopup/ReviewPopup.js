@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import './_review-popup.scss'
@@ -30,9 +30,6 @@ const ReviewPopup = ({productId}) => {
     dispatch(toggleReviewPopup(!reviewPopup))
   }
 
-  useEffect(() =>{
-    console.log(ratingNumber)
-  })
 
   return (
     <div className={reviewClasses}>
