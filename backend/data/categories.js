@@ -7,6 +7,10 @@ const categories = [
     name: 'Lenses',
     slug: 'lenses'
   },
+  {
+    name: 'Accessories',
+    slug: 'accessories'
+  },
 ];
 
 module.exports = categories;
