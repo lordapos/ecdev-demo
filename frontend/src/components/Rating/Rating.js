@@ -27,7 +27,7 @@ const Rating = ({ value, text, hideCountReviewers }) => {
       </span>
       {
         hideCountReviewers ? null
-          : <span>({text})</span>
+          : <span className="rating__count">({text})</span>
       }
     </div>
   )

@@ -45,14 +45,14 @@ const TermsPage = () => {
                   uses.</p>
               </li>
               <li>
-                <p><strong>Country</strong>refers to: Ukraine</p>
+                <p><strong>Country </strong>refers to: Ukraine</p>
               </li>
               <li>
                 <p><strong>Device </strong>means any device that can access the Service such as a computer, a cellphone or
                   a digital tablet.</p>
               </li>
               <li>
-                <p><strong>Personal Data</strong>is any information that relates to an identified or identifiable
+                <p><strong>Personal Data </strong>is any information that relates to an identified or identifiable
                   individual.</p>
               </li>
               <li>
@@ -293,7 +293,7 @@ const TermsPage = () => {
               <li>Protect against legal liability</li>
             </ul>
             <p className="policy__information__tagline">Security of Your Personal Data</p>
-            <p>TThe security of Your Personal Data is important to Us, but remember that no method of transmission over
+            <p>The security of Your Personal Data is important to Us, but remember that no method of transmission over
               the Internet, or method of electronic storage is 100% secure. While We strive to use commercially acceptable
               means to protect Your Personal Data, We cannot guarantee its absolute security.</p>
 

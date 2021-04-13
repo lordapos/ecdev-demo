@@ -16,20 +16,20 @@ const CamerasReview = () => {
           <li className='cameras-review__item cameras-review__item--dx'>
             <div className="cameras-review__information">
               <span className='cameras-review__name'>
-                DX Series DSLRs
+                DX Series Nikon D850
               </span>
-              <Link to='/product/canon-powershot-sx620' className='cameras-review__link'>
-                See DX Series Cameras
+              <Link to='/product/nikon-d850' className='cameras-review__link'>
+                See DX Series Camera
               </Link>
             </div>
           </li>
           <li className='cameras-review__item cameras-review__item--fx'>
             <div className="cameras-review__information">
               <span className='cameras-review__name'>
-                FX Series DSLRs
+                FX Series Nikon D610
               </span>
-              <Link to='/product/sony-cyber-shot-dsc-h300' className='cameras-review__link'>
-                See FX Series Cameras
+              <Link to='/product/nikon-d610' className='cameras-review__link'>
+                See FX Series Camera
               </Link>
             </div>
 

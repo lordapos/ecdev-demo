@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Formik } from 'formik'
 import './_review-popup.scss'
@@ -13,23 +13,26 @@ const ReviewPopup = ({productId}) => {
   const dispatch = useDispatch()
   const [ratingNumber, setRatingNumber] = useState(1)
 
-  const handleClick = (e) => {
+  const handleClick = (value) => {
     const allNodesRating = document.getElementsByClassName('review-form__rating__item')
-    for (const item of allNodesRating) {
-      item.classList.remove('active')
-    }
-    const currentData = e.target.parentNode.dataset.value
 
-    for (let i = 0; i < currentData; i++) {
+    for (const item of allNodesRating) {
+        item.classList.remove('active')
+      }
+    for (let i = 0; i < value; i++) {
       allNodesRating[i].classList.add('active')
     }
-    setRatingNumber(currentData)
+    setRatingNumber(value)
   }
 
   const hidePopup = (e) => {
     e.preventDefault()
     dispatch(toggleReviewPopup(!reviewPopup))
   }
+
+  useEffect(() =>{
+    console.log(ratingNumber)
+  })
 
   return (
     <div className={reviewClasses}>
@@ -80,11 +83,11 @@ const ReviewPopup = ({productId}) => {
               <div className='review-form__group'>
                 <label htmlFor='title' className='review-form__label'>Your overall rating *</label>
                 <div className='review-form__rating'>
-                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item active' data-value={1} onClick={handleClick}/>
-                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={2} onClick={handleClick}/>
-                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={3} onClick={handleClick}/>
-                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={4} onClick={handleClick}/>
-                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' data-value={5} onClick={handleClick}/>
+                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item active' onClick={() =>{handleClick(1)}}/>
+                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' onClick={() =>{handleClick(2)}}/>
+                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' onClick={() =>{handleClick(3)}}/>
+                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' onClick={() =>{handleClick(4)}}/>
+                  <FontAwesomeIcon icon={faStar} className='review-form__rating__item' onClick={() =>{handleClick(5)}}/>
                 </div>
               </div>
               <div className='review-form__group'>

@@ -1,7 +1,7 @@
 const products = [
   {
     name: 'Nikon D5XQD',
-    slug: 'nikon-D5XQD',
+    slug: 'nikon-d5xqd',
     image: '/uploads/products/D5-1.png',
     images: JSON.stringify((
       [
@@ -79,7 +79,7 @@ const products = [
   },
   {
     name: 'Nikon D6',
-    slug: 'nikon-D6',
+    slug: 'nikon-d6',
     image: '/uploads/products/D6-1.png',
     images: JSON.stringify((
       [
@@ -161,7 +161,7 @@ const products = [
   },
   {
     name: 'Nikon D850',
-    slug: 'nikon-D850',
+    slug: 'nikon-d850',
     image: '/uploads/products/D850-1.png',
     images: JSON.stringify((
       [
@@ -239,7 +239,7 @@ const products = [
   },
   {
     name: 'Nikon D610',
-    slug: 'nikon-D610',
+    slug: 'nikon-d610',
     image: '/uploads/products/D610-1.png',
     images: JSON.stringify((
       [
@@ -377,19 +377,19 @@ const products = [
     ),
   },
   {
-    name: 'Sony Alpha a7 III',
-    slug: 'sony-alpha-a7',
-    image: '/uploads/products/sony-alpha-a7-1.png',
+    name: 'Sony Alpha 7C Compact',
+    slug: 'sony-alpha-7c-compact',
+    image: '/uploads/products/sony-alpha-7c-1.png',
     images: JSON.stringify((
       [
-        '/uploads/products/sony-alpha-a7-1.png',
-        '/uploads/products/sony-alpha-a7-2.png',
-        '/uploads/products/sony-alpha-a7-3.png',
-        '/uploads/products/sony-alpha-a7-4.png',
-        '/uploads/products/sony-alpha-a7-5.png',
+        '/uploads/products/sony-alpha-7c-1.png',
+        '/uploads/products/sony-alpha-7c-2.png',
+        '/uploads/products/sony-alpha-7c-3.png',
+        '/uploads/products/sony-alpha-7c-4.png',
+        '/uploads/products/sony-alpha-7c-5.png',
       ]
     )),
-    price: 2198,
+    price: 1800,
     userId: 1,
     brandId: 2,
     categoryId: 1,
@@ -400,48 +400,49 @@ const products = [
     description: JSON.stringify(
       [
         {
-          title: 'Great images await',
-          value: 'With 24.3 megapixels, the α7’s 35mm full-frame Exmor™ sensor rivals that of leading DSLRs. And with Sony’s latest BIONZ X processor and most advanced autofocus, the α7 offers outstanding detail, sensitivity, and quality. Get ready for performance that will propel your photography to new heights.'
+          title: 'Full-frame imaging in a compact body',
+          value: 'Bigger sensors create better images, and the α7C\'s full-frame sensor is much larger than the sensors in smartphones, compact digital cameras, and similar-sized APS-C interchangeable-lens cameras. The resulting increased light collection allows for professional-quality images with reduced noise, and more retained detail in both shadows and highlights.',
         },
         {
-          title: 'Where speed meets precision',
-          value: 'Sony’s most advance autofocus ever, the α7 combines the speed of phase detection (with 117 focus points) and the accuracy of contrast detection. The refined Spatial Object Detection Algorithm gives an AF speed with the world’s fastest cameras. Additional enhancements include more accurate eye detection, lock-on autofocus for moving subjects, and autofocus area setting options.'
+          title: 'Make a difference with a larger sensor',
+          value: 'With a full-frame sensor it\'s possible to take shots and achieve impressive images that are unique to this format. The α7C\'s sensor is more than twice the size of the sensors found in APS-C cameras of similar body size, and up to 30 times larger than a smartphone sensor, for stunning images with greater depth and detail.'
+
         },
         {
-          title: 'Glass worthy of a first-class camera',
-          value: 'To enable photographers to explore the limits of the α7’s unrivaled potential, Sony designed a new set of E-mount lenses precisely for the internal geometries of the new full-frame range. In addition, previous-generation α owners can use the full range of E-mount lenses, or A-mounts with an adaptor for a professional range of 50+ lenses.'
+          title: 'Compact size, easy operation',
+          value: 'The α7C was fashioned to be compact, lightweight, and portable without compromising genuine full-frame camera performance. This goal was accomplished by developing new mechanical components, such as a space-saving shutter and optical stabilization unit, along with layout and structural enhancements. '
         },
       ]
     ),
     highlights: JSON.stringify(
       [
-        'Format FX',
-        'Megapixels 24.3',
-        'Continuous Shooting 5 FPS',
-        'AC Adapter AC-UUD12 AC Adapter',
-        'Weight 650g',
+        '24.2 MP, Mirrorless Camera',
+        'Exmor R CMOS Sensor',
+        'CDimensions - 12.40 x 5.90 x 7.10 cms',
+        'NFC One-touch sharing',
+        'Wi-Fi',
       ]),
     specs: JSON.stringify(
       [
         {
-          key: 'Lens Included',
-          value: '28-70mm'
+          key: 'Display',
+          value: 'Type TFT LCD Screen'
         },
         {
-          key: 'Image Sensor size',
-          value: '35mm full frame / 35.6x23.8mm'
+          key: 'Pixels',
+          value: 'Effective Pixels: 24.2 MP'
         },
         {
           key: 'Shutter Type',
           value: 'Electronically controlled, vertical-traverse, focal-plane type'
         },
         {
-          key: 'Flash Exposure Compensation',
-          value: '-3 EV to +3 EV (in 1/3 or 1/2 EV steps)'
+          key: 'Aux port',
+          value: '3.5mm'
         },
         {
-          key: 'Battery / Batteries',
-          value: 'NP-FZ100 Rechargeable Lithium-Ion Battery Pack (7.2 VDC, 2280 mAh'
+          key: 'Bluetooth Features',
+          value: '2.4 GHz Band'
         },
       ]
     ),
@@ -511,7 +512,7 @@ const products = [
   },
   {
     name: 'FE 12–24 mm F2.8 GM',
-    slug: 'fe-2–24 mm-f2.8-gm',
+    slug: 'fe-2–24-mm-f2-8-gm',
     image: '/uploads/products/sony-linces-1.png',
     images: JSON.stringify((
       [

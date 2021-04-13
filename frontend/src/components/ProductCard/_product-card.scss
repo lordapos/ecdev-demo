@@ -23,6 +23,7 @@
   &__image {
     width: 180px;
     height: 180px;
+    object-fit: contain;
 
     &-wrap {
       width: 100%;

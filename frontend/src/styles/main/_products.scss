@@ -59,13 +59,9 @@
   width: 80%;
 
   @include media(lg) {
-    width: 70%;
-  }
-
-  @include media(sm) {
     width: 100%;
-  }
 
+  }
   @include media(sm) {
     margin: 0 0 0.5rem;
   }

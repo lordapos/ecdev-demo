@@ -18,6 +18,9 @@
     justify-content: flex-end;
     margin-bottom: 10px;
 
+    &:visited{
+      color: $black;
+    }
     &:hover {
       text-decoration: underline;
     }
@@ -33,6 +36,7 @@
   &__list {
     display: flex;
     justify-content: space-between;
+    align-items: stretch;
     flex-wrap: wrap;
   }
 

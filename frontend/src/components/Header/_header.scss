@@ -42,7 +42,7 @@
     min-height: 41px;
     max-width: 12.5rem;
 
-    @include media(sm) {
+    @include media(md) {
       padding: 1rem 0;
     }
 
@@ -52,7 +52,7 @@
   }
 
   &__nav {
-    @include media(sm) {
+    @include media(md) {
       display: none;
     }
 
@@ -142,7 +142,7 @@
   display: none;
   margin-left: 1.5rem;
 
-  @include media(sm) {
+  @include media(md) {
     display: inline-block;
   }
 

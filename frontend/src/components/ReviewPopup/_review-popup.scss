@@ -19,6 +19,8 @@
     width: 100%;
     background: white;
     padding: 22px 30px;
+    max-height: 80%;
+    overflow: auto;
     @include media(sm) {
       margin: 30px;
     }
@@ -31,15 +33,12 @@
 
   &__close {
     position: absolute;
-    right: -40px;
-    top: -40px;
-    font-size: 2rem;
-    color: white;
+    font-size: 1.4rem;
+    color: black;
     cursor: pointer;
-    @include media(sm) {
-      right: 0;
-      top: -50px;
-    }
+    right: 14px;
+    top: 14px;
+    line-height: 1;
   }
 
   .review-form {

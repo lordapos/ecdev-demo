@@ -14,6 +14,7 @@ const Header = () => {
   const [view, setView] = useState('')
   const cls = ['header']
   cls.push(view)
+
   const renderLinks = (links) => {
     return links.map((link, index) => {
       return (
@@ -30,7 +31,6 @@ const Header = () => {
     window.onscroll = () => {
       if (window.pageYOffset > 100) {
         setView('header--hide')
-        // dispatch(toggleMenu(false))
       } else {
         setView('')
       }
@@ -72,7 +72,6 @@ const Header = () => {
           <img src={logo} alt="prim"/>
         </Link>
         <nav className='header__nav'>
-          {/*<ul className='header__nav__list'>{renderLinks(links)}</ul>*/}
           <StaticQuery
             query={graphql`
               query {

@@ -46,7 +46,7 @@ const BestSellers = () => {
               <img src={item3} alt="item3"/>
               <div className="best-sellers__information">
                 <p className="best-sellers__tagline">FX Advanced Entry</p>
-                <p className="best-sellers__name">Nikon D780</p>
+                <p className="best-sellers__name">Nikon D5XQD</p>
                 <p className="best-sellers__learn-more">
                   Learn more <img src={greenIconArrow} alt="icon arrow"/>
                 </p>

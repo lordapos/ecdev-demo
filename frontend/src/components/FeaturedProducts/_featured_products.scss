@@ -21,7 +21,7 @@
 
     &__item {
       width: calc(25% - 1rem);
-      @include media(md){
+      @include media(lg){
         width: calc(50% - 1rem);
       }
       @include media(xs){

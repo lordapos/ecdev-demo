@@ -153,7 +153,9 @@
 
       &__qty {
         width: 30%;
+        align-self: flex-start;
         display: flex;
+        align-items: center;
 
         &-val {
           margin: 0 1rem;
@@ -163,13 +165,24 @@
         }
 
         &-btn {
-          width: 1.5rem;
-          height: 1.5rem;
-          border-radius: 50%;
+          width: 25px;
+          height: 25px;
           background: $border;
           display: flex;
           justify-content: center;
           align-items: center;
+          &:hover{
+            transition: .5s;
+            background: #32c292ab;
+            svg{
+              fill: $white;
+            }
+
+          }
+          svg{
+            width: 14px;
+            transition: .5s;
+          }
         }
       }
 

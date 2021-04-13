@@ -79,9 +79,13 @@ const ProfilePage = () => {
 
   const submitHandler = (e) => {
     e.preventDefault()
+
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
-    } else {
+    } else if(password.length < 6){
+      setMessage('Passwords do not match')
+    }
+    else {
       dispatch(updateUserProfile({ name, email, password }))
     }
   }
@@ -177,7 +181,11 @@ const ProfilePage = () => {
                     <input onChange={(e) => setEmail(e.target.value)}
                            className='profile__personal__input' id='email'
                            type="text"
-                           name='email' required value={email}/>
+                           name='email'
+                           pattern=".{6,}"
+                           required
+                           title="6 characters minimum"
+                           value={email}/>
                   </div>
                   <div className="profile__personal__item">
                     <label htmlFor="password">Password</label>
@@ -185,6 +193,9 @@ const ProfilePage = () => {
                            className='profile__personal__input' id='password'
                            type="password"
                            name='password'
+                           pattern=".{6,}"
+                           required
+                           title="6 characters minimum"
                            placeholder='******'
                     />
                   </div>
@@ -196,6 +207,7 @@ const ProfilePage = () => {
                            type="password"
                            name='confirmPassword'
                            placeholder='******'
+                           required
                     />
                   </div>
                   <div className="profile__personal__submit">
