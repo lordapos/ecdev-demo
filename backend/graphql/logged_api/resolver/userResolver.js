@@ -16,7 +16,6 @@ module.exports = {
     if (user) {
       data.password = bcrypt.hashSync(data.password, 10)
       Object.assign(user, data)
-      console.log(user)
       const updatedUser = await user.save()
       return {
         id: updatedUser.id,
