@@ -101,19 +101,19 @@ const products = [
     description: JSON.stringify(
       [
         {
-          title: 'Precision focusing with 17 custom Group Area AF choices.',
+          title: 'Precision focusing with 17 custom Group Area AF choices',
           value: 'For reliable subject acquisition around distracting foreground objects like a net, player or other obstacle, sports photographers will find the D6\'s 17 selectable group Area AF patterns indispensable.'
         },
         {
-          title: 'Image quality that shines in any light.',
+          title: 'Image quality that shines in any light',
           value: 'The stellar combination of the D6\'s high-resolution 20.8MP FX-format CMOS sensor and state-of-the-art EXPEED 6 image-processing engine enables class-leading ISO\'s up to 102,400 (expandable to ISO 3,280,000) for glorious image quality in the widest range of lighting conditions and shooting scenarios. The profound levels of sensitivity and resolution achieved by the D6 model greatly reduce low light noise and improve AF detection over the D5 camera.'
         },
         {
-          title: 'Turbo-charged by EXPEED 6 processor.',
+          title: 'Turbo-charged by EXPEED 6 processor',
           value: 'The D6 is powered by Nikon’s fastest, most comprehensive image processing engine to date, EXPEED 6. It’s the brains behind the DSLR’s stunning photo and video quality, autofocus power, low-light performance, noise suppression, distortion control, image clarity, color reproduction and more.'
         },
         {
-          title: 'Fast and reliable 14 fps continuous shooting.',
+          title: 'Fast and reliable 14 fps continuous shooting',
           value: 'For capturing the most electrifying of moments during high speed sports and action, the D6 can shoot a remarkable 14 fps for up to 200 continuous shots at JPEG fine quality*. Its beautifully clear optical viewfinder allows real-time confirmation of the composition while its highly dependable mechanical shutter eliminates any concern of banding or flickering at high speeds—crucial under professional environments where every moment matters.'
         },
       ]
@@ -183,7 +183,7 @@ const products = [
     description: JSON.stringify(
       [
         {
-          title: 'Extreme resolution meets extreme speed.',
+          title: 'Extreme resolution meets extreme speed',
           value: 'When Nikon introduced the D800 and D800E, it set a new benchmark for DSLR image quality and super high resolution photography that approached medium format. Now, five years later, Nikon proudly introduces the next evolution in high resolution DSLRs, a camera that allows photographers to capture fast action in 45.7 megapixels of brilliant resolution. With remarkable advancements across the board—sensor design, autofocus, dynamic range, sensitivity, Speedlight control, battery life, shutter and mirror drive mechanisms, Silent Photography in Live-View mode, focus shift capability and more—this is quite possibly the most impressive, well-rounded DSLR yet.'
         },
         {
@@ -330,7 +330,7 @@ const products = [
     description: JSON.stringify(
       [
         {
-          title: 'Powerful Zoom. Epic Close-ups.',
+          title: 'Powerful Zoom. Epic Close-ups',
           value: 'Unleash the power of high zoom, high performance and Canon\'s advanced technology. The PowerShot SX540 HS is a versatile and easy-to-use camera for virtually anyone who wants to capture their favorite subjects, from family get-togethers to amazing safaris, to school plays and the beautiful moments of life in between. Whether you\'re capturing something up close or in the distance, you\'ll be able to get the shot you want with its incredible 50x (24–1200mm) zoom power.'
         },
         {
@@ -400,7 +400,7 @@ const products = [
     description: JSON.stringify(
       [
         {
-          title: 'Great images await.',
+          title: 'Great images await',
           value: 'With 24.3 megapixels, the α7’s 35mm full-frame Exmor™ sensor rivals that of leading DSLRs. And with Sony’s latest BIONZ X processor and most advanced autofocus, the α7 offers outstanding detail, sensitivity, and quality. Get ready for performance that will propel your photography to new heights.'
         },
         {
@@ -467,11 +467,11 @@ const products = [
     description: JSON.stringify(
       [
         {
-          title: 'Zoom in on mind-bending new possibilities.',
+          title: 'Zoom in on mind-bending new possibilities',
           value: 'Meet the first NIKKOR fisheye lens with zoom capability—and the first NIKKOR zoom to capture epic 180° circular images. The AF-S FISHEYE NIKKOR 8-15mm f/3.5-4.5E ED lens brings a new level of versatility and sharpness to extreme wide-angle lenses, freeing you to choose the right fisheye perspective for the shot; to create frame-filling images from as close as 0.5 feet from your subject or to follow your passion into challenging, heavily backlit, even wet and dirty situations. For those seeking a new source of inspiration and expression, this lens delivers.'
         },
         {
-          title: 'One lens. Two great effects.',
+          title: 'One lens. Two great effects',
           value: 'If you’re the kind of photographer or videographer who likes to think outside the box, the AF-S FISHEYE NIKKOR 8-15mm f/3.5-4.5E ED lens opens a new world of possibilities. Not only can you shoot traditional full-frame fisheye images, you can also zoom out to create fascinating 180° circular images. And you can get extremely close to your subject—as close as 0.5 feet with a 0.34x reproduction ratio—for close-up fisheye shots. Create images unlike any you\'ve seen.'
         },
       ]
