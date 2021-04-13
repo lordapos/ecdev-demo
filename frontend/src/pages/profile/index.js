@@ -82,10 +82,7 @@ const ProfilePage = () => {
 
     if (password !== confirmPassword) {
       setMessage('Passwords do not match')
-    } else if(password.length < 6){
-      setMessage('Passwords do not match')
-    }
-    else {
+    }  else {
       dispatch(updateUserProfile({ name, email, password }))
     }
   }
