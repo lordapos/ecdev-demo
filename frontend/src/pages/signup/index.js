@@ -58,12 +58,20 @@ const SignupPage = ({ location, history }) => {
               <input onChange={(e) => setPassword(e.target.value)}
                      className='register__form__input' id='password'
                      type="password"
-                     name='password' required/>
+                     name='password'
+                     pattern=".{6,}"
+                     required
+                     title="6 characters minimum"
+                     />
               <label htmlFor="confirmPassword">Confirm Password</label>
               <input onChange={(e) => setConfirmPassword(e.target.value)}
                      className='register__form__input' id='confirmPassword'
                      type="password"
-                     name='confirmPassword' required/>
+                     name='confirmPassword'
+                     pattern=".{6,}"
+                     required
+                     title="6 characters minimum"
+                     />
               <button type='submit' className='register__form__button'>Register
               </button>
               <p className='register__form__reg'>Have an Account?{' '}<Link
