@@ -14,12 +14,9 @@ module.exports = {
   async updateUserProfile ({ data }) {
     const user = await validateToken(data.token)
     if (user) {
-      if (data.password) {
-        user.password = bcrypt.hashSync(data.password, 10)
-      } else {
-        delete data.password
-      }
+      data.password = bcrypt.hashSync(data.password, 10)
       Object.assign(user, data)
+      console.log(user)
       const updatedUser = await user.save()
       return {
         id: updatedUser.id,

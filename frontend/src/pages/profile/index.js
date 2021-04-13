@@ -177,14 +177,12 @@ const ProfilePage = () => {
                     <label htmlFor="email">Email address</label>
                     <input onChange={(e) => setEmail(e.target.value)}
                            className='profile__personal__input' id='email'
-                           type="text"
+                           type='email'
                            name='email'
-                           pattern=".{6,}"
                            required
-                           title="6 characters minimum"
                            value={email}/>
                   </div>
-                  <div className="profile__personal__item">
+                  <div className='profile__personal__item'>
                     <label htmlFor="password">Password</label>
                     <input onChange={(e) => setPassword(e.target.value)}
                            className='profile__personal__input' id='password'
@@ -205,6 +203,8 @@ const ProfilePage = () => {
                            name='confirmPassword'
                            placeholder='******'
                            required
+                           pattern=".{6,}"
+                           title="6 characters minimum"
                     />
                   </div>
                   <div className="profile__personal__submit">
