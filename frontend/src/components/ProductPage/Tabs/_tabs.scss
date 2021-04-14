@@ -208,6 +208,13 @@
       width: 100%;
       border-bottom: 2px solid #E4E4E4;
       flex-shrink: 2;
+      position: relative;
+      &__line{
+        position: absolute;
+        left: 0;
+        height: 2px;
+        background: $black;
+      }
     }
   }
 

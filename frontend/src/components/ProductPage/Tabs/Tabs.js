@@ -8,6 +8,7 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
   const [tab, setTab] = useState('description')
   const [ratingList, setRatingList] = useState({})
 
+
   const tabsClasses = ['product-tabs']
   tabsClasses.push(tab)
 
@@ -100,6 +101,11 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
     })
   }
 
+  const calculatePercentage = (ratingItem) =>{
+    const result = ratingItem/numReviews * 100
+    return result.toFixed(2)
+  }
+
   const toDate = (val) => {
     return new Date(val).toLocaleString()
   }
@@ -158,8 +164,14 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
           <div className='reviews-result__right'>
             <ul className='reviews-result__list'>
               <li className='reviews-result__item'>
-                <div className='reviews-result__item__name'>5 <span>Stars</span></div>
-                <div className='reviews-result__item__scale'></div>
+                <div className='reviews-result__item__name'>5 <span>stars</span></div>
+                <div className='reviews-result__item__scale'>
+                  <div
+                    className='reviews-result__item__scale__line'
+                    style={{width: `${calculatePercentage(ratingList[5])}%`}}>
+
+                  </div>
+                </div>
                 <div className='reviews-result__item__count'>({
                   ratingList[5] !== undefined ?
                     ratingList[5]
@@ -168,8 +180,14 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                 </div>
               </li>
               <li className='reviews-result__item'>
-                <div className='reviews-result__item__name'>4 <span>Stars</span></div>
-                <div className='reviews-result__item__scale'></div>
+                <div className='reviews-result__item__name'>4 <span>stars</span></div>
+                <div className='reviews-result__item__scale'>
+                  <div
+                    className='reviews-result__item__scale__line'
+                    style={{width: `${calculatePercentage(ratingList[4])}%`}}>
+
+                  </div>
+                </div>
                 <div className='reviews-result__item__count'>({
                   ratingList[4] !== undefined ?
                     ratingList[4]
@@ -178,8 +196,14 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                 </div>
               </li>
               <li className='reviews-result__item'>
-                <div className='reviews-result__item__name'>3 <span>Stars</span></div>
-                <div className='reviews-result__item__scale'></div>
+                <div className='reviews-result__item__name'>3 <span>stars</span></div>
+                <div className='reviews-result__item__scale'>
+                  <div
+                    className='reviews-result__item__scale__line'
+                    style={{width: `${calculatePercentage(ratingList[3])}%`}}>
+
+                  </div>
+                </div>
                 <div className='reviews-result__item__count'>({
                   ratingList[3] !== undefined ?
                     ratingList[3]
@@ -188,8 +212,14 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                 </div>
               </li>
               <li className='reviews-result__item'>
-                <div className='reviews-result__item__name'>2 <span>Stars</span></div>
-                <div className='reviews-result__item__scale'></div>
+                <div className='reviews-result__item__name'>2 <span>stars</span></div>
+                <div className='reviews-result__item__scale'>
+                  <div
+                    className='reviews-result__item__scale__line'
+                    style={{width: `${calculatePercentage(ratingList[2])}%`}}>
+
+                  </div>
+                </div>
                 <div className='reviews-result__item__count'>({
                   ratingList[2] !== undefined ?
                     ratingList[2]
@@ -198,8 +228,14 @@ const Tabs = ({ specs, description, reviews, rating, numReviews }) => {
                 </div>
               </li>
               <li className='reviews-result__item'>
-                <div className='reviews-result__item__name'>1 <span>Stars</span></div>
-                <div className='reviews-result__item__scale'></div>
+                <div className='reviews-result__item__name'>1 <span>stars</span></div>
+                <div className='reviews-result__item__scale'>
+                  <div
+                    className='reviews-result__item__scale__line'
+                    style={{width: `${calculatePercentage(ratingList[1])}%`}}>
+
+                  </div>
+                </div>
                 <div className='reviews-result__item__count'>({
                   ratingList[1] !== undefined ?
                     ratingList[1]

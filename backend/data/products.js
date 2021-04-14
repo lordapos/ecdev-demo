@@ -12,7 +12,7 @@ const products = [
         '/uploads/products/D5-5.png',
       ]
     )),
-    price: 6499,
+    price: 1900,
     userId: 1,
     brandId: 3,
     categoryId: 1,
@@ -90,7 +90,7 @@ const products = [
         '/uploads/products/D6-5.png',
       ]
     )),
-    price: 6400,
+    price: 1850,
     userId: 1,
     brandId: 3,
     categoryId: 1,
@@ -172,7 +172,7 @@ const products = [
         '/uploads/products/D850-5.png',
       ]
     )),
-    price: 2999,
+    price: 1000,
     userId: 1,
     brandId: 3,
     categoryId: 1,
@@ -250,7 +250,7 @@ const products = [
         '/uploads/products/D610-5.png',
       ]
     )),
-    price: 1600,
+    price: 887,
     userId: 1,
     brandId: 3,
     categoryId: 1,
@@ -522,7 +522,7 @@ const products = [
         '/uploads/products/sony-linces-4.png',
       ]
     )),
-    price: 2900,
+    price: 1455,
     userId: 1,
     brandId: 2,
     categoryId: 2,

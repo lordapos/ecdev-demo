@@ -123,7 +123,7 @@ const ReviewPopup = ({productId}) => {
                   name='name'
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.password}
+                  value={values.name}
                   placeholder='Enter name'
                   className='review-form__input'
                 />

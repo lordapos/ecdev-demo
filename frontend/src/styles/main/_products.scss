@@ -28,6 +28,18 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+    position: relative;
+    &:after{
+      content: ">";
+      position: absolute;
+      color: #242222;
+      right: 0;
+      font-size: 14px;
+      transform: rotate(90deg);
+      z-index: -1;
+      font-weight: 600;
+    }
+
 
     @include media(md) {
       margin-left: 0;
@@ -42,6 +54,10 @@
 
   &__select {
     width: 200px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
   }
 
   &__list {
