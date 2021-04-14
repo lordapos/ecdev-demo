@@ -96,7 +96,7 @@ const products = [
     categoryId: 1,
     rating: 5,
     numReviews: 1,
-    sku: '156YRT31',
+    sku: '156YRT30',
     youtubeEmbed: 'ZMvWFGFyeD8',
     description: JSON.stringify(
       [
