@@ -13,6 +13,10 @@
     "build": "npm run-script build --prefix frontend",
     "start": "npm install --prefix frontend && npm run build && npm run backend"
   },
+  "browserslist": [
+    "since 2010",
+    "not dead"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/lordapos/ecdev-demo.git"
