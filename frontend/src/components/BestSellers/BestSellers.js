@@ -19,7 +19,7 @@ const BestSellers = () => {
         </Link>
         <div className="best-sellers__list">
           <div className="best-sellers__left">
-            <Link to='/product/sony-cyber-shot-dsc-h300' className="best-sellers__item best-sellers__left__item">
+            <Link to='/product/nikon-d6' className="best-sellers__item best-sellers__left__item">
               <img src={item1} alt="item1"/>
               <div className="best-sellers__information">
                 <p className="best-sellers__tagline">FX Flagship</p>
@@ -32,7 +32,7 @@ const BestSellers = () => {
 
           </div>
           <div className="best-sellers__right">
-            <Link to='/product/sony-cyber-shot-dsc-h300' className="best-sellers__item best-sellers__right__item">
+            <Link to='/product/nikon-d850' className="best-sellers__item best-sellers__right__item">
               <img src={item2} alt="item2"/>
               <div className="best-sellers__information">
                 <p className="best-sellers__tagline">FX Professional</p>
@@ -42,7 +42,7 @@ const BestSellers = () => {
                 </p>
               </div>
             </Link>
-            <Link to='/product/sony-cyber-shot-dsc-h300' className="best-sellers__item best-sellers__right__item">
+            <Link to='/product/nikon-d5xqd' className="best-sellers__item best-sellers__right__item">
               <img src={item3} alt="item3"/>
               <div className="best-sellers__information">
                 <p className="best-sellers__tagline">FX Advanced Entry</p>
@@ -52,7 +52,7 @@ const BestSellers = () => {
                 </p>
               </div>
             </Link>
-            <Link to='/product/sony-cyber-shot-dsc-h300' className="best-sellers__item best-sellers__right__item">
+            <Link to='/product/nikon-d610' className="best-sellers__item best-sellers__right__item">
               <img src={item4} alt="item4"/>
               <div className="best-sellers__information">
                 <p className="best-sellers__tagline">FX Entry-Level</p>
