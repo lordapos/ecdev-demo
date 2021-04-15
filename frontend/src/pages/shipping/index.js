@@ -50,6 +50,7 @@ const ShippingPage = () => {
                      type="text"
                      name='address'
                      required
+                     placeholder='Enter address'
                      defaultValue={address}
               />
             </div>
@@ -61,6 +62,7 @@ const ShippingPage = () => {
                      type="text"
                      name='city'
                      required
+                     placeholder='Enter city'
                      defaultValue={city}
               />
             </div>
@@ -72,6 +74,7 @@ const ShippingPage = () => {
                      type="text"
                      name='postal-code'
                      required
+                     placeholder='Enter postal code'
                      defaultValue={postalCode}
               />
             </div>
@@ -83,6 +86,7 @@ const ShippingPage = () => {
                      type="text"
                      name='country'
                      required
+                     placeholder='Enter country'
                      defaultValue={country}
               />
             </div>

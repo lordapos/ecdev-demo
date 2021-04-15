@@ -2,6 +2,10 @@
 @import "./src/styles/config";
 
 .best-sellers {
+  margin-top: 140px;
+  @include media(md){
+    margin-top: 70px;
+  }
   &__inner {
     @include container;
   }

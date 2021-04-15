@@ -48,20 +48,32 @@ const SignupPage = ({ location, history }) => {
             <form onSubmit={submitHandler} className="register__form">
               <label htmlFor="email">Email address</label>
               <input onChange={(e) => setEmail(e.target.value)}
-                     className='register__form__input' id='email' type="text"
-                     name='email' required/>
+                     className='register__form__input'
+                     id='email'
+                     type="text"
+                     name='email'
+                     required
+                     placeholder='Enter email address'
+              />
               <label htmlFor="name">Name</label>
               <input onChange={(e) => setName(e.target.value)}
-                     className='register__form__input' id='name' type="text"
-                     name='name' required/>
+                     className='register__form__input'
+                     id='name'
+                     type="text"
+                     name='name'
+                     required
+                     placeholder='Enter name'
+              />
               <label htmlFor="password">Password</label>
               <input onChange={(e) => setPassword(e.target.value)}
-                     className='register__form__input' id='password'
+                     className='register__form__input'
+                     id='password'
                      type="password"
                      name='password'
                      pattern=".{6,}"
                      required
                      title="6 characters minimum"
+                     placeholder='Enter password'
                      />
               <label htmlFor="confirmPassword">Confirm Password</label>
               <input onChange={(e) => setConfirmPassword(e.target.value)}
@@ -71,7 +83,8 @@ const SignupPage = ({ location, history }) => {
                      pattern=".{6,}"
                      required
                      title="6 characters minimum"
-                     />
+                     placeholder='Confirm password'
+              />
               <button type='submit' className='register__form__button'>Register
               </button>
               <p className='register__form__reg'>Have an Account?{' '}<Link

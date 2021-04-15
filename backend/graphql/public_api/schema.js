@@ -41,6 +41,7 @@ module.exports = buildSchema(`
     
     input CartItem {
       id: Int!
+      slug: String!
       name: String!
       image: String!
       price: Float!

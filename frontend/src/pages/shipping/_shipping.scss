@@ -35,17 +35,22 @@
 
     &__submit {
       display: flex;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
       width: 100%;
       margin-top: 3rem;
+      @include media(xs){
+        justify-content: center;
+      }
     }
+
 
     &__button {
       background-color: $green;
       color: $white;
       border-radius: 4px;
-      padding: 0.5rem 2rem;
+      padding: 0.55rem 4rem;
+
       transition: .3s ease-in, .3s ease-in-out;
 
       &:hover {

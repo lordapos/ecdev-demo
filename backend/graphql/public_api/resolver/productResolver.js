@@ -38,6 +38,7 @@ module.exports = {
 
       return {
         id: product.id,
+        slug: product.slug,
         name: product.name,
         image: product.image,
         images: product.images,

@@ -17,12 +17,14 @@ import './_place-order.scss'
 const PlaceOrderPage = ({ history }) => {
   const dispatch = useDispatch()
   const cart = useSelector((state) => state.cart)
+  const { cartItems } = cart
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
   const addDecimals = (num) => {
     return (Math.round(num * 100) / 100).toFixed(2)
   }
   const [items, setItems] = useState(0)
+  const [price, setPrice] = useState(0)
   const [address, setAddress] = useState('')
   const [city, setCity] = useState('')
   const [postalCode, setPostalCode] = useState('')
@@ -34,13 +36,17 @@ const PlaceOrderPage = ({ history }) => {
     } else if (!cart.paymentMethod) {
       navigate('/payment')
     }
-    setItems(cart.cartItems.reduce((acc, item) => acc + item.price * item.qty, 0))
   }, [cart])
+
+  useEffect(() => {
+    setItems(cartItems.reduce((acc, item) => acc + item.qty, 0))
+    setPrice(cartItems.reduce((acc, item) => acc + item.qty * item.price, 0))
+  }, [cartItems, price])
 
   cart.itemsPrice = addDecimals(
     items,
   )
-  cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 100)
+  cart.shippingPrice = 0
   cart.totalPrice = (
     Number(cart.itemsPrice) +
     Number(cart.shippingPrice)).toFixed(2)
@@ -117,7 +123,7 @@ const PlaceOrderPage = ({ history }) => {
                   <div className="place-order__cart__item" key={index}>
                     <img className='place-order__cart__item__image' src={item.image} alt={item.name}/>
                     <div className="place-order__cart__item__info">
-                      <Link to={`/product/${item.product}`} className='place-order__cart__item__name'>{item.name}</Link>
+                      <Link to={`/product/${item.slug}`} className='place-order__cart__item__name'>{item.name}</Link>
                       <p className='place-order__cart__item__qty'>Quantity: {item.qty}</p>
                     </div>
                     <p className='place-order__cart__item__price'>${item.qty * item.price}</p>
@@ -131,7 +137,7 @@ const PlaceOrderPage = ({ history }) => {
               <h3 className='place-order__summary__title'>Order Summary</h3>
               <div className="place-order__summary__item">
                 <p className="place-order__summary__item__name">{items > 1 ? items + ' Items' : items + ' Item'}</p>
-                <p className="place-order__summary__item__value">${cart.itemsPrice}</p>
+                <p className="place-order__summary__item__value">${price.toFixed(2)}</p>
               </div>
               <div className="place-order__summary__item">
                 <p className="place-order__summary__item__name">Shipping</p>
@@ -139,7 +145,7 @@ const PlaceOrderPage = ({ history }) => {
               </div>
               <div className="place-order__summary__item place-order__summary__item--total">
                 <p className="place-order__summary__item__name">Total</p>
-                <p className="place-order__summary__item__value">${cart.totalPrice}</p>
+                <p className="place-order__summary__item__value">${price.toFixed(2)}</p>
               </div>
               <button onClick={placeOrderHandler} className='place-order__summary__button'>Place Order</button>
               {error && <Message variant='error'>{error}</Message>}

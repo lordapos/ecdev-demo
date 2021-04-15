@@ -15,6 +15,8 @@ const CartPage = () => {
   const cart = useSelector((state) => state.cart)
   const { cartItems, loaded } = cart
   const [items, setItems] = useState(0)
+  const [price, setPrice] = useState(0)
+
 
   const breadcrumbs = [
     { to: '/', label: 'Home' },
@@ -40,7 +42,8 @@ const CartPage = () => {
 
   useEffect(() => {
     setItems(cartItems.reduce((acc, item) => acc + item.qty, 0))
-  }, [cartItems])
+    setPrice(cartItems.reduce((acc, item) => acc + item.qty * item.price, 0))
+  }, [cartItems, price])
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id))
@@ -49,8 +52,11 @@ const CartPage = () => {
   const changeCartQtyHandler = (id, qty, old) => {
     if (old + qty > 0) {
       dispatch(addToCart(id, qty))
+    } else {
+      dispatch(removeFromCart(id))
     }
   }
+
 
   return (
     <Layout>
@@ -72,14 +78,13 @@ const CartPage = () => {
                     </div>
                     {cartItems.map((product) => (
                       <div key={product.id} className="cart__product__item">
-                        <Link className='cart__product__item__image-wrap' to={`/product/${product.id}`}>
+                        <Link className='cart__product__item__image-wrap' to={`/product/${product.slug}`}>
                           <img className='cart__product__item__image' src={product.image}
                                alt="ecdev"/></Link>
                         <div className="cart__product__item__info">
-                          <Link to={`/product/${product.id}`} className='cart__product__item__title'>{product.name}</Link>
+                          <Link to={`/product/${product.slug}`} className='cart__product__item__title'>{product.name}</Link>
                           <p className='cart__product__item__price'>${product.price}</p>
                           <button onClick={() => removeFromCartHandler(product.id)} className='cart__product__item__remove'>
-                            <i className="fas fa-trash"> </i>
                             <span>Remove</span>
                           </button>
                         </div>
@@ -102,11 +107,11 @@ const CartPage = () => {
                     <h5 className="cart__order__title">Order Summary</h5>
                     <div className="cart__order__item">
                       <p>{items > 1 ? items + ' Items' : items + ' Item'}</p>
-                      <p>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</p>
+                      <p>${price.toFixed(2)}</p>
                     </div>
                     <div className="cart__order__item cart__order__item--total">
                       <p>Total</p>
-                      <p>${cartItems.reduce((acc, item) => acc + item.qty * item.price, 0).toFixed(2)}</p>
+                      <p>${price.toFixed(2)}</p>
                     </div>
                     <button onClick={checkoutHandler} className='cart__order__button'>Checkout</button>
                   </div>
