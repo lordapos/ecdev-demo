@@ -14,8 +14,10 @@
   &__content {
     display: flex;
     flex-direction: column;
-    padding: 2rem 10%;
-    width: 50%;
+    width: calc(40% - 60px);
+    @include media(md){
+      width: calc(40% - 30px);
+    }
     @include media(sm){
       width: 100%;
       padding: 0;
@@ -69,14 +71,17 @@
   }
 
   &__image {
-    width: 50%;
+    width: calc(60% - 60px);
     height: 432px;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: $light;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 4rem;
+    @include media(md){
+      width: calc(60% - 30px);
+    }
     @include media(sm){
       width: 100%;
       height: auto;

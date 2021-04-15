@@ -89,7 +89,9 @@
         }
       }
     }
-
+    &__button{
+      margin-left: 1.5rem;
+    }
     &__link {
       font-weight: 500;
       text-transform: capitalize;
@@ -102,7 +104,7 @@
       position: relative;
 
       &:hover {
-        color: $black;
+        color: $green
       }
 
 
@@ -113,6 +115,8 @@
       }
     }
   }
+
+
 }
 
 .user-icon,

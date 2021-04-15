@@ -95,7 +95,7 @@ const Header = () => {
           />
         </nav>
         <ul className='header__nav__list'>
-          <li className='header__nav__item'>
+          <li className='header__nav__button'>
             <Link
               to={userLink}
               className='header__nav__link header__nav__link--icon'
@@ -103,7 +103,7 @@ const Header = () => {
               <div className='user-icon' style={user}></div>
             </Link>
           </li>
-          <li className='header__nav__item'>
+          <li className='header__nav__button'>
             <Link
               to='/cart'
               className='header__nav__link header__nav__link--icon'

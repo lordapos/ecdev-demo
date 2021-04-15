@@ -20,6 +20,7 @@ const CamerasPage = ({ data, location }) => {
   const slug = location.pathname.split('/')[1]
 
   useEffect(() => {
+    dispatch(listSortProducts(slug))
     return () => {
       dispatch({ type: SORT_RESET })
       dispatch({ type: PRODUCT_LIST_RESET })

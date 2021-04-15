@@ -15,7 +15,7 @@ const LoginPage = ({ location }) => {
   const dispatch = useDispatch()
   const userLogin = useSelector((state) => state.userLogin)
   const { error, userInfo } = userLogin
-  const redirect = location.search ? location.search.split('=')[1] : '/'
+  const redirect = location.search ? location.search.split('=')[1] : '/profile'
 
   useEffect(() => {
     if (userInfo) {
@@ -39,13 +39,22 @@ const LoginPage = ({ location }) => {
             <form onSubmit={submitHandler} className="login__form">
               <label htmlFor="email">Email address</label>
               <input onChange={(e) => setEmail(e.target.value)}
-                     className='login__form__input' id='email' type="text"
-                     name='email' required placeholder='Enter email address'/>
+                     className='login__form__input'
+                     id='email'
+                     type="text"
+                     name='email'
+                     required
+                     placeholder='Enter email address'
+              />
               <label htmlFor="password">Password</label>
               <input onChange={(e) => setPassword(e.target.value)}
-                     className='login__form__input' id='password'
+                     className='login__form__input'
+                     id='password'
                      type="password"
-                     name='password' required/>
+                     name='password'
+                     required
+                     placeholder='Enter password'
+              />
               <button type='submit' className='login__form__button'>Log In
               </button>
               <p className='login__form__reg'>New Customer?{' '} <Link

@@ -39,6 +39,7 @@ module.exports = buildSchema(`
     
     input OrderItem {
       id: Int!
+      slug: String!
       name: String!
       image: String!
       price: Float!

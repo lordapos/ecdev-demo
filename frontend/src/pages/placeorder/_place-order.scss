@@ -22,7 +22,7 @@
   &__left {
     width: 60%;
     display: block;
-    @include media(sm){
+    @include media(md){
       width: 100%;
       margin-bottom: 35px;
     }
@@ -99,20 +99,23 @@
     }
 
     &__item {
-      margin-top: 1rem;
+      margin-top: 1.2rem;
       display: flex;
-      justify-content: flex-start;
-      align-items: stretch;
-      flex-wrap: wrap;
+      align-items: flex-start;
       padding-bottom: 1rem;
-      border-bottom: 1px solid $border;
+      border-bottom: 1px solid #EBEBEB;
+      width: 70%;
+      @include media(sm){
+        width: 100%;
+      }
 
-      &:last-child {
+    &:last-child {
         border-bottom: 0;
       }
 
       &__image {
         width: 80px;
+        object-fit: contain;
         margin-right: 1rem;
       }
 

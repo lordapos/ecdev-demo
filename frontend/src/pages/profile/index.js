@@ -88,6 +88,8 @@ const ProfilePage = () => {
     }
   }
 
+
+
   const renderOrders = (items) => {
     return items.map((order, index) => {
       return (
@@ -171,8 +173,13 @@ const ProfilePage = () => {
                   <div className="profile__personal__item">
                     <label htmlFor="name">Name</label>
                     <input onChange={(e) => setName(e.target.value)}
-                           className='profile__personal__input' type="text"
-                           required name='name' id='name' value={name}/>
+                           className='profile__personal__input'
+                           type="text"
+                           required name='name'
+                           id='name'
+                           value={name}
+                           placeholder='Enter name'
+                    />
                   </div>
                   <div className="profile__personal__item">
                     <label htmlFor="email">Email address</label>
@@ -181,7 +188,9 @@ const ProfilePage = () => {
                            type='email'
                            name='email'
                            required
-                           value={email}/>
+                           value={email}
+                           placeholder='Enter password'
+                    />
                   </div>
                   <div className='profile__personal__item'>
                     <label htmlFor="password">Password</label>
@@ -192,7 +201,7 @@ const ProfilePage = () => {
                            pattern=".{6,}"
                            required
                            title="6 characters minimum"
-                           placeholder='******'
+                           placeholder='Enter password'
                     />
                   </div>
                   <div className="profile__personal__item">
@@ -202,7 +211,7 @@ const ProfilePage = () => {
                            id='confirmPassword'
                            type="password"
                            name='confirmPassword'
-                           placeholder='******'
+                           placeholder='Confirm password'
                            required
                            pattern=".{6,}"
                            title="6 characters minimum"
@@ -223,24 +232,32 @@ const ProfilePage = () => {
                   <Message variant='error'>{errorOrders}</Message>
                 ) : (
                   <div className="profile__orders__overflow-container">
-                    <ul className='profile__orders__list'>
-                      <li className='profile__orders__item profile__orders__item--head'>
-                        <div className='profile__orders__item__tab'>
-                          <h6>DATE</h6>
-                        </div>
-                        <div className='profile__orders__item__tab'>
-                          <h6>TOTAL</h6>
-                        </div>
-                        <div className='profile__orders__item__tab'>
-                          <h6>PAID</h6>
-                        </div>
-                        <div className='profile__orders__item__tab'>
-                          <h6>DELIVERED</h6>
-                        </div>
-                        <div className='profile__orders__item__tab'> </div>
-                      </li>
-                      {renderOrders(orders)}
-                    </ul>
+                    {
+                      orders.length === 0 || orders === 'undefined' ?
+                        <p className="profile__orders__notification">
+                          You don't have orders
+                        </p>
+                        :
+                        <ul className='profile__orders__list'>
+                          <li className='profile__orders__item profile__orders__item--head'>
+                            <div className='profile__orders__item__tab'>
+                              <h6>DATE</h6>
+                            </div>
+                            <div className='profile__orders__item__tab'>
+                              <h6>TOTAL</h6>
+                            </div>
+                            <div className='profile__orders__item__tab'>
+                              <h6>PAID</h6>
+                            </div>
+                            <div className='profile__orders__item__tab'>
+                              <h6>DELIVERED</h6>
+                            </div>
+                            <div className='profile__orders__item__tab'> </div>
+                          </li>
+                          {renderOrders(orders)}
+                        </ul>
+                    }
+
                   </div>
                 )}
               </div>
