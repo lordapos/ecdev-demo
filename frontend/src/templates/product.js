@@ -28,14 +28,14 @@ const ProductPage = ({ data, location }) => {
   const { error, product: updatedProduct } = productInfo
   const review = useSelector(state => state.review)
   const { success } = review
-  const slug = location.pathname.split('/')[2]
+  const slug = product.slug
 
   useEffect(() => {
     dispatch(productDetails(slug))
     return () => {
       dispatch({ type: PRODUCT_DETAILS_CLEAN })
     }
-  },[dispatch, location, slug])
+  }, [dispatch, location, slug])
 
   useEffect(() => {
     if (updatedProduct && updatedProduct.slug === slug) {
@@ -54,16 +54,16 @@ const ProductPage = ({ data, location }) => {
     if (product.highlights) {
       setHighlights(JSON.parse(product.highlights))
     }
-    if (product.specs){
+    if (product.specs) {
       setSpecs(JSON.parse(product.specs))
     }
-    if (product.description){
+    if (product.description) {
       setDescription(JSON.parse(product.description))
     }
-    if (product.images){
+    if (product.images) {
       setImages(JSON.parse(product.images))
     }
-    if (product.review){
+    if (product.review) {
       setReviews(JSON.parse(product.review))
     }
   }, [product])
@@ -89,33 +89,52 @@ const ProductPage = ({ data, location }) => {
                 images={images}
                 alt={product.name}
               />
-            </div>
-            <div className="product__content__right">
-              <Information
-                name={product.name}
-                price={product.price}
-                rating={product.rating}
-                numReviews={product.numReviews}
-                sku={product.sku}
-                highlights={highlights}
-              />
-              <button onClick={addToCartHandler} className='product__add-to-cart'>
-                <img src={iconCart} alt='icon cart' className="product__add-to-cart__icon"/>
-                Add to cart
-              </button>
-              <div className="product__shipping">
-                <img src={iconShipping} alt="icon shipping" className="product__shipping__icon"/>
-                <span className="product__shipping__text">FREE SHIPPING Available</span>
+              <div className="product__content__left__mobile">
+                <Information
+                  name={product.name}
+                  price={product.price}
+                  rating={product.rating}
+                  numReviews={product.numReviews}
+                  sku={product.sku}
+                  highlights={highlights}
+                />
+                <button onClick={addToCartHandler} className='product__add-to-cart'>
+                  <img src={iconCart} alt='icon cart' className="product__add-to-cart__icon"/>
+                  Add to cart
+                </button>
+                <div className="product__shipping">
+                  <img src={iconShipping} alt="icon shipping" className="product__shipping__icon"/>
+                  <span className="product__shipping__text">FREE SHIPPING Available</span>
+                </div>
               </div>
-            </div>
-            <div className="product__content__bottom">
               <Tabs
                 rating={product.rating}
                 numReviews={product.numReviews}
-                specs = {specs}
-                description = {description}
-                reviews = {reviews}
+                specs={specs}
+                description={description}
+                reviews={reviews}
               />
+            </div>
+
+            <div className="product__content__right">
+              <div className="product__content__right__inner">
+                <Information
+                  name={product.name}
+                  price={product.price}
+                  rating={product.rating}
+                  numReviews={product.numReviews}
+                  sku={product.sku}
+                  highlights={highlights}
+                />
+                <button onClick={addToCartHandler} className='product__add-to-cart'>
+                  <img src={iconCart} alt='icon cart' className="product__add-to-cart__icon"/>
+                  Add to cart
+                </button>
+                <div className="product__shipping">
+                  <img src={iconShipping} alt="icon shipping" className="product__shipping__icon"/>
+                  <span className="product__shipping__text">FREE SHIPPING Available</span>
+                </div>
+              </div>
             </div>
           </div>
           {error && <Message variant='error'>{error}</Message>}
@@ -131,7 +150,7 @@ export const query = graphql`
   query($slug: String!) {
     swapi {
       getProductBySlug(slug: $slug) {
-         id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed, review 
+         id, name, image,images, price, description, rating, numReviews, brandId, sku, highlights, specs, youtubeEmbed, review, slug 
       }
     }
   }
