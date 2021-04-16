@@ -43,7 +43,7 @@ const OrderPage = ({ location }) => {
       document.body.appendChild(script)
     }
 
-    if (!order.isPaid) {
+    if (!order.isPaid && order) {
       if (!window.paypal) {
         addPayPalScript()
       } else {
@@ -128,7 +128,7 @@ const OrderPage = ({ location }) => {
                       <div className="order__cart__item" key={index}>
                         <img className='order__cart__item__image' src={item.image} alt={item.name}/>
                         <div className="order__cart__item__info">
-                          <Link to={`/product/${item.product}`} className='order__cart__item__name'>{item.name}</Link>
+                          <Link to={`/product/${item.slug}`} className='order__cart__item__name'>{item.name}</Link>
                           <p className='order__cart__item__qty'>Quantity: {item.qty}</p>
                         </div>
                         <p className='order__cart__item__price'>${item.qty * item.price}</p>
