@@ -59,65 +59,64 @@ const CartPage = () => {
         <div className="cart__inner">
           <Breadcrumbs breadcrumbs={breadcrumbs}/>
           <h1 className='cart__title'>Shopping Cart</h1>
-          <div className='cart__content'>
-            {!cartItems || cartItems.length === 0 ?
-              <Message variant='info'>Your cart is empty</Message> :
-              (<>
-                  <div className="cart__content__left">
-                    <div className="cart__product">
-                      <div className='cart__product__head'>
-                        <p className="cart__product__head__name">Product</p>
-                        <p className="cart__product__head__qty">Quantity</p>
-                        <p className="cart__product__head__total">Total</p>
-                      </div>
-                      {cartItems.map((product) => (
-                        <div key={product.id} className="cart__product__item">
-                          <Link className='cart__product__item__image-wrap' to={`/product/${product.slug}`}>
-                            <img className='cart__product__item__image' src={product.image}
-                                 alt="ecdev"/></Link>
-                          <div className="cart__product__item__info">
-                            <Link to={`/product/${product.slug}`} className='cart__product__item__title'>{product.name}</Link>
-                            <p className='cart__product__item__price'>${product.price}</p>
-                            <button onClick={() => removeFromCartHandler(product.id)} className='cart__product__item__remove'>
-                              <span>Remove</span>
-                            </button>
-                          </div>
-                          <div className="cart__product__item__qty">
-                            <button onClick={() => changeCartQtyHandler(product.id, -1)} className='cart__product__item__qty-btn'>
-                              <svg height="426pt" viewBox="0 -192 426.66667 426" width="426pt" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  d="m405.332031 43h-384c-11.773437 0-21.332031-9.558594-21.332031-21.332031 0-11.777344 9.558594-21.335938 21.332031-21.335938h384c11.777344 0 21.335938 9.558594 21.335938 21.335938 0 11.773437-9.558594 21.332031-21.335938 21.332031zm0 0"/>
-                              </svg>
-                            </button>
-                            <span className='cart__product__item__qty-val'>{product.qty}</span>
-                            <button onClick={() => changeCartQtyHandler(product.id, 1)} className='cart__product__item__qty-btn'>
-                              <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                  d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/>
-                              </svg>
-                            </button>
-                          </div>
-                          <p className="cart__product__item__total">${(product.qty * product.price).toFixed(2)}</p>
+            {cartItems && cartItems.length === 0 && <Message variant='info'>Your cart is empty</Message>}
+            {cartItems && cartItems.length > 0 && (
+              <div className='cart__content'>
+                <div className="cart__content__left">
+                  <div className="cart__product">
+                    <div className='cart__product__head'>
+                      <p className="cart__product__head__name">Product</p>
+                      <p className="cart__product__head__qty">Quantity</p>
+                      <p className="cart__product__head__total">Total</p>
+                    </div>
+                    {cartItems.map((product) => (
+                      <div key={product.id} className="cart__product__item">
+                        <Link className='cart__product__item__image-wrap' to={`/product/${product.slug}`}>
+                          <img className='cart__product__item__image' src={product.image}
+                               alt="ecdev"/></Link>
+                        <div className="cart__product__item__info">
+                          <Link to={`/product/${product.slug}`} className='cart__product__item__title'>{product.name}</Link>
+                          <p className='cart__product__item__price'>${product.price}</p>
+                          <button onClick={() => removeFromCartHandler(product.id)} className='cart__product__item__remove'>
+                            <span>Remove</span>
+                          </button>
                         </div>
-                      ))}
-                    </div>
-                  </div>
-                  <div className="cart__content__right">
-                    <div className="cart__order">
-                      <h5 className="cart__order__title">Order Summary</h5>
-                      <div className="cart__order__item">
-                        <p>{items > 1 ? items + ' Items' : items + ' Item'}</p>
-                        <p>${price.toFixed(2)}</p>
+                        <div className="cart__product__item__qty">
+                          <button onClick={() => changeCartQtyHandler(product.id, -1)} className='cart__product__item__qty-btn'>
+                            <svg height="426pt" viewBox="0 -192 426.66667 426" width="426pt" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="m405.332031 43h-384c-11.773437 0-21.332031-9.558594-21.332031-21.332031 0-11.777344 9.558594-21.335938 21.332031-21.335938h384c11.777344 0 21.335938 9.558594 21.335938 21.335938 0 11.773437-9.558594 21.332031-21.335938 21.332031zm0 0"/>
+                            </svg>
+                          </button>
+                          <span className='cart__product__item__qty-val'>{product.qty}</span>
+                          <button onClick={() => changeCartQtyHandler(product.id, 1)} className='cart__product__item__qty-btn'>
+                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/>
+                            </svg>
+                          </button>
+                        </div>
+                        <p className="cart__product__item__total">${(product.qty * product.price).toFixed(2)}</p>
                       </div>
-                      <div className="cart__order__item cart__order__item--total">
-                        <p>Total</p>
-                        <p>${price.toFixed(2)}</p>
-                      </div>
-                      <button onClick={checkoutHandler} className='cart__order__button'>Checkout</button>
-                    </div>
+                    ))}
                   </div>
-                </>)}
-          </div>
+                </div>
+                <div className="cart__content__right">
+                  <div className="cart__order">
+                    <h5 className="cart__order__title">Order Summary</h5>
+                    <div className="cart__order__item">
+                      <p>{items > 1 ? items + ' Items' : items + ' Item'}</p>
+                      <p>${price.toFixed(2)}</p>
+                    </div>
+                    <div className="cart__order__item cart__order__item--total">
+                      <p>Total</p>
+                      <p>${price.toFixed(2)}</p>
+                    </div>
+                    <button onClick={checkoutHandler} className='cart__order__button'>Checkout</button>
+                  </div>
+                </div>
+              </div>
+            )}
         </div>
       </section>
     </Layout>
