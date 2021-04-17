@@ -50,7 +50,7 @@ const OrderPage = ({ location }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, userInfo, location, order])
+  }, [dispatch, userInfo, location, order, sdkReady])
 
   useEffect(() => {
     const orderId = location.pathname.split('/')[2]
