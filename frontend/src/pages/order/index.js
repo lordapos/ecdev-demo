@@ -10,12 +10,11 @@ import {
   ORDER_DETAILS_RESET,
   ORDER_PAY_RESET,
 } from '../../redux/actions/actionTypes'
-import axios from '../../axios/axios'
 import { PayPalButton } from 'react-paypal-button-v2'
 import './_order.scss'
 
 const OrderPage = ({ location }) => {
-  const [sdkReady, setSdkReady] = useState(false)
+  const [loadState, setLoadState] = useState({ loading: false, loaded: false })
   const dispatch = useDispatch()
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
@@ -30,27 +29,21 @@ const OrderPage = ({ location }) => {
     if (!userInfo) {
       navigate('/login')
     }
+  }, [userInfo])
 
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get('/api/config/paypal')
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
+  useEffect(() => {
+    if (!loadState.loading && !loadState.loaded) {
+      setLoadState({ loading: true, loaded: false });
+      const script = document.createElement("script");
+      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`;
       script.async = true
-      script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
+      script.addEventListener("load", () =>
+        setLoadState({ loading: false, loaded: true })
+      );
+      document.body.appendChild(script);
+      console.log("append script");
     }
-
-    if (!order.isPaid && order) {
-      if (!window.paypal) {
-        addPayPalScript()
-      } else {
-        setSdkReady(true)
-      }
-    }
-  }, [dispatch, userInfo, location, order, sdkReady])
+  }, [loadState])
 
   useEffect(() => {
     const orderId = location.pathname.split('/')[2]
@@ -150,7 +143,7 @@ const OrderPage = ({ location }) => {
                   </div>
                   {!order.isPaid && (
                     <div className='order__payment-btns'>
-                      {!sdkReady ? (
+                      {!loadState.loaded ? (
                         ''
                       ) : (
                         <PayPalButton
