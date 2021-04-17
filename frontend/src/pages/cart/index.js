@@ -48,16 +48,8 @@ const CartPage = () => {
     dispatch(removeFromCart(id))
   }
 
-  const changeCartQtyHandler = (id, qty, old) => {
-    if (old + qty > 0) {
-      dispatch(addToCart(id, qty))
-    } else if (old + qty === 0) {
-      dispatch(removeFromCart(id))
-    } else if (old + qty < 0) {
-      dispatch(removeFromCart(id))
-    } else {
-      dispatch(removeFromCart(id))
-    }
+  const changeCartQtyHandler = (id, qty) => {
+    dispatch(addToCart(id, qty))
   }
 
   return (
@@ -91,14 +83,14 @@ const CartPage = () => {
                             </button>
                           </div>
                           <div className="cart__product__item__qty">
-                            <button onClick={() => changeCartQtyHandler(product.id, -1, product.qty)} className='cart__product__item__qty-btn'>
+                            <button onClick={() => changeCartQtyHandler(product.id, -1)} className='cart__product__item__qty-btn'>
                               <svg height="426pt" viewBox="0 -192 426.66667 426" width="426pt" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                   d="m405.332031 43h-384c-11.773437 0-21.332031-9.558594-21.332031-21.332031 0-11.777344 9.558594-21.335938 21.332031-21.335938h384c11.777344 0 21.335938 9.558594 21.335938 21.335938 0 11.773437-9.558594 21.332031-21.335938 21.332031zm0 0"/>
                               </svg>
                             </button>
                             <span className='cart__product__item__qty-val'>{product.qty}</span>
-                            <button onClick={() => changeCartQtyHandler(product.id, 1, product.qty)} className='cart__product__item__qty-btn'>
+                            <button onClick={() => changeCartQtyHandler(product.id, 1)} className='cart__product__item__qty-btn'>
                               <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                   d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/>

@@ -15,9 +15,6 @@ export const cartReducer = (state = {cartItems: [], loaded: false}, action) => {
         } else {
           item.qty = 1
         }
-        if (item.qty < 1) {
-          item.qty = 1
-        }
         return {
           ...state,
           cartItems: state.cartItems.map(
