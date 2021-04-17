@@ -41,7 +41,6 @@ const OrderPage = ({ location }) => {
         setLoadState({ loading: false, loaded: true })
       );
       document.body.appendChild(script);
-      console.log("append script");
     }
   }, [loadState])
 
