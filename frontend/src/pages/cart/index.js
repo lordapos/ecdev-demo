@@ -51,6 +51,10 @@ const CartPage = () => {
   const changeCartQtyHandler = (id, qty, old) => {
     if (old + qty > 0) {
       dispatch(addToCart(id, qty))
+    } else if (old + qty === 0) {
+      dispatch(removeFromCart(id))
+    } else if (old + qty < 0) {
+      dispatch(removeFromCart(id))
     } else {
       dispatch(removeFromCart(id))
     }
