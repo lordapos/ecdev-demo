@@ -78,7 +78,7 @@
     align-items: center;
     background-color: $light;
     border-radius: 1rem;
-    padding: 2rem;
+    padding: 4rem;
     @include media(md){
       width: calc(60% - 30px);
     }
