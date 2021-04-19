@@ -17,7 +17,6 @@ const CartPage = () => {
   const [items, setItems] = useState(0)
   const [price, setPrice] = useState(0)
 
-
   const breadcrumbs = [
     { to: '/', label: 'Home' },
     { to: '/cart', label: 'Shopping Cart' },
@@ -49,14 +48,9 @@ const CartPage = () => {
     dispatch(removeFromCart(id))
   }
 
-  const changeCartQtyHandler = (id, qty, old) => {
-    if (old + qty > 0) {
-      dispatch(addToCart(id, qty))
-    } else {
-      dispatch(removeFromCart(id))
-    }
+  const changeCartQtyHandler = (id, qty) => {
+    dispatch(addToCart(id, qty))
   }
-
 
   return (
     <Layout>
@@ -65,9 +59,8 @@ const CartPage = () => {
         <div className="cart__inner">
           <Breadcrumbs breadcrumbs={breadcrumbs}/>
           <h1 className='cart__title'>Shopping Cart</h1>
-          {!cartItems || cartItems.length === 0 ?
-            <Message variant='info'>Your cart is empty</Message> :
-            (
+            {cartItems && cartItems.length === 0 && <Message variant='info'>Your cart is empty</Message>}
+            {cartItems && cartItems.length > 0 && (
               <div className='cart__content'>
                 <div className="cart__content__left">
                   <div className="cart__product">
@@ -89,12 +82,18 @@ const CartPage = () => {
                           </button>
                         </div>
                         <div className="cart__product__item__qty">
-                          <button onClick={() => changeCartQtyHandler(product.id, -1, product.qty)} className='cart__product__item__qty-btn'>
-                            <svg height="426pt" viewBox="0 -192 426.66667 426" width="426pt" xmlns="http://www.w3.org/2000/svg"><path d="m405.332031 43h-384c-11.773437 0-21.332031-9.558594-21.332031-21.332031 0-11.777344 9.558594-21.335938 21.332031-21.335938h384c11.777344 0 21.335938 9.558594 21.335938 21.335938 0 11.773437-9.558594 21.332031-21.335938 21.332031zm0 0"/></svg>
+                          <button onClick={() => changeCartQtyHandler(product.id, -1)} className='cart__product__item__qty-btn'>
+                            <svg height="426pt" viewBox="0 -192 426.66667 426" width="426pt" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="m405.332031 43h-384c-11.773437 0-21.332031-9.558594-21.332031-21.332031 0-11.777344 9.558594-21.335938 21.332031-21.335938h384c11.777344 0 21.335938 9.558594 21.335938 21.335938 0 11.773437-9.558594 21.332031-21.335938 21.332031zm0 0"/>
+                            </svg>
                           </button>
                           <span className='cart__product__item__qty-val'>{product.qty}</span>
-                          <button onClick={() => changeCartQtyHandler(product.id, 1, product.qty)} className='cart__product__item__qty-btn'>
-                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg"><path d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/></svg>
+                          <button onClick={() => changeCartQtyHandler(product.id, 1)} className='cart__product__item__qty-btn'>
+                            <svg height="426.66667pt" viewBox="0 0 426.66667 426.66667" width="426.66667pt" xmlns="http://www.w3.org/2000/svg">
+                              <path
+                                d="m405.332031 192h-170.664062v-170.667969c0-11.773437-9.558594-21.332031-21.335938-21.332031-11.773437 0-21.332031 9.558594-21.332031 21.332031v170.667969h-170.667969c-11.773437 0-21.332031 9.558594-21.332031 21.332031 0 11.777344 9.558594 21.335938 21.332031 21.335938h170.667969v170.664062c0 11.777344 9.558594 21.335938 21.332031 21.335938 11.777344 0 21.335938-9.558594 21.335938-21.335938v-170.664062h170.664062c11.777344 0 21.335938-9.558594 21.335938-21.335938 0-11.773437-9.558594-21.332031-21.335938-21.332031zm0 0"/>
+                            </svg>
                           </button>
                         </div>
                         <p className="cart__product__item__total">${(product.qty * product.price).toFixed(2)}</p>

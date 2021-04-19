@@ -39,21 +39,10 @@ const ReviewPopup = ({productId}) => {
           initialValues={{ email: '', name: '', title: '', review: '', rating: ratingNumber }}
           validate={values => {
             const errors = {}
-            if (!values.email) {
-              errors.email = 'Required'
-            } else if (
+            if (
               !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
             ) {
               errors.email = 'Invalid email address'
-            }
-            if (!values.title) {
-              errors.title = 'Required'
-            }
-            if (!values.title) {
-              errors.review = 'Required'
-            }
-            if (!values.name) {
-              errors.name = 'Required'
             }
             return errors
           }}
@@ -78,7 +67,7 @@ const ReviewPopup = ({productId}) => {
             <form onSubmit={handleSubmit} className='review-form' autoComplete='off'>
               <legend className='review-form__legend'>Write a review</legend>
               <div className='review-form__group'>
-                <label htmlFor='title' className='review-form__label'>Your overall rating *</label>
+                <p className='review-form__label'>Your overall rating *</p>
                 <div className='review-form__rating'>
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item active' onClick={() =>{handleClick(1)}}/>
                   <FontAwesomeIcon icon={faStar} className='review-form__rating__item' onClick={() =>{handleClick(2)}}/>
@@ -97,9 +86,10 @@ const ReviewPopup = ({productId}) => {
                   value={values.title}
                   placeholder='Enter title'
                   className='review-form__input'
+                  required
                 />
                 <span className='review-form__error'>
-                   {errors.title && touched.title && errors.title}
+                  {errors.title && touched.title && errors.title}
                 </span>
               </div>
               <div className='review-form__group'>
@@ -111,6 +101,7 @@ const ReviewPopup = ({productId}) => {
                   value={values.review}
                   placeholder='Enter your review...'
                   className='review-form__textarea'
+                  required
                 />
                 <span className='review-form__error'>
                   {errors.review && touched.review && errors.review}
@@ -126,6 +117,7 @@ const ReviewPopup = ({productId}) => {
                   value={values.name}
                   placeholder='Enter name'
                   className='review-form__input'
+                  required
                 />
                 <span className='review-form__error'>
                   {errors.name && touched.name && errors.name}

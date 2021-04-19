@@ -55,16 +55,8 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(_dirname, 'frontend', 'public', 'index.html')),
   )
 } else {
-  const obj = ['Large 24.1 Megapixel APS-C Sensor',
-    'Full HD Movie Recording',
-    'Built-in Wi-Fi and NFC',
-    'Canon Connect App',
-    '3fps Burst Shooting\'',
-    '3.0\' LCD Screen'
-  ]
   app.get('/', (req, res) => {
-    res.send(JSON.stringify(obj))
-    console.log(JSON.stringify(obj))
+    res.send('Api running...')
   })
 }
 

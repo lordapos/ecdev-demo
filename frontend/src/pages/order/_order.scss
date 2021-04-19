@@ -136,7 +136,9 @@
       &__image
       {
         width: 80px;
+        max-height: 80px;
         margin-right: 1rem;
+        object-fit: contain;
       }
 
       &__info

@@ -14,7 +14,7 @@ const BestSellers = () => {
     <section className="best-sellers">
       <div className="best-sellers__inner">
         <h3 className='best-sellers__headline'>Best Sellers Today</h3>
-        <Link className="best-sellers__view-more" to='/'>
+        <Link className="best-sellers__view-more" to='/cameras'>
           View More <img src={iconArrow} alt="icon arrow"/>
         </Link>
         <div className="best-sellers__list">
@@ -25,7 +25,7 @@ const BestSellers = () => {
                 <p className="best-sellers__tagline">FX Flagship</p>
                 <p className="best-sellers__name">Nikon D6</p>
                 <p className="best-sellers__learn-more">
-                  Learn more <img src={greenIconArrow} alt="icon arrow"/>
+                  Learn More <img src={greenIconArrow} alt="icon arrow"/>
                 </p>
               </div>
             </Link>
@@ -38,7 +38,7 @@ const BestSellers = () => {
                 <p className="best-sellers__tagline">FX Professional</p>
                 <p className="best-sellers__name">Nikon D850</p>
                 <p className="best-sellers__learn-more">
-                  Learn more <img src={greenIconArrow} alt="icon arrow"/>
+                  Learn More <img src={greenIconArrow} alt="icon arrow"/>
                 </p>
               </div>
             </Link>
@@ -48,7 +48,7 @@ const BestSellers = () => {
                 <p className="best-sellers__tagline">FX Advanced Entry</p>
                 <p className="best-sellers__name">Nikon D5XQD</p>
                 <p className="best-sellers__learn-more">
-                  Learn more <img src={greenIconArrow} alt="icon arrow"/>
+                  Learn More <img src={greenIconArrow} alt="icon arrow"/>
                 </p>
               </div>
             </Link>
@@ -58,7 +58,7 @@ const BestSellers = () => {
                 <p className="best-sellers__tagline">FX Entry-Level</p>
                 <p className="best-sellers__name">Nikon D610</p>
                 <p className="best-sellers__learn-more">
-                  Learn more <img src={greenIconArrow} alt="icon arrow"/>
+                  Learn More <img src={greenIconArrow} alt="icon arrow"/>
                 </p>
               </div>
             </Link>

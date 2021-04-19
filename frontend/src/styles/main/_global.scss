@@ -5,6 +5,10 @@ body {
   font-family: 'Inter', sans-serif;
   color: $black;
   background-color: $white;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 ::-webkit-scrollbar {
@@ -117,11 +121,11 @@ picture {
 main {
   padding-top: 108px;
   min-height: 70vh;
-  @include media(sm) {
-    padding-top: 101px;
+  @include media(md) {
+    padding-top: 100px;
   }
   @include media(xs) {
-    padding-top: 93px;
+    padding-top: 86px;
   }
 }
 

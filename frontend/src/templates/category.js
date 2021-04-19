@@ -47,7 +47,7 @@ const CamerasPage = ({ data, location }) => {
   }
 
   const breadcrumbs = [
-    { to: '/', label: 'EcDevShop' },
+    { to: '/', label: 'CamWorld' },
     { to: '/'+data.swapi.getCategory.slug, label: data.swapi.getCategory.name },
   ]
 

@@ -3,7 +3,7 @@
 
 .mobile-menu {
   position: fixed;
-  top: 62px;
+  top: 60px;
   right: 0;
   transition: 1s;
   z-index: 99;
@@ -21,6 +21,7 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: auto;
   }
 
   &__item {
@@ -28,6 +29,9 @@
     font-size: 18px;
     font-family: "Gilroy", sans-serif;
     font-weight: 500;
+    &:last-child{
+      padding-bottom: 300px;
+    }
   }
 
   &__link {

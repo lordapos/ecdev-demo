@@ -15,18 +15,63 @@
     .header__head {
       transform: translate(0, -150px);
     }
+
     transform: translate(0, -26px);
   }
 
   &__head {
-    text-align: center;
     background-color: $black;
-    color: $white;
     width: 100%;
-    padding: .4rem 0;
-    font-size: .9rem;
+    padding: 9px 100px;
     line-height: 1;
     transition: .5s ease-in, .5s ease-in-out;
+    @include media(md){
+      padding: 9px 16px;
+    }
+
+    &__information {
+      font-size: 0.875rem;
+      color: $white;
+      text-align: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      @media (max-width: 1600px) {
+        justify-content: center;
+      }
+
+    }
+
+    &__title {
+      color: $grey;
+      font-size: 0.875rem;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      font-weight: 500;
+      @media (max-width: 1600px) {
+        display: none;
+      }
+    }
+
+    &__text {
+      padding: 0 2rem;
+      @include media(md){
+        padding: unset;
+      }
+      @include media(xs){
+        font-size: 0.75rem;
+      }
+    }
+
+    &__line {
+      object-fit: contain;
+      max-width: 108px;
+      width: 100%;
+      height: 4px;
+      @include media(lg) {
+        display: none;
+      }
+    }
   }
 
   &__inner {
@@ -47,7 +92,7 @@
     }
 
     @include media(xs) {
-      max-width: 10rem;
+      max-width: 8rem;
     }
   }
 
@@ -89,9 +134,11 @@
         }
       }
     }
-    &__button{
+
+    &__button {
       margin-left: 1.5rem;
     }
+
     &__link {
       font-weight: 500;
       text-transform: capitalize;

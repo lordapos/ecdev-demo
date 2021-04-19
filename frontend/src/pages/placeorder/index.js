@@ -47,9 +47,6 @@ const PlaceOrderPage = ({ history }) => {
     items,
   )
   cart.shippingPrice = 0
-  cart.totalPrice = (
-    Number(cart.itemsPrice) +
-    Number(cart.shippingPrice)).toFixed(2)
 
   const steps = [
     { to: '/shipping', label: 'Shipping', active: 'active' },
@@ -83,7 +80,7 @@ const PlaceOrderPage = ({ history }) => {
         shippingAddress: cart.shippingAddress,
         paymentMethod: cart.paymentMethod,
         shippingPrice: cart.shippingPrice,
-        totalPrice: cart.totalPrice,
+        totalPrice: price,
       }),
     )
   }

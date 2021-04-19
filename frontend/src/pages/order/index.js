@@ -10,12 +10,11 @@ import {
   ORDER_DETAILS_RESET,
   ORDER_PAY_RESET,
 } from '../../redux/actions/actionTypes'
-import axios from '../../axios/axios'
 import { PayPalButton } from 'react-paypal-button-v2'
 import './_order.scss'
 
 const OrderPage = ({ location }) => {
-  const [sdkReady, setSdkReady] = useState(false)
+  const [loadState, setLoadState] = useState({ loading: false, loaded: false })
   const dispatch = useDispatch()
   const orderDetails = useSelector((state) => state.orderDetails)
   const { order, loading, error } = orderDetails
@@ -30,27 +29,20 @@ const OrderPage = ({ location }) => {
     if (!userInfo) {
       navigate('/login')
     }
+  }, [userInfo])
 
-    const addPayPalScript = async () => {
-      const { data: clientId } = await axios.get('/api/config/paypal')
-      const script = document.createElement('script')
-      script.type = 'text/javascript'
-      script.src = `https://www.paypal.com/sdk/js?client-id=${clientId}`
+  useEffect(() => {
+    if (!loadState.loading && !loadState.loaded) {
+      setLoadState({ loading: true, loaded: false });
+      const script = document.createElement("script");
+      script.src = `https://www.paypal.com/sdk/js?client-id=${process.env.PAYPAL_CLIENT_ID}`;
       script.async = true
-      script.onload = () => {
-        setSdkReady(true)
-      }
-      document.body.appendChild(script)
+      script.addEventListener("load", () =>
+        setLoadState({ loading: false, loaded: true })
+      );
+      document.body.appendChild(script);
     }
-
-    if (!order.isPaid) {
-      if (!window.paypal) {
-        addPayPalScript()
-      } else {
-        setSdkReady(true)
-      }
-    }
-  }, [dispatch, userInfo, location, order])
+  }, [loadState])
 
   useEffect(() => {
     const orderId = location.pathname.split('/')[2]
@@ -128,7 +120,7 @@ const OrderPage = ({ location }) => {
                       <div className="order__cart__item" key={index}>
                         <img className='order__cart__item__image' src={item.image} alt={item.name}/>
                         <div className="order__cart__item__info">
-                          <Link to={`/product/${item.product}`} className='order__cart__item__name'>{item.name}</Link>
+                          <Link to={`/product/${item.slug}`} className='order__cart__item__name'>{item.name}</Link>
                           <p className='order__cart__item__qty'>Quantity: {item.qty}</p>
                         </div>
                         <p className='order__cart__item__price'>${item.qty * item.price}</p>
@@ -150,7 +142,7 @@ const OrderPage = ({ location }) => {
                   </div>
                   {!order.isPaid && (
                     <div className='order__payment-btns'>
-                      {!sdkReady ? (
+                      {!loadState.loaded ? (
                         ''
                       ) : (
                         <PayPalButton

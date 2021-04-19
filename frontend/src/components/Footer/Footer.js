@@ -51,16 +51,16 @@ const Footer = () => {
           <div className="footer__social">
             <h6 className='footer__social__title'>Social</h6>
             <div className="footer__social__list">
-              <a href="http://google.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
+              <a href="https://www.instagram.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
                 <FontAwesomeIcon icon={faInstagram} />
               </a>
-              <a href="http://google.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
+              <a href="https://www.facebook.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
                 <FontAwesomeIcon icon={faFacebookF} />
               </a>
-              <a href="http://google.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
+              <a href="https://twitter.com/?lang=en" target='_blank' rel='noreferrer' className='footer__social__item'>
                 <FontAwesomeIcon icon={faTwitter} />
               </a>
-              <a href="http://google.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
+              <a href="https://www.youtube.com/" target='_blank' rel='noreferrer' className='footer__social__item'>
                 <FontAwesomeIcon icon={faYoutube} />
               </a>
             </div>
@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer__inner">
-        <p className='footer__copy-rights'>© 2021 EcDevShop. All Rights Reserved.</p>
+        <p className='footer__copy-rights'>© 2021 CamWorld. All Rights Reserved.</p>
         <ul className="footer__links__list">
           {renderLinks(links)}
           <li className='footer__links__item'>
