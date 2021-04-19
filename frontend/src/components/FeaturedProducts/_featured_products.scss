@@ -15,6 +15,7 @@
 
   &__inner {
     @include container;
+    margin-top: 0;
   }
 
   .products {
