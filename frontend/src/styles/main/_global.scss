@@ -5,6 +5,10 @@ body {
   font-family: 'Inter', sans-serif;
   color: $black;
   background-color: $white;
+
+  &.no-scroll {
+    overflow: hidden;
+  }
 }
 
 ::-webkit-scrollbar {
