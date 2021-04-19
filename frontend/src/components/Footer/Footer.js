@@ -78,7 +78,7 @@ const Footer = () => {
         </div>
       </div>
       <div className="footer__inner">
-        <p className='footer__copy-rights'>© 2021 EcDevShop. All Rights Reserved.</p>
+        <p className='footer__copy-rights'>© 2021 CamWorld. All Rights Reserved.</p>
         <ul className="footer__links__list">
           {renderLinks(links)}
           <li className='footer__links__item'>

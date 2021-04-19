@@ -5,6 +5,7 @@ import logo from '../../images/logo.svg'
 import './_header.scss'
 import userIcon from '../../images/ic_user.svg'
 import cartIcon from '../../images/ic_cart.svg'
+import headLine from '../../images/head-line.svg'
 import { toggleMenu } from '../../redux/actions/appAction'
 
 const Header = () => {
@@ -20,7 +21,7 @@ const Header = () => {
       return (
         <li className='header__nav__item' key={index}>
           <Link
-            to={'/'+link.name.toLowerCase()}
+            to={'/' + link.name.toLowerCase()}
             className='header__nav__link'>{link.name}</Link>
         </li>
       )
@@ -66,7 +67,29 @@ const Header = () => {
 
   return (
     <header className={cls.join(' ')}>
-      <div className="header__head">FREE SHIPPING & RETURNS</div>
+      <div className="header__head">
+        <div className="header__head__information">
+          <span className="header__head__title">Demo Shop</span>
+          <span className="header__head__title">Demo Shop</span>
+          <p className="header__head__slogan">
+            <img
+              src={headLine} alt="head line"
+              className="header__head__line"
+            />
+            <span className="header__head__text">
+               This is a demo store, created by EcDevStudio to demonstrate its speed and other key capabilities
+            </span>
+            <img
+              src={headLine} alt="head line"
+              className="header__head__line"
+            />
+
+          </p>
+          <span className="header__head__title">Demo Shop</span>
+          <span className="header__head__title">Demo Shop</span>
+        </div>
+
+      </div>
       <div className="header__inner">
         <Link className='header__logo' to='/'>
           <img src={logo} alt="prim"/>

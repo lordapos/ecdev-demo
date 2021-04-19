@@ -69,7 +69,7 @@ const ProductPage = ({ data, location }) => {
   }, [product])
 
   const breadcrumbs = [
-    { to: '/', label: 'EcDevShop' },
+    { to: '/', label: 'CamWorld' },
     { to: `/product/${product.id}`, label: product.name },
   ]
 
