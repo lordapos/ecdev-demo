@@ -36,9 +36,11 @@
     font-size: 1.4rem;
     color: black;
     cursor: pointer;
-    right: 14px;
-    top: 14px;
+    right: 0;
+    top: 0;
     line-height: 1;
+    z-index: 999;
+    padding: 14px;
   }
 
   .review-form {

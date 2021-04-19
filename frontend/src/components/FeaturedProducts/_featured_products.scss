@@ -4,6 +4,9 @@
 
 .featured_products {
   margin-top: 140px;
+  @include media(md){
+    margin-top: 70px;
+  }
 
   &__headline {
     text-align: center;
