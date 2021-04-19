@@ -18,6 +18,8 @@ const CamerasPage = ({ data, location }) => {
   const { sorting } = sortList
   const [products, setProducts] = useState(data.swapi.getCatProducts)
   const slug = location.pathname.split('/')[1]
+  const [displayFilter, setDisplayFilter] = useState(false)
+  const productsClasses = displayFilter ? 'products__list large' : 'products__list'
 
   useEffect(() => {
     dispatch(listSortProducts(slug))
@@ -49,14 +51,35 @@ const CamerasPage = ({ data, location }) => {
     { to: '/'+data.swapi.getCategory.slug, label: data.swapi.getCategory.name },
   ]
 
+
+  const onChangeDisplayFilter = () =>{
+    if (displayFilter === true){
+      setDisplayFilter(false)
+    } else {
+      setDisplayFilter(true)
+    }
+
+  }
+
   return (
     <Layout>
       <SEO title='Products'/>
       <section className='products'>
         <div className="products__inner">
           <Breadcrumbs breadcrumbs={breadcrumbs}/>
+          <h3 className='products__title'>DSLR and Mirrorless Cameras</h3>
           <div className="products__head">
-            <h3 className='products__title'>DSLR and Mirrorless Cameras</h3>
+            <form action='#' className="products__action">
+              <label className="products__action__switch">
+                <input
+                  type="checkbox"
+                  className="products__action__input"
+                  onClick={onChangeDisplayFilter}
+                />
+                <span className="products__action__toggle round"></span>
+              </label>
+              <span className="products__action__text">Hide Filters</span>
+            </form>
             <div className="products__sort">
               <label htmlFor="sort">Sort by:</label>
               <select name="sort" className='products__select' id="sort" onChange={sort} onBlur={sort}>
@@ -67,8 +90,8 @@ const CamerasPage = ({ data, location }) => {
             </div>
           </div>
           <div className='products__content'>
-            <Filters brands={data.swapi.getBrands} category={slug}/>
-            <div className='products__list'>
+            <Filters brands={data.swapi.getBrands} category={slug} displayFilter={displayFilter}/>
+            <div className={productsClasses}>
               {products.map((product, index) => (
                 <ProductCard key={index} product={product}/>
               ))}

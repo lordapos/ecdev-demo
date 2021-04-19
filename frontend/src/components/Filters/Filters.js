@@ -1,17 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import InputRange from 'react-input-range'
 import './_filter.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { SORT_ADD } from '../../redux/actions/actionTypes'
 import { listSortProducts } from '../../redux/actions/productAction'
 
-const Filters = ({ brands, category }) => {
+const Filters = ({ brands, category, displayFilter }) => {
   const dispatch = useDispatch()
   const sortList = useSelector((state) => state.sort)
   const { sorting } = sortList
   const [value, setValue] = useState(2000)
   const [viewPrice, setViewPrice] = useState(false)
   const [viewBrand, setBrand] = useState(false)
+  const filterClasses = displayFilter ? 'filter hide' : 'filter'
   const [checkedBrand, setCheckedBrand] = useState(sorting.brands ? sorting.brands : [])
   const rage = ['filter__category']
   const brand = ['filter__category']
@@ -28,11 +29,13 @@ const Filters = ({ brands, category }) => {
 
   const sortPrice = ({ value }) => {
     setValue(value)
-    dispatch({ type: SORT_ADD, payload: {
+    dispatch({
+      type: SORT_ADD, payload: {
         sortBy: sorting.sortBy,
         price: value,
         brands: sorting.brands,
-      }})
+      }
+    })
     dispatch(listSortProducts(category))
   }
 
@@ -44,25 +47,31 @@ const Filters = ({ brands, category }) => {
     setBrand(!viewBrand)
   }
 
-  const submitForm = ( values ) => {
-    dispatch({ type: SORT_ADD, payload: {
+  const submitForm = (values) => {
+    dispatch({
+      type: SORT_ADD, payload: {
         sortBy: sorting.sortBy,
         price: sorting.price,
         brands: values,
-      }})
+      }
+    })
     dispatch(listSortProducts(category))
   }
 
   const removeArr = async (value) => {
     const key = checkedBrand.findIndex(x => x.id === value)
-    const arr = checkedBrand;
+    const arr = checkedBrand
     arr.splice(key, 1)
     submitForm(arr)
     return true
   }
 
+  useEffect(() => {
+    console.log('filter ', displayFilter)
+  })
+
   return (
-    <div className='filter'>
+    <div className={filterClasses}>
       <div className={rage.join(' ')}>
         <button className='h5 filter__category__title' onClick={changeRage}>Price <span className='filter__category__arrow'> </span></button>
         <div className='filter__category__rage'>
@@ -70,7 +79,7 @@ const Filters = ({ brands, category }) => {
             maxValue={2000}
             minValue={0}
             value={value}
-            onChangeComplete ={value => sortPrice({ value })}
+            onChangeComplete={value => sortPrice({ value })}
             onChange={value => changePrice({ value })}/>
         </div>
       </div>
