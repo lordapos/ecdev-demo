@@ -6,7 +6,6 @@ import { Link, navigate } from 'gatsby'
 import { getOrderDetails, payOrder } from '../../redux/actions/orderAction'
 import Message from '../../components/Message/Message'
 import {
-  ORDER_DELIVER_RESET,
   ORDER_DETAILS_RESET,
   ORDER_PAY_RESET,
 } from '../../redux/actions/actionTypes'
@@ -49,7 +48,6 @@ const OrderPage = ({ location }) => {
     if (!order || successPay) {
 
       dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
       dispatch(getOrderDetails(orderId))
     }
   }, [dispatch, successPay, location, order])

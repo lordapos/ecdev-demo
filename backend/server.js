@@ -7,10 +7,7 @@ const rootResolver = require('./graphql/public_api/resolver/rootResolver')
 const schema = require('./graphql/public_api/schema')
 const loggedResolver = require('./graphql/logged_api/resolver/rootResolver')
 const loggedSchema = require('./graphql/logged_api/schema')
-const adminSchema = require('./graphql/admin_api/schema')
-const adminResolver = require('./graphql/admin_api/resolver/rootResolver')
 const protect = require('./middleware/authMiddleware')
-const admin = require('./middleware/adminMiddleware')
 const uploadRoutes = require('./routes/uploadRoutes')
 const cors = require('cors')
 const path = require('path')
@@ -34,16 +31,6 @@ app.use("/logged-api", protect, graphqlHTTP({
   graphiql: false
 }))
 
-app.use("/admin-api", admin, graphqlHTTP({
-  schema: adminSchema,
-  rootValue: adminResolver,
-  graphiql: true
-}))
-
-app.get('/api/config/paypal', (req, res) =>
-  res.send(process.env.PAYPAL_CLIENT_ID)
-)
-
 const PORT = process.env.PORT || 5000
 
 const _dirname = path.resolve()
@@ -62,7 +49,6 @@ if (process.env.NODE_ENV === 'production') {
 
 async function start () {
   try {
-    // await sequelize.sync({ force: true })
     await sequelize.sync()
     app.listen(PORT)
     console.log(`Server is running on port ${PORT}`)

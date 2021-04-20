@@ -4,18 +4,12 @@ import {
   ORDER_CREATE_FAIL,
   ORDER_CREATE_REQUEST,
   ORDER_CREATE_SUCCESS,
-  ORDER_DELIVER_FAIL,
-  ORDER_DELIVER_REQUEST,
-  ORDER_DELIVER_SUCCESS,
   ORDER_DETAILS_FAIL,
   ORDER_DETAILS_REQUEST,
   ORDER_DETAILS_SUCCESS,
-  ORDER_LIST_FAIL,
   ORDER_LIST_MY_FAIL,
   ORDER_LIST_MY_REQUEST,
   ORDER_LIST_MY_SUCCESS,
-  ORDER_LIST_REQUEST,
-  ORDER_LIST_SUCCESS,
   ORDER_PAY_FAIL,
   ORDER_PAY_REQUEST,
   ORDER_PAY_SUCCESS,
@@ -229,138 +223,6 @@ export const listMyOrders = () => async (dispatch, getState) => {
     }
     dispatch({
       type: ORDER_LIST_MY_FAIL,
-      payload: message,
-    })
-  }
-}
-
-export const listOrders = () => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: ORDER_LIST_REQUEST,
-    })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const query = `
-          query {
-            getOrders {
-             createdAt, totalPrice, paidAt, isDelivered, id
-            }
-          }`
-    const { data } = await axios.post('/admin-api', { query: query }, config)
-
-    dispatch({
-      type: ORDER_LIST_SUCCESS,
-      payload: data.data.getOrders,
-    })
-  } catch (error) {
-    const message = error.response && error.response.data.errors[0].message
-      ? error.response.data.errors[0].message
-      : error.message
-    if (message === 'Not authorized, token failed') {
-      dispatch(logout())
-    }
-    dispatch({
-      type: ORDER_LIST_FAIL,
-      payload: message,
-    })
-  }
-}
-
-export const getOrderDetailsAdmin = (id) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: ORDER_DETAILS_REQUEST,
-    })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const query = `
-          query {
-            getOrder(id: ${id}) {
-             id, userId, orderItems, shippingAddress, paymentMethod, paymentResult, shippingPrice, totalPrice, isPaid, paidAt, isDelivered, deliveredAt
-            }
-          }`
-
-    const { data } = await axios.post('/admin-api', { query: query }, config)
-
-    dispatch({
-      type: ORDER_DETAILS_SUCCESS,
-      payload: data.data.getOrder,
-    })
-  } catch (error) {
-    const message = error.response && error.response.data.errors[0].message
-      ? error.response.data.errors[0].message
-      : error.message
-    if (message === 'Not authorized, token failed') {
-      dispatch(logout())
-    }
-    dispatch({
-      type: ORDER_DETAILS_FAIL,
-      payload: message,
-    })
-  }
-}
-
-export const deliverOrder = (id) => async (dispatch, getState) => {
-  try {
-    dispatch({
-      type: ORDER_DELIVER_REQUEST,
-    })
-
-    const {
-      userLogin: { userInfo },
-    } = getState()
-
-    const config = {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    }
-
-    const query = `
-          mutation {
-            deliverOrder(id: ${id}) {
-              id, userId, orderItems, shippingAddress, paymentMethod, paymentResult, shippingPrice, totalPrice, isPaid, paidAt, isDelivered, deliveredAt
-            }
-          }`
-
-    const { data } = await axios.post('/admin-api', { query: query }, config)
-
-    dispatch({
-      type: ORDER_DELIVER_SUCCESS,
-    })
-    dispatch({
-      type: ORDER_DETAILS_SUCCESS,
-      payload: data.data.deliverOrder,
-    })
-  } catch (error) {
-    const message = error.response && error.response.data.errors[0].message
-      ? error.response.data.errors[0].message
-      : error.message
-    if (message === 'Not authorized, token failed') {
-      dispatch(logout())
-    }
-    dispatch({
-      type: ORDER_DELIVER_FAIL,
       payload: message,
     })
   }
