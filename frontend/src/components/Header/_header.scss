@@ -17,6 +17,14 @@
     }
 
     transform: translate(0, -26px);
+    .header__head{
+      @include media(sm){
+        padding: 8px 16px;
+      }
+      @media (max-width: 680px){
+        padding: 0 16px;
+      }
+    }
   }
 
   &__head {
