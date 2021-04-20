@@ -201,6 +201,15 @@
 
 
 }
+
+.filter{
+  transition: .3s ease-in, .3s ease-in-out;
+}
+
 .filter.hide{
-  display: none;
+  width: 0;
+  opacity: 0;
+  @include media(lg){
+    display: none;
+  }
 }

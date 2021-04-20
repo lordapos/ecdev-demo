@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import InputRange from 'react-input-range'
 import './_filter.scss'
 import { useDispatch, useSelector } from 'react-redux'
@@ -65,10 +65,6 @@ const Filters = ({ brands, category, displayFilter }) => {
     submitForm(arr)
     return true
   }
-
-  useEffect(() => {
-    console.log('filter ', displayFilter)
-  })
 
   return (
     <div className={filterClasses}>
