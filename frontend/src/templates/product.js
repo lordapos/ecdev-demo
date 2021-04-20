@@ -70,7 +70,7 @@ const ProductPage = ({ data, location }) => {
 
   const breadcrumbs = [
     { to: '/', label: 'CamWorld' },
-    { to: `/product/${product.id}`, label: product.name },
+    { to: `/product/${product.slug}`, label: product.name },
   ]
 
   const addToCartHandler = () => {
