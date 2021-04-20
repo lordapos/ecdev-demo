@@ -4,10 +4,10 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: "Ecdev Shop",
+    title: "Cam World",
     description: "Full stack web development based on MERN stack",
     author: `Bohdan Oleksiuk`,
-    siteUrl: 'https://shop.ecdevstudio.com',
+    siteUrl: 'https://camworld.ecdevstudio.com',
   },
   plugins: [
     "gatsby-plugin-sass",
