@@ -69,15 +69,15 @@ const Header = () => {
     <header className={cls.join(' ')}>
       <div className="header__head">
         <div className="header__head__information">
-          <span className="header__head__title">Demo Shop</span>
-          <span className="header__head__title">Demo Shop</span>
+          <span className="header__head__title">DEMO STORE</span>
+          <span className="header__head__title">DEMO STORE</span>
           <p className="header__head__slogan">
             <img
               src={headLine} alt="head line"
               className="header__head__line"
             />
             <span className="header__head__text">
-               This is a demo store, created by EcDevStudio to demonstrate its speed and other key capabilities
+               This is a demo store, created by EcDevStudio
             </span>
             <img
               src={headLine} alt="head line"
@@ -85,8 +85,8 @@ const Header = () => {
             />
 
           </p>
-          <span className="header__head__title">Demo Shop</span>
-          <span className="header__head__title">Demo Shop</span>
+          <span className="header__head__title">DEMO STORE</span>
+          <span className="header__head__title">DEMO STORE</span>
         </div>
 
       </div>
