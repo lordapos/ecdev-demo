@@ -56,6 +56,18 @@
       margin-bottom: 5px;
     }
 
+    &__list {
+      min-height: 125px;
+
+      @include media(lg) {
+        min-height: 146px;
+      }
+
+      @include media(sm) {
+        min-height: 125px;
+      }
+    }
+
     &__item {
       margin-bottom: 5px;
       font-size: 0.875rem;
