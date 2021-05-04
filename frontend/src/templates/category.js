@@ -28,10 +28,13 @@ const CamerasPage = ({ data, location }) => {
   }, [dispatch, slug])
 
   useEffect(() => {
-    if (typeof updatedProducts === 'object' && url === location.href) {
-      setProducts(updatedProducts)
-    }
+    setTimeout(function () {
+      if (typeof updatedProducts === 'object' && url === location.href) {
+        setProducts(updatedProducts)
+      }
+    }, 1000)
   }, [updatedProducts, location, url])
+
 
   const sort = event => {
     dispatch({
